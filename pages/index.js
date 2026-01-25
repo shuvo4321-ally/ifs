@@ -13,6 +13,7 @@ import Blog1 from "@/components/sections/Blog1"
 import Newsletter1 from "@/components/sections/Newsletter1"
 import Work1 from "@/components/sections/Work1"
 import Features2 from './../components/sections/Features2';
+import Faq1 from "@/components/sections/Faq1"
 
 export default function Home() {
 
@@ -23,7 +24,7 @@ export default function Home() {
                 <Features2 />
                 <Features1 />
                 <About1 />
-                <Services1 />
+              
                 <Work1 />
                 {/* <Project1 /> */}
                 {/* <Counter1 /> */}
@@ -31,6 +32,7 @@ export default function Home() {
                 {/* <Testimonial1 />
                 <Blog1 />
                 <Newsletter1 /> */}
+                <Faq1 />
             </Layout>
         </>
     )

@@ -1,0 +1,204 @@
+{
+  "services": [
+    {
+      "id": 1,
+      "title": "Office Cleaning",
+      "slug": "office-cleaning",
+      "tagline": "Professional Cleaning for Modern Australian Workspaces",
+      "overview": "IFS delivers reliable, high-quality office cleaning services across Australia, tailored to suit corporate offices, shared workspaces, and professional environments. We focus on hygiene, presentation, and consistency while operating in full compliance with Australian WHS standards.",
+      "includes": [
+        "Daily, weekly, or scheduled office cleaning",
+        "Workstations, desks, chairs, and partitions",
+        "Dusting of furniture, fixtures, and fittings",
+        "Carpet vacuuming and hard floor mopping/polishing",
+        "Kitchen and break-room cleaning",
+        "Washroom cleaning, sanitisation, and consumable restocking",
+        "Waste removal and recycling management",
+        "High-touch surface disinfection (door handles, switches, phones)",
+        "After-hours and weekend cleaning options"
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Retail Cleaning",
+      "slug": "retail-cleaning",
+      "tagline": "Maintaining Immaculate Retail Spaces That Attract Customers",
+      "overview": "We support Australian retail businesses by maintaining clean, safe, and visually appealing environments. Our team understands high foot-traffic demands and works around trading hours to minimise disruption.",
+      "includes": [
+        "Shopfront and entryway cleaning",
+        "Glass, mirrors, and display surfaces",
+        "Floor cleaning for tiled, vinyl, and carpeted areas",
+        "Fitting room and customer area sanitisation",
+        "Checkout counters and POS areas",
+        "Back-of-house cleaning",
+        "Rubbish removal and hygiene maintenance",
+        "Flexible cleaning schedules (early morning / late night)"
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Education Facility Cleaning",
+      "slug": "education-cleaning",
+      "tagline": "Safe, Hygienic Cleaning for Schools & Educational Institutions",
+      "overview": "IFS provides dependable cleaning services for Australian schools, colleges, and training facilities. We prioritise hygiene, safety, and consistency while working within school operational schedules.",
+      "includes": [
+        "Classroom and lecture room cleaning",
+        "Desks, chairs, and learning surfaces",
+        "Toilet and washroom deep cleaning",
+        "Corridors, staircases, and common areas",
+        "Library and staff office cleaning",
+        "Waste disposal and recycling",
+        "High-touch surface sanitisation",
+        "School holiday deep cleaning programs"
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Industrial Cleaning",
+      "slug": "industrial-cleaning",
+      "tagline": "Specialised Cleaning for Industrial & Operational Environments",
+      "overview": "Our industrial cleaning services are designed for warehouses, factories, and operational sites across Australia. We follow strict WHS guidelines and use industry-approved equipment.",
+      "includes": [
+        "Warehouse floor cleaning and degreasing",
+        "Machinery and equipment surface cleaning",
+        "High-dust and high-traffic area maintenance",
+        "Staff amenities and change rooms",
+        "Spill and residue clean-ups",
+        "Waste and debris removal",
+        "Scheduled maintenance cleaning",
+        "Safety-compliant cleaning procedures"
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Commercial Cleaning",
+      "slug": "commercial-cleaning",
+      "tagline": "Comprehensive Cleaning for Commercial Properties",
+      "overview": "IFS provides flexible, scalable cleaning services for commercial buildings, business centres, and mixed-use developments across Australia.",
+      "includes": [
+        "Office and tenancy cleaning",
+        "Reception and lobby presentation",
+        "Stairwells and elevator cleaning",
+        "Carpet and hard floor maintenance",
+        "Kitchens and amenities",
+        "Rubbish and recycling services",
+        "Custom cleaning schedules",
+        "Ongoing contract or one-off cleaning"
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Entertainment & Venue Cleaning",
+      "slug": "entertainment-cleaning",
+      "tagline": "Maintaining Clean, Guest-Ready Entertainment Spaces",
+      "overview": "We provide professional cleaning services for entertainment venues, cinemas, event spaces, and hospitality environments, ensuring spaces are spotless before and after use.",
+      "includes": [
+        "Seating and auditorium cleaning",
+        "Floor cleaning and spill management",
+        "Restroom sanitisation",
+        "Food and beverage area cleaning",
+        "Back-of-house and staff areas",
+        "Pre-event and post-event cleaning",
+        "Waste management"
+      ]
+    },
+    {
+      "id": 7,
+      "title": "Strata & Building Maintenance Cleaning",
+      "slug": "strata-cleaning",
+      "tagline": "Reliable Cleaning for Strata & Multi-Unit Properties",
+      "overview": "IFS specialises in strata cleaning services for apartment complexes and commercial buildings, supporting body corporates and strata managers across Australia.",
+      "includes": [
+        "Common area cleaning",
+        "Lobbies, foyers, and hallways",
+        "Staircases and lift interiors",
+        "Car park sweeping and pressure cleaning",
+        "Bin rooms and waste areas",
+        "External pathways and entrances",
+        "Scheduled maintenance programs",
+        "Reporting and quality checks"
+      ]
+    },
+    {
+      "id": 8,
+      "title": "End of Lease & Move-Out Cleaning",
+      "slug": "end-of-lease-cleaning",
+      "tagline": "Real Estate–Approved Cleaning for Stress-Free Handover",
+      "overview": "Our end-of-lease cleaning services are designed to meet Australian real estate and property manager standards, helping tenants achieve a smooth inspection and bond return.",
+      "includes": [
+        "Full kitchen deep cleaning (oven, stovetop, rangehood)",
+        "Bathroom and toilet sanitisation",
+        "Shower screen and tile descaling",
+        "Carpet vacuuming and spot treatment",
+        "Wall marks and skirting boards",
+        "Window and glass cleaning",
+        "Internal cupboards and wardrobes",
+        "Rubbish removal"
+      ]
+    },
+    {
+      "id": 9,
+      "title": "Pressure Washing & Exterior Cleaning",
+      "slug": "pressure-washing",
+      "tagline": "Professional Exterior Cleaning Across Australia",
+      "overview": "Professional exterior cleaning services for residential and commercial properties, including pressure washing, soft washing, and sealing services.",
+      "categories": [
+        {
+          "name": "General Pressure Washing",
+          "items": [
+            "Driveways, pathways, and footpaths",
+            "Patios, decks, and courtyards",
+            "Surface dirt, mould, algae, and grime removal",
+            "Residential and commercial applications"
+          ]
+        },
+        {
+          "name": "Residential Exterior Cleaning (Roof to Driveway)",
+          "items": [
+            "Roof soft washing (tile & metal roofs)",
+            "House exterior walls",
+            "Gutters, fascias, and eaves",
+            "Driveways, patios, and fencing",
+            "Safe, low-pressure methods where required"
+          ]
+        },
+        {
+          "name": "Commercial Exterior Cleaning",
+          "items": [
+            "Building façades and exteriors",
+            "Shopfronts and signage",
+            "Car parks and loading areas",
+            "Entryways and common outdoor areas",
+            "Compliance with safety and access requirements"
+          ]
+        },
+        {
+          "name": "Other Exterior Cleaning Services",
+          "items": [
+            "Custom exterior cleaning solutions",
+            "Specialised surface treatments",
+            "Tailored cleaning plans to suit property needs"
+          ]
+        },
+        {
+          "name": "Driveway Sealing",
+          "items": [
+            "Thorough surface cleaning before sealing",
+            "Professional sealant application",
+            "Enhanced appearance and colour protection",
+            "Long-lasting surface durability"
+          ]
+        },
+        {
+          "name": "Concrete Sealing",
+          "items": [
+            "Residential and commercial concrete sealing",
+            "Moisture, oil, and stain protection",
+            "Improved longevity and surface strength",
+            "Clean, professional finish"
+          ]
+        }
+      ]
+    }
+  ]
+}
