@@ -35,69 +35,64 @@ export default function Slider1() {
                         arrows={false}
                         className="sliderContent-active">
                         
-                        {/* Slide 1 - General Overview */}
+                        {/* Slide 1 - Pressure Washing & Soft Washing */}
                         <div className="slider-content">
-                            <h1 className="overly-text">Professional <br />Cleaning</h1>
-                            <span className="sub-title" data-animation-in="fadeInUp" data-delay-in=".2" data-duration-in=".6">Icon Facility Services</span>
-                            <h2 className="title" data-animation-in="fadeInUp" data-delay-in=".4" data-duration-in=".6">Premium Cleaning Services for Homes & Businesses</h2>
+                            <h1 className="overly-text">Pressure <br />Washing</h1>
+                            <span className="sub-title" data-animation-in="fadeInUp" data-delay-in=".2" data-duration-in=".6">Residential & Commercial</span>
+                            <h2 className="title" data-animation-in="fadeInUp" data-delay-in=".4" data-duration-in=".6">Professional Pressure Washing & Soft Washing</h2>
                             <p data-animation-in="fadeInUp" data-delay-in=".6" data-duration-in=".6">
-                                We offer professional cleaning services including pressure washing, window cleaning, 
-                                deep carpet and upholstery care, and full interior cleaning—delivering reliable, 
-                                high-quality results for homes and businesses.
+                                Restore the original shine of your property with our high-pressure and gentle soft-wash solutions. 
+                                We safely remove dirt, mould, algae, and grime from driveways, roofs, walls, and outdoor surfaces—perfect for homes and businesses alike.
                             </p>
-                            <Link href="/services" className="btn" data-animation-in="fadeInUp" data-delay-in=".8" data-duration-in=".6">View All Services</Link>
+                            <Link href="/services" className="btn" data-animation-in="fadeInUp" data-delay-in=".8" data-duration-in=".6">Pressure Washing Services</Link>
                         </div>
                         
-                        {/* Slide 2 - Exterior Services */}
+                        {/* Slide 2 - Window & Solar Panel Cleaning */}
                         <div className="slider-content">
-                            <h1 className="overly-text">Exterior <br />Cleaning</h1>
-                            <span className="sub-title" data-animation-in="fadeInUp" data-delay-in=".2" data-duration-in=".6">Professional Exterior Solutions</span>
-                            <h2 className="title" data-animation-in="fadeInUp" data-delay-in=".4" data-duration-in=".6">Expert Pressure Washing & Soft Washing</h2>
+                            <h1 className="overly-text">Window &<br />Solar Cleaning</h1>
+                            <span className="sub-title" data-animation-in="fadeInUp" data-delay-in=".2" data-duration-in=".6">Professional Cleaning Solutions</span>
+                            <h2 className="title" data-animation-in="fadeInUp" data-delay-in=".4" data-duration-in=".6">Expert Window & Solar Panel Cleaning</h2>
                             <p data-animation-in="fadeInUp" data-delay-in=".6" data-duration-in=".6">
-                                Professional pressure washing, roof soft washing, exterior house cleaning, 
-                                and solar panel cleaning services. We use specialized techniques to safely 
-                                clean and protect your property's exterior surfaces.
+                                We provide safe, streak-free window and solar panel cleaning for residential and commercial properties, 
+                                including buildings up to three storeys high. Our professional equipment ensures outstanding results without compromising safety.
                             </p>
-                            <Link href="/services" className="btn" data-animation-in="fadeInUp" data-delay-in=".8" data-duration-in=".6">Explore Exterior Services</Link>
+                            <Link href="/services" className="btn" data-animation-in="fadeInUp" data-delay-in=".8" data-duration-in=".6">Window & Solar Services</Link>
                         </div>
                         
-                        {/* Slide 3 - Interior Services */}
+                        {/* Slide 3 - Commercial Office Cleaning */}
                         <div className="slider-content">
-                            <h1 className="overly-text">Interior <br />Cleaning</h1>
-                            <span className="sub-title" data-animation-in="fadeInUp" data-delay-in=".2" data-duration-in=".6">Deep Cleaning Experts</span>
-                            <h2 className="title" data-animation-in="fadeInUp" data-delay-in=".4" data-duration-in=".6">Comprehensive Interior Cleaning Solutions</h2>
+                            <h1 className="overly-text">Commercial<br />Cleaning</h1>
+                            <span className="sub-title" data-animation-in="fadeInUp" data-delay-in=".2" data-duration-in=".6">Office & Business Solutions</span>
+                            <h2 className="title" data-animation-in="fadeInUp" data-delay-in=".4" data-duration-in=".6">Professional Commercial Office & Business Cleaning</h2>
                             <p data-animation-in="fadeInUp" data-delay-in=".6" data-duration-in=".6">
-                                Specialized deep cleaning services, move-in/move-out cleaning, carpet and upholstery care, 
-                                and general cleaning services. We deliver meticulous results for pristine living 
-                                and working environments.
+                                Create a spotless, healthy workspace for your staff and clients. We provide reliable, customised cleaning 
+                                for offices, retail spaces, and commercial properties—ensuring a professional environment every day.
                             </p>
-                            <Link href="/services" className="btn" data-animation-in="fadeInUp" data-delay-in=".8" data-duration-in=".6">Explore Interior Services</Link>
+                            <Link href="/services" className="btn" data-animation-in="fadeInUp" data-delay-in=".8" data-duration-in=".6">Commercial Cleaning</Link>
                         </div>
                         
-                        {/* Slide 4 - Commercial Services */}
+                        {/* Slide 4 - Strata & Building Maintenance */}
                         <div className="slider-content">
-                            <h1 className="overly-text">Commercial <br />Cleaning</h1>
-                            <span className="sub-title" data-animation-in="fadeInUp" data-delay-in=".2" data-duration-in=".6">Office & Commercial Solutions</span>
-                            <h2 className="title" data-animation-in="fadeInUp" data-delay-in=".4" data-duration-in=".6">Professional Cleaning for Businesses</h2>
+                            <h1 className="overly-text">Strata<br />Cleaning</h1>
+                            <span className="sub-title" data-animation-in="fadeInUp" data-delay-in=".2" data-duration-in=".6">Building Maintenance Solutions</span>
+                            <h2 className="title" data-animation-in="fadeInUp" data-delay-in=".4" data-duration-in=".6">Comprehensive Strata & Building Maintenance Cleaning</h2>
                             <p data-animation-in="fadeInUp" data-delay-in=".6" data-duration-in=".6">
-                                Comprehensive office and commercial cleaning services. We provide reliable, 
-                                high-quality cleaning solutions for businesses, ensuring clean, healthy, 
-                                and professional work environments.
+                                Keep shared spaces clean, safe, and well-maintained. Our strata cleaning services cover common areas, 
+                                stairwells, car parks, and building exteriors with consistent, high-quality care.
                             </p>
-                            <Link href="/services" className="btn" data-animation-in="fadeInUp" data-delay-in=".8" data-duration-in=".6">View Commercial Services</Link>
+                            <Link href="/services" className="btn" data-animation-in="fadeInUp" data-delay-in=".8" data-duration-in=".6">Strata Services</Link>
                         </div>
                         
-                        {/* Slide 5 - Specialized Services */}
+                        {/* Slide 5 - End of Lease Cleaning */}
                         <div className="slider-content">
-                            <h1 className="overly-text">Specialized <br />Services</h1>
-                            <span className="sub-title" data-animation-in="fadeInUp" data-delay-in=".2" data-duration-in=".6">Expert Cleaning Solutions</span>
-                            <h2 className="title" data-animation-in="fadeInUp" data-delay-in=".4" data-duration-in=".6">Window, Solar Panel & Deep Cleaning</h2>
+                            <h1 className="overly-text">End of<br />Lease</h1>
+                            <span className="sub-title" data-animation-in="fadeInUp" data-delay-in=".2" data-duration-in=".6">Bond Cleaning Specialists</span>
+                            <h2 className="title" data-animation-in="fadeInUp" data-delay-in=".4" data-duration-in=".6">Professional End of Lease / Bond Cleaning</h2>
                             <p data-animation-in="fadeInUp" data-delay-in=".6" data-duration-in=".6">
-                                Professional window cleaning, solar panel maintenance, deep carpet care, 
-                                and specialized cleaning services. We handle the challenging cleaning tasks 
-                                with expertise and precision.
+                                Moving out? We've got it covered. Our detailed end-of-lease cleaning meets real estate and property manager standards, 
+                                helping you secure your full bond with confidence.
                             </p>
-                            <Link href="/services" className="btn" data-animation-in="fadeInUp" data-delay-in=".8" data-duration-in=".6">View Specialized Services</Link>
+                            <Link href="/services" className="btn" data-animation-in="fadeInUp" data-delay-in=".8" data-duration-in=".6">Bond Cleaning</Link>
                         </div>
                     </Slider>
                 </div>
