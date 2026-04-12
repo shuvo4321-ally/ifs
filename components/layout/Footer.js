@@ -4,65 +4,80 @@ export default function Footer1() {
     return (
         <>
             <footer>
-                <div className="footer-area footer-bg" data-background="/assets/img/bg/footer_bg.jpg">
-                    <div className="footer-top">
+                <div className="footer-area pf-bg-navy" style={{ padding: '80px 0 0', backgroundColor: 'var(--primary-navy)' }}>
+                    <div className="footer-top pb-60">
                         <div className="container">
                             <div className="row">
-                                <div className="col-xl-3 col-lg-4 col-md-7">
+                                <div className="col-xl-4 col-lg-4 col-md-6 mb-50">
                                     <div className="footer-widget">
-                                        <h2 className="fw-title">About Us</h2>
-                                        <div className="footer-content">
-                                            <p>Icon Facility Services is Professional cleaning company specializing in residential and commercial services. We use eco-friendly products and advanced equipment to deliver exceptional cleaning results for homes and businesses.</p>
-                                            <div className="footer-newsletter">
-                                                <h4 className="title">Get Cleaning Tips</h4>
-                                                <form action="#">
-                                                    <input type="text" placeholder="Enter your email" />
-                                                    <button type="submit" className="btn btn-two">Subscribe</button>
-                                                </form>
+                                        <h2 className="fw-title">Our Expertise</h2>
+                                        <div className="footer-link">
+                                            <ul className="list-wrap">
+                                                <li><Link href="/services/commercial-cleaning"><i className="fas fa-angle-double-right" />Commercial Maintenance</Link></li>
+                                                <li><Link href="/services/industrial-cleaning"><i className="fas fa-angle-double-right" />Industrial Solutions</Link></li>
+                                                <li><Link href="/services/clinical-sanitation"><i className="fas fa-angle-double-right" />Clinical Sanitation</Link></li>
+                                                <li><Link href="/services/retail-cleaning"><i className="fas fa-angle-double-right" />Retail Environment Care</Link></li>
+                                                <li><Link href="/services/specialized-pressure-washing"><i className="fas fa-angle-double-right" />Specialized Pressure Washing</Link></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="col-xl-3 col-lg-3 col-md-6 mb-50">
+                                    <div className="footer-widget">
+                                        <h2 className="fw-title">Quick Access</h2>
+                                        <div className="footer-link">
+                                            <ul className="list-wrap">
+                                                <li><Link href="/about"><i className="fas fa-angle-double-right" />About Our Mission</Link></li>
+                                                <li><Link href="/services"><i className="fas fa-angle-double-right" />Service Directory</Link></li>
+                                                <li><Link href="/contact"><i className="fas fa-angle-double-right" />Request a Proposal</Link></li>
+                                                <li><Link href="/contact"><i className="fas fa-angle-double-right" />Emergency Response</Link></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="col-xl-5 col-lg-5 col-md-12">
+                                    <div className="footer-widget" style={{ paddingLeft: 'clamp(0px, 5vw, 40px)' }}>
+                                        <h2 className="fw-title">Connect With Us</h2>
+                                        <div className="footer-info">
+                                            <div className="row">
+                                                <div className="col-sm-6">
+                                                    <ul className="list-wrap">
+                                                        <li className="mb-20">
+                                                            <div className="icon" style={{ backgroundColor: 'rgba(0, 210, 255, 0.1)' }}><i className="fas fa-phone-alt" style={{ color: 'var(--primary-cyan)' }} /></div>
+                                                            <div className="content">
+                                                                <p className="mb-0" style={{ fontSize: '14px', opacity: 0.6 }}>Head Office</p>
+                                                                <p><Link href="tel:1800418411">1800 418 411</Link></p>
+                                                            </div>
+                                                        </li>
+                                                        <li className="mb-20">
+                                                            <div className="icon" style={{ backgroundColor: 'rgba(0, 210, 255, 0.1)' }}><i className="fab fa-whatsapp" style={{ color: 'var(--primary-cyan)' }} /></div>
+                                                            <div className="content">
+                                                                <p className="mb-0" style={{ fontSize: '14px', opacity: 0.6 }}>Direct Support</p>
+                                                                <p><Link href="https://wa.me/61483798622" target="_blank">0483 798 622</Link></p>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div className="col-sm-6">
+                                                    <ul className="list-wrap">
+                                                        <li className="mb-20">
+                                                            <div className="icon" style={{ backgroundColor: 'rgba(0, 210, 255, 0.1)' }}><i className="fas fa-envelope" style={{ color: 'var(--primary-cyan)' }} /></div>
+                                                            <div className="content">
+                                                                <p className="mb-0" style={{ fontSize: '14px', opacity: 0.6 }}>General Inquiry</p>
+                                                                <p><Link href="mailto:info@iconfacilitys.com.au">info@iconfacilitys.com.au</Link></p>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div className="icon" style={{ backgroundColor: 'rgba(0, 210, 255, 0.1)' }}><i className="fas fa-map-marker-alt" style={{ color: 'var(--primary-cyan)' }} /></div>
+                                                            <div className="content">
+                                                                <p className="mb-0" style={{ fontSize: '14px', opacity: 0.6 }}>Location</p>
+                                                                <p>2/38 Railway Parade,<br /> Lakemba NSW 2195</p>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <div className="col-xl-3 col-lg-4 col-md-5 col-sm-6">
-                                    <div className="footer-widget">
-                                        <h2 className="fw-title">Our Services</h2>
-                                        <div className="footer-link">
-                                            <ul className="list-wrap">
-                                                <li><Link href="/services"><i className="fas fa-angle-double-right" />House Washing</Link></li>
-                                                <li><Link href="/services"><i className="fas fa-angle-double-right" />Driveway Cleaning</Link></li>
-                                                <li><Link href="/services"><i className="fas fa-angle-double-right" />Solar Panel Cleaning</Link></li>
-                                                <li><Link href="/services"><i className="fas fa-angle-double-right" />Office Cleaning</Link></li>
-                                                <li><Link href="/services"><i className="fas fa-angle-double-right" />Pressure Washing</Link></li>
-                                                <li><Link href="/services"><i className="fas fa-angle-double-right" />Exterior Cleaning</Link></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-xl-2 col-lg-4 col-md-6 col-sm-6">
-                                    <div className="footer-widget">
-                                        <h2 className="fw-title">Quick Links</h2>
-                                        <div className="footer-link">
-                                            <ul className="list-wrap">
-                                                <li><Link href="/about"><i className="fas fa-angle-double-right" />About Us</Link></li>
-                                                <li><Link href="/services"><i className="fas fa-angle-double-right" />Services</Link></li>
-                                                <li><Link href="/project"><i className="fas fa-angle-double-right" />Our Work</Link></li>
-                                                <li><Link href="/team"><i className="fas fa-angle-double-right" />Our Team</Link></li>
-                                                <li><Link href="/contact"><i className="fas fa-angle-double-right" />Get Quote</Link></li>
-                                                <li><Link href="/contact"><i className="fas fa-angle-double-right" />Contact Us</Link></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-xl-4 col-lg-5 col-sm-6">
-                                    <div className="footer-social">
-                                        <h2 className="title">Follow Us:</h2>
-                                        <ul className="list-wrap">
-                                            <li><Link href="/#"><i className="fab fa-facebook-f" /></Link></li>
-                                            <li><Link href="/#"><i className="fab fa-twitter" /></Link></li>
-                                            <li><Link href="/#"><i className="fab fa-linkedin-in" /></Link></li>
-                                            <li><Link href="/#"><i className="fab fa-youtube" /></Link></li>
-                                            <li><Link href="/#"><i className="fab fa-instagram" /></Link></li>
-                                        </ul>
                                     </div>
                                 </div>
                             </div>

@@ -49,7 +49,7 @@
 :root {
     --tg-body-font-family: "DM Sans", sans-serif;
     --tg-heading-font-family: "Poppins", sans-serif;
-    --tg-primary-color: #fe5d14;
+    --tg-primary-color: #00e5ff;
     --tg-secondary-color: #131944;
     --tg-body-font-color: #61657e;
     --tg-heading-font-color: #1c1c1c;
@@ -69,9 +69,9 @@
     --tg-purple: #6f42c1;
     --tg-pink: #d63384;
     --tg-red: #dc3545;
-    --tg-orange: #fd7e14;
-    --tg-seashell: #fff3ed;
-    --tg-unbleached-silk: #ffdac9;
+    --tg-orange: #00b8d4;
+    --tg-seashell: #e0f7fa;
+    --tg-unbleached-silk: #b2ebf2;
     --tg-yellow: #ffc107;
     --tg-green: #198754;
     --tg-teal: #20c997;
@@ -793,6 +793,10 @@ label {
     -webkit-transform: rotate(360deg);
     -ms-transform: rotate(360deg);
     transform: rotate(360deg);
+}
+.mobile-menu .navigation li a {
+    white-space: normal !important;
+    overflow-wrap: break-word !important;
 }
 .mobile-menu .navigation {
     position: relative;

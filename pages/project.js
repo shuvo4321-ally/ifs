@@ -4,7 +4,7 @@ export default function Project() {
 
     return (
         <>
-            <Layout breadcrumbTitle="Projects">
+            <Layout breadcrumbTitle="Projects" headerCls="transparent-header">
                 <section className="inner-project-area pt-115 pb-90">
                     <div className="container">
                         <div className="row justify-content-center">

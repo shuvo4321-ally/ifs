@@ -4,9 +4,10 @@ export default function Document() {
     return (
         <Html lang="en" id="#top">
             <Head>
-                <link rel="shortcut icon" href="/assets/img/favicon.png" />
-                <link rel="preconnect" href="https://fonts.bunny.net" />
-                <link href="https://fonts.bunny.net/css?family=dm-sans:400,400i,500,500i,700,700i|poppins:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i" rel="stylesheet" />
+                <link rel="shortcut icon" href="/assets/img/logo/Favicon.png" />
+                <link rel="preconnect" href="https://fonts.googleapis.com" />
+                <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
+                <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Dancing+Script:wght@700&display=swap" rel="stylesheet" />
             </Head>
             <body>
                 <Main />

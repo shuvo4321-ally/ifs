@@ -1,4 +1,3 @@
-import Preloader from "@/components/elements/Preloader"
 import { useEffect, useState } from "react"
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -12,23 +11,12 @@ import "../public/assets/css/default.css"
 import "../public/assets/css/jarallax.css"
 import "../public/assets/css/style.css"
 import "../public/assets/css/responsive.css"
+import "../public/assets/css/custom-theme.css"
 
 function MyApp({ Component, pageProps }) {
-
-    const [loading, setLoading] = useState(true)
-    useEffect(() => {
-        setTimeout(() => {
-            setLoading(false)
-        }, 1000)
-
-    }, [])
-    return (<>
-        {!loading ? (
-            <Component {...pageProps} />
-        ) : (
-            <Preloader />
-        )}
-    </>)
+    return (
+        <Component {...pageProps} />
+    )
 }
 
 export default MyApp
