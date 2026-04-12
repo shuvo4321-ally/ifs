@@ -683,12 +683,12 @@ Sent from Icon Facility Services - Digital Gateway`
                                 position: 'relative',
                                 overflow: 'hidden'
                             }}>
-                                <div style={{ position: 'absolute', bottom: '-20%', left: '-10%', width: '400px', height: '400px', background: 'var(--primary-cyan)', opacity: 0.03, borderRadius: '50%' }}></div>
+                                <div style={{ position: 'absolute', bottom: '-20%', left: '-10%', width: '400px', height: '400px', background: 'var(--primary-cyan)', opacity: 0.03, borderRadius: '50%', pointerEvents: 'none' }}></div>
                                 <h2 style={{ fontSize: '3.4rem', fontWeight: '800', marginBottom: '30px', letterSpacing: '-2px', color: 'white' }}>Exceptional service is just a click away.</h2>
                                 <p style={{ fontSize: '1.3rem', color: 'rgba(255,255,255,0.7)', marginBottom: '50px', maxWidth: '750px', margin: '0 auto 50px' }}>Contact our specialists today to tailor a facility solution that exceeds your expectations.</p>
-                                <div className="pf-cta-btns" style={{ display: 'flex', flexDirection: 'column', gap: '12px', width: '100%', margin: '0 auto' }}>
-                                    <Link href="/contact" className="pf-btn" style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '18px 20px', fontSize: '1rem', background: 'var(--primary-cyan)', color: '#fff !important', borderRadius: '12px', border: 'none' }}>Consult Now <i className="fas fa-calendar-alt" style={{ marginLeft: '10px' }} /></Link>
-                                    <a href="tel:61483798622" className="pf-btn-outline" style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '18px 20px', fontSize: '1rem', color: '#fff', border: '1px solid rgba(255,255,255,0.3)', borderRadius: '12px' }}>Call Expert <i className="fas fa-phone" style={{ marginLeft: '10px' }} /></a>
+                                <div className="pf-cta-btns" style={{ display: 'flex', flexDirection: 'column', gap: '12px', width: '100%', margin: '0 auto', position: 'relative', zIndex: 5 }}>
+                                    <Link href="/contact" className="pf-btn" style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '18px 20px', fontSize: '1rem', background: 'var(--primary-cyan)', color: '#fff !important', borderRadius: '12px', border: 'none', cursor: 'pointer' }}>Consult Now <i className="fas fa-calendar-alt" style={{ marginLeft: '10px' }} /></Link>
+                                    <a href="tel:61483798622" className="pf-btn-outline" style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '18px 20px', fontSize: '1rem', color: '#fff', border: '1px solid rgba(255,255,255,0.3)', borderRadius: '12px', cursor: 'pointer' }}>Call Expert <i className="fas fa-phone" style={{ marginLeft: '10px' }} /></a>
                                 </div>
                             </div>
                         </div>
