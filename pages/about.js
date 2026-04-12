@@ -20,25 +20,8 @@ const settings = {
 export default function About() {
     const [activeAboutTab, setActiveAboutTab] = useState('Story')
     const tabs = ['Story', 'Specialized Services', 'Mission', 'Values']
-    const autoPlayRef = useRef(null)
     const navRef = useRef(null)
     const tabRefs = useRef({})
-
-    // Auto-loop tabs logic
-    useEffect(() => {
-        const startAutoPlay = () => {
-            autoPlayRef.current = setInterval(() => {
-                setActiveAboutTab((prev) => {
-                    const currentIndex = tabs.indexOf(prev)
-                    const nextIndex = (currentIndex + 1) % tabs.length
-                    return tabs[nextIndex]
-                });
-            }, 4000); // 4 seconds interval for About page
-        }
-
-        startAutoPlay()
-        return () => clearInterval(autoPlayRef.current)
-    }, [])
 
     // Scroll active tab into view on mobile
     useEffect(() => {
@@ -53,15 +36,6 @@ export default function About() {
 
     const handleTabClick = (tab) => {
         setActiveAboutTab(tab)
-        // Reset timer on manual click
-        clearInterval(autoPlayRef.current)
-        autoPlayRef.current = setInterval(() => {
-            setActiveAboutTab((prev) => {
-                const currentIndex = tabs.indexOf(prev)
-                const nextIndex = (currentIndex + 1) % tabs.length
-                return tabs[nextIndex]
-            })
-        }, 4000)
     }
 
     return (
