@@ -25,14 +25,18 @@ export default function BannerPink() {
         autoplay: true,
         autoplaySpeed: 6000,
         infinite: true,
-        speed: 1500, // Slightly slower transition for premium feel
-        fade: true,
-        arrows: true, // Enable arrows
+        speed: 1000, // Balanced speed for smooth sliding
+        fade: false, // Switch to slide for better tactile feel on mobile
+        arrows: true, 
         nextArrow: <NextArrow />,
         prevArrow: <PrevArrow />,
         dots: true,
         pauseOnHover: true,
         cssEase: 'cubic-bezier(0.25, 1, 0.5, 1)',
+        swipe: true,
+        touchMove: true,
+        touchThreshold: 15, // Higher sensitivity for mobile swipes
+        useTransform: true
     };
 
     const slides = [
