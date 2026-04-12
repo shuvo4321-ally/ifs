@@ -261,15 +261,15 @@ export default function BannerPink() {
 
             <Slider {...settings} className="pf-hero-slider">
                 {slides.map(slide => (
-                    <div key={slide.id} style={{ position: 'relative', height: '100%', width: '100vw' }}>
+                    <div key={slide.id} className="pf-hero-slide-item" style={{ position: 'relative', width: '100%' }}>
                         <div style={{ 
                             position: 'absolute', 
                             top: 0, left: 0, 
-                            width: '100vw', height: '100%', 
+                            width: '100%', height: '100%', 
                             backgroundImage: `url(${slide.bgImage})`, 
                             backgroundSize: 'cover', 
                             backgroundPosition: 'center',
-                            opacity: 0.85, // Slightly reduced for better overall readability
+                            opacity: 0.85,
                             zIndex: 1
                         }}></div>
                         
@@ -277,7 +277,7 @@ export default function BannerPink() {
                         <div style={{ 
                             position: 'absolute', 
                             top: 0, left: 0, 
-                            width: '100vw', height: '25%', // Targets the header area
+                            width: '100%', height: '25%', // Targets the header area
                             background: 'linear-gradient(to bottom, rgba(10,22,43,0.85) 0%, rgba(10,22,43,0) 100%)',
                             zIndex: 2
                         }}></div>
@@ -317,11 +317,11 @@ export default function BannerPink() {
                         <div style={{ 
                             position: 'absolute', 
                             top: 0, left: 0, 
-                            width: '100vw', height: '100%', 
+                            width: '100%', height: '100%', 
                             background: 'linear-gradient(to right, rgba(10,22,43,1) 0%, rgba(10,22,43,0.95) 30%, rgba(10,22,43,0) 55%)', 
                             zIndex: 2 
                         }}></div>
-                        <div style={{ position: 'relative', width: '100vw', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', paddingTop: 'max(1vh, 20px)', paddingBottom: '20px' }}>
+                        <div style={{ position: 'relative', width: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', paddingTop: 'max(1vh, 20px)', paddingBottom: '20px', zIndex: 5 }}>
                             <div className="hero-content-wrapper">
                                 <div className="text-start" style={{ paddingLeft: 'clamp(20px, 8vw, 140px)', paddingRight: '12vw' }}>
                                 <div className="row m-0">
