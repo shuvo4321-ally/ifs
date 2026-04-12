@@ -5,7 +5,7 @@ import Team3 from "@/components/sections/Team3"
 import Services3 from "@/components/sections/Services3"
 import Link from "next/link"
 import Slider from "react-slick"
-import { useState } from "react"
+import { useState, useEffect, useRef } from "react"
 
 const settings = {
     dots: true,
@@ -19,6 +19,50 @@ const settings = {
 
 export default function About() {
     const [activeAboutTab, setActiveAboutTab] = useState('Story')
+    const tabs = ['Story', 'Specialized Services', 'Mission', 'Values']
+    const autoPlayRef = useRef(null)
+    const navRef = useRef(null)
+    const tabRefs = useRef({})
+
+    // Auto-loop tabs logic
+    useEffect(() => {
+        const startAutoPlay = () => {
+            autoPlayRef.current = setInterval(() => {
+                setActiveAboutTab((prev) => {
+                    const currentIndex = tabs.indexOf(prev)
+                    const nextIndex = (currentIndex + 1) % tabs.length
+                    return tabs[nextIndex]
+                });
+            }, 4000); // 4 seconds interval for About page
+        }
+
+        startAutoPlay()
+        return () => clearInterval(autoPlayRef.current)
+    }, [])
+
+    // Scroll active tab into view on mobile
+    useEffect(() => {
+        if (tabRefs.current[activeAboutTab] && navRef.current) {
+            tabRefs.current[activeAboutTab].scrollIntoView({
+                behavior: 'smooth',
+                block: 'nearest',
+                inline: 'center'
+            })
+        }
+    }, [activeAboutTab])
+
+    const handleTabClick = (tab) => {
+        setActiveAboutTab(tab)
+        // Reset timer on manual click
+        clearInterval(autoPlayRef.current)
+        autoPlayRef.current = setInterval(() => {
+            setActiveAboutTab((prev) => {
+                const currentIndex = tabs.indexOf(prev)
+                const nextIndex = (currentIndex + 1) % tabs.length
+                return tabs[nextIndex]
+            })
+        }, 4000)
+    }
 
     return (
         <>
@@ -91,6 +135,20 @@ export default function About() {
                                             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
                                             white-space: nowrap;
                                         }
+                                        @media (max-width: 767px) {
+                                            .hub-nav {
+                                                overflow-x: auto;
+                                                scrollbar-width: none;
+                                                -ms-overflow-style: none;
+                                            }
+                                            .hub-nav::-webkit-scrollbar {
+                                                display: none;
+                                            }
+                                            .hub-tab-btn {
+                                                flex: 0 0 auto;
+                                                padding: 10px 20px;
+                                            }
+                                        }
                                         .hub-tab-btn.active {
                                             background: #0f1437;
                                             color: #fff;
@@ -105,11 +163,12 @@ export default function About() {
                                         }
                                     `}</style>
 
-                                    <div className="hub-nav">
-                                        {['Story', 'Specialized Services', 'Mission', 'Values'].map(tab => (
+                                    <div className="hub-nav" ref={navRef}>
+                                        {tabs.map(tab => (
                                             <button 
                                                 key={tab}
-                                                onClick={() => setActiveAboutTab(tab)}
+                                                ref={el => tabRefs.current[tab] = el}
+                                                onClick={() => handleTabClick(tab)}
                                                 className={`hub-tab-btn ${activeAboutTab === tab ? 'active' : ''}`}
                                             >
                                                 {tab}
@@ -160,7 +219,7 @@ export default function About() {
                                                         ))}
                                                     </ul>
                                                 </div>
-                                                <div className="col-md-5">
+                                                <div className="col-md-5 mt-40 mt-md-0">
                                                     <div style={{ borderRadius: '24px', overflow: 'hidden', boxShadow: '0 20px 40px rgba(0,0,0,0.1)' }}>
                                                         <img src="/assets/img/services/about_specialized_main_v2.jpg" alt="Specialized Cleaning" style={{ width: '100%', height: 'auto', display: 'block' }} />
                                                     </div>

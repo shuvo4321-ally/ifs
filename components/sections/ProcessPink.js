@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 
 export default function ProcessPink() {
     const steps = [
@@ -28,6 +28,31 @@ export default function ProcessPink() {
         }
     ];
 
+    const nodeRefs = useRef([]);
+
+    useEffect(() => {
+        const observerOptions = {
+            threshold: 0.6, // Trigger when 60% of the node is visible
+            rootMargin: '0px 0px -10% 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active-node');
+                } else {
+                    entry.target.classList.remove('active-node');
+                }
+            });
+        }, observerOptions);
+
+        nodeRefs.current.forEach(node => {
+            if (node) observer.observe(node);
+        });
+
+        return () => observer.disconnect();
+    }, []);
+
     return (
         <section className="pf-process-journey" style={{ backgroundColor: '#ffffff', padding: '60px 0', position: 'relative', overflow: 'hidden' }}>
             <div className="container">
@@ -48,7 +73,12 @@ export default function ProcessPink() {
                     <div className="pf-timeline-thread"></div>
 
                     {steps.map((step, index) => (
-                        <div key={step.id} className={`pf-timeline-node ${index % 2 === 0 ? 'node-right' : 'node-left'} wow fadeInUp`} data-wow-delay={`${index * 0.2}s`}>
+                        <div 
+                            key={step.id} 
+                            ref={el => nodeRefs.current[index] = el}
+                            className={`pf-timeline-node ${index % 2 === 0 ? 'node-right' : 'node-left'} wow fadeInUp`} 
+                            data-wow-delay={`${index * 0.2}s`}
+                        >
                             <div className="pf-node-content">
                                 <div className="pf-node-visual">
                                     <div className="pf-node-glass">
@@ -170,7 +200,7 @@ export default function ProcessPink() {
                     justify-content: center;
                     position: relative;
                     z-index: 2;
-                    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
                 }
 
                 .pf-node-id {
@@ -196,7 +226,7 @@ export default function ProcessPink() {
                     z-index: 1;
                     opacity: 0.3;
                     filter: blur(8px);
-                    transition: all 0.4s ease;
+                    transition: all 0.8s ease;
                 }
 
                 /* Text Styling */
@@ -221,6 +251,7 @@ export default function ProcessPink() {
                     font-weight: 800;
                     color: var(--navy-deep);
                     margin-bottom: 15px;
+                    transition: color 0.4s ease;
                 }
 
                 .pf-node-desc {
@@ -229,17 +260,20 @@ export default function ProcessPink() {
                     font-size: 1rem;
                 }
 
-                /* Hover States */
-                .pf-timeline-node:hover .pf-node-glass {
-                    transform: scale(1.1) rotate(5deg);
+                /* Active Scroll State & Hover Styles */
+                .pf-timeline-node:hover .pf-node-glass,
+                .pf-timeline-node.active-node .pf-node-glass {
+                    transform: scale(1.15) rotate(5deg);
                     border-color: var(--accent-cyan);
                     box-shadow: 0 20px 40px rgba(0, 210, 255, 0.15);
                 }
-                .pf-timeline-node:hover .pf-node-pulse {
+                .pf-timeline-node:hover .pf-node-pulse,
+                .pf-timeline-node.active-node .pf-node-pulse {
                     transform: translate(-50%, -50%) scale(4);
-                    opacity: 0.5;
+                    opacity: 0.6;
                 }
-                .pf-timeline-node:hover .pf-node-title {
+                .pf-timeline-node:hover .pf-node-title,
+                .pf-timeline-node.active-node .pf-node-title {
                     color: var(--accent-cyan);
                 }
 

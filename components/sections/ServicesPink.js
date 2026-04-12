@@ -238,8 +238,10 @@ export default function ServicesPink() {
                     .service-grid {
                        padding-left: 0 !important;
                     }
-                    .frosted-overlay {
+                    .frosted-overlay, 
+                    .pf-service-card:hover .frosted-overlay {
                         padding: 50px 25px 30px !important;
+                        background: rgba(0, 204, 255, 0.86) !important;
                     }
                     .service-title {
                         font-size: var(--font-h3-mob) !important;

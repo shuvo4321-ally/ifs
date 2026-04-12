@@ -17,9 +17,10 @@ export default function Services3() {
                             overflow-x: auto !important;
                             -webkit-overflow-scrolling: touch;
                             gap: 10px !important;
-                            padding: 10px 5px 20px !important;
+                            padding: 10px 5px 10px !important;
                             justify-content: flex-start !important;
                             border: none !important;
+                            margin-bottom: 45px !important;
                         }
                         .services-nav-wrap .nav-tabs::-webkit-scrollbar {
                             display: none;
