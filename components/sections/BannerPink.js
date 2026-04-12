@@ -25,18 +25,14 @@ export default function BannerPink() {
         autoplay: true,
         autoplaySpeed: 6000,
         infinite: true,
-        speed: 1000, // Balanced speed for smooth sliding
-        fade: false, // Switch to slide for better tactile feel on mobile
-        arrows: true, 
+        speed: 1500, // Slightly slower transition for premium feel
+        fade: true,
+        arrows: true, // Enable arrows
         nextArrow: <NextArrow />,
         prevArrow: <PrevArrow />,
         dots: true,
         pauseOnHover: true,
         cssEase: 'cubic-bezier(0.25, 1, 0.5, 1)',
-        swipe: true,
-        touchMove: true,
-        touchThreshold: 15, // Higher sensitivity for mobile swipes
-        useTransform: true
     };
 
     const slides = [
@@ -261,15 +257,15 @@ export default function BannerPink() {
 
             <Slider {...settings} className="pf-hero-slider">
                 {slides.map(slide => (
-                    <div key={slide.id} className="pf-hero-slide-item" style={{ position: 'relative', width: '100%' }}>
+                    <div key={slide.id} style={{ position: 'relative', height: '100%', width: '100vw' }}>
                         <div style={{ 
                             position: 'absolute', 
                             top: 0, left: 0, 
-                            width: '100%', height: '100%', 
+                            width: '100vw', height: '100%', 
                             backgroundImage: `url(${slide.bgImage})`, 
                             backgroundSize: 'cover', 
                             backgroundPosition: 'center',
-                            opacity: 0.85,
+                            opacity: 0.85, // Slightly reduced for better overall readability
                             zIndex: 1
                         }}></div>
                         
@@ -277,7 +273,7 @@ export default function BannerPink() {
                         <div style={{ 
                             position: 'absolute', 
                             top: 0, left: 0, 
-                            width: '100%', height: '25%', // Targets the header area
+                            width: '100vw', height: '25%', // Targets the header area
                             background: 'linear-gradient(to bottom, rgba(10,22,43,0.85) 0%, rgba(10,22,43,0) 100%)',
                             zIndex: 2
                         }}></div>
@@ -317,11 +313,11 @@ export default function BannerPink() {
                         <div style={{ 
                             position: 'absolute', 
                             top: 0, left: 0, 
-                            width: '100%', height: '100%', 
+                            width: '100vw', height: '100%', 
                             background: 'linear-gradient(to right, rgba(10,22,43,1) 0%, rgba(10,22,43,0.95) 30%, rgba(10,22,43,0) 55%)', 
                             zIndex: 2 
                         }}></div>
-                        <div style={{ position: 'relative', width: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', paddingTop: 'max(1vh, 20px)', paddingBottom: '20px', zIndex: 5 }}>
+                        <div style={{ position: 'relative', width: '100vw', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', paddingTop: 'max(1vh, 20px)', paddingBottom: '20px' }}>
                             <div className="hero-content-wrapper">
                                 <div className="text-start" style={{ paddingLeft: 'clamp(20px, 8vw, 140px)', paddingRight: '12vw' }}>
                                 <div className="row m-0">

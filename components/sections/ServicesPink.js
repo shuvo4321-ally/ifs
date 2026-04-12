@@ -111,6 +111,7 @@ export default function ServicesPink() {
                         overflow-x: auto !important;
                         gap: 20px !important;
                         padding: 0 20px 30px !important;
+                        scroll-snap-type: x mandatory;
                         -webkit-overflow-scrolling: touch;
                         scrollbar-width: none; /* Hide scrollbar for clean look */
                     }
