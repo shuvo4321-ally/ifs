@@ -857,256 +857,254 @@ const ServiceDetail = () => {
     return (
         <Layout headTitle={service.title} headerCls="transparent-header">
             <style jsx>{`
-                .text-navy { color: #0d1b33 !important; }
-                .text-slate { color: #64748b !important; }
-                .pf-delivery-card { background: white; padding: 20px; border-radius: 16px; border: 1px solid #e2e8f0; margin-top: 20px; text-align: center; animation: fadeIn 0.3s ease; }
-                .delivery-btn { width: 100%; padding: 12px; margin-bottom: 10px; border-radius: 10px; border: 1px solid #e2e8f0; background: #f8fafc; display: flex; align-items: center; justify-content: center; gap: 10px; font-weight: 600; transition: all 0.2s ease; }
-                .delivery-btn:hover { background: #f1f5f9; transform: translateY(-2px); }
-                @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+                /* ==============================
+                   EDITORIAL SERVICE DETAIL
+                   Sharp, professional, zero AI-vibe
+                ============================== */
 
+                /* --- Layout --- */
+                .sd-main { padding: 100px 0 0; background: #fff; }
+                .sd-grid { display: grid; grid-template-columns: 1fr 340px; gap: 80px; align-items: start; }
+
+                /* --- Opening Statement --- */
+                .sd-lede { font-size: 1.2rem; color: #334155; line-height: 1.85; margin: 0 0 60px; max-width: 680px; }
+
+                /* --- Sector Tags --- */
+                .sd-sectors { display: flex; flex-wrap: wrap; gap: 0; margin-bottom: 60px; border-top: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0; }
+                .sd-sector-tag { padding: 10px 20px; font-size: 0.78rem; font-weight: 600; color: #475569; letter-spacing: 0.3px; border-right: 1px solid #e2e8f0; transition: color 0.2s ease, background 0.2s ease; }
+                .sd-sector-tag:last-child { border-right: none; }
+                .sd-sector-tag:hover { color: #0a0f1a; background: #f8fafc; }
+
+                /* --- Section Headers --- */
+                .sd-overline { font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 4px; color: #94a3b8; margin-bottom: 16px; display: block; }
+                .sd-heading { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; color: #0a0f1a; letter-spacing: -1px; line-height: 1.2; margin: 0 0 40px; }
+
+                /* --- Service List (no icons, no circles) --- */
+                .sd-service-list { margin: 0 0 80px; padding: 0; list-style: none; }
+                .sd-service-item { display: flex; align-items: baseline; gap: 20px; padding: 18px 0; border-bottom: 1px solid #f1f5f9; transition: padding-left 0.2s ease; }
+                .sd-service-item:first-child { border-top: 1px solid #f1f5f9; }
+                .sd-service-item:hover { padding-left: 12px; }
+                .sd-service-idx { font-size: 0.7rem; font-weight: 800; color: #cbd5e1; min-width: 24px; font-variant-numeric: tabular-nums; }
+                .sd-service-name { font-size: 1rem; font-weight: 700; color: #0a0f1a; }
+
+                /* --- Narrative Block --- */
+                .sd-narrative { margin-bottom: 80px; }
+                .sd-narrative-title { font-size: 1.5rem; font-weight: 800; color: #0a0f1a; letter-spacing: -0.5px; margin: 0 0 20px; line-height: 1.25; }
+                .sd-narrative-body { font-size: 1rem; color: #475569; line-height: 1.85; margin: 0 0 30px; }
+
+                /* --- Stats Row (flat) --- */
+                .sd-stats { display: flex; border-top: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0; margin-bottom: 80px; }
+                .sd-stat { flex: 1; padding: 32px 0; text-align: center; border-right: 1px solid #e2e8f0; }
+                .sd-stat:last-child { border-right: none; }
+                .sd-stat-val { font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 900; color: #0a0f1a; letter-spacing: -1.5px; line-height: 1; display: block; }
+                .sd-stat-lbl { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: #94a3b8; margin-top: 8px; display: block; }
+
+                /* --- Packages (clean rows) --- */
+                .sd-packages { margin-bottom: 80px; }
+                .sd-pkg-list { margin: 0; padding: 0; list-style: none; }
+                .sd-pkg-item { display: flex; align-items: flex-start; gap: 24px; padding: 28px 0; border-bottom: 1px solid #f1f5f9; transition: padding-left 0.2s ease; }
+                .sd-pkg-item:first-child { border-top: 1px solid #f1f5f9; }
+                .sd-pkg-item:hover { padding-left: 12px; }
+                .sd-pkg-idx { font-size: 1.1rem; font-weight: 900; color: #e2e8f0; min-width: 32px; line-height: 1.3; font-variant-numeric: tabular-nums; }
+                .sd-pkg-info { flex: 1; }
+                .sd-pkg-name { font-size: 1rem; font-weight: 800; color: #0a0f1a; margin: 0 0 6px; }
+                .sd-pkg-desc { font-size: 0.88rem; color: #64748b; line-height: 1.7; margin: 0; }
+
+                /* --- Sidebar --- */
+                .sd-sidebar { position: sticky; top: 120px; }
+                .sd-sidebar-cta { background: #0a0f1a; padding: 40px 32px; margin-bottom: 2px; }
+                .sd-sidebar-cta h3 { font-size: 1.15rem; font-weight: 800; color: #fff; margin: 0 0 12px; line-height: 1.3; }
+                .sd-sidebar-cta p { font-size: 0.82rem; color: #64748b; line-height: 1.6; margin: 0 0 28px; }
+                .sd-sidebar-phone { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 14px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); color: #fff; text-decoration: none; font-weight: 700; font-size: 0.95rem; margin-bottom: 10px; transition: background 0.2s ease; }
+                .sd-sidebar-phone:hover { background: rgba(255,255,255,0.08); }
+                .sd-sidebar-phone i { color: #0ea5e9; }
+                .sd-sidebar-quote { display: flex; align-items: center; justify-content: center; padding: 14px; background: #0ea5e9; color: #0a0f1a; text-decoration: none; font-weight: 800; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; transition: background 0.2s ease; }
+                .sd-sidebar-quote:hover { background: #38bdf8; }
+                .sd-sidebar-wa { text-align: center; padding: 16px; background: rgba(255,255,255,0.02); border-top: 1px solid rgba(255,255,255,0.05); }
+                .sd-sidebar-wa a { color: #25D366; text-decoration: none; font-size: 0.82rem; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; }
+
+                .sd-sidebar-block { padding: 28px 32px; background: #f8fafc; border-bottom: 1px solid #f1f5f9; }
+                .sd-sidebar-block:last-child { border-bottom: none; }
+                .sd-sidebar-block h4 { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #94a3b8; margin: 0 0 20px; }
+                .sd-commit-item { display: flex; align-items: center; gap: 14px; padding: 8px 0; }
+                .sd-commit-dash { width: 16px; height: 1px; background: #0ea5e9; flex-shrink: 0; }
+                .sd-commit-text { font-size: 0.82rem; font-weight: 600; color: #334155; }
+
+                .sd-process-item { display: flex; gap: 16px; padding: 12px 0; }
+                .sd-process-num { font-size: 0.65rem; font-weight: 800; color: #cbd5e1; min-width: 20px; padding-top: 2px; }
+                .sd-process-info h5 { font-size: 0.88rem; font-weight: 800; color: #0a0f1a; margin: 0 0 4px; }
+                .sd-process-info p { font-size: 0.78rem; color: #64748b; line-height: 1.5; margin: 0; }
+
+                /* --- Benefits (dark panel) --- */
+                .sd-benefits { padding: 120px 0; background: #0a0f1a; }
+                .sd-benefits-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+                .sd-benefits-title { font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 800; color: #fff; letter-spacing: -1.5px; line-height: 1.15; margin: 0; }
+                .sd-benefit-row { display: flex; align-items: flex-start; gap: 20px; padding: 24px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+                .sd-benefit-row:last-child { border-bottom: none; }
+                .sd-benefit-idx { font-size: 0.65rem; font-weight: 800; color: rgba(255,255,255,0.2); min-width: 24px; padding-top: 3px; font-variant-numeric: tabular-nums; }
+                .sd-benefit-text { font-size: 0.95rem; color: rgba(255,255,255,0.65); line-height: 1.7; margin: 0; }
+                .sd-benefit-text strong { color: #0ea5e9; font-weight: 700; }
+
+                /* --- FAQ (clean split) --- */
+                .sd-faq { padding: 120px 0; background: #fff; }
+                .sd-faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+                .sd-faq-q { display: block; width: 100%; text-align: left; background: none; border: none; outline: none; padding: 14px 0; font-size: 0.88rem; font-weight: 600; color: #94a3b8; cursor: pointer; transition: all 0.15s ease; border-bottom: 1px solid #f1f5f9; font-family: inherit; border-left: 2px solid transparent; padding-left: 16px; }
+                .sd-faq-q.active { color: #0a0f1a; font-weight: 800; border-left-color: #0ea5e9; }
+                .sd-faq-q:hover:not(.active) { color: #475569; }
+                .sd-faq-answer { background: #f8fafc; padding: 40px; position: relative; }
+                .sd-faq-answer p { font-size: 0.95rem; color: #475569; line-height: 1.8; margin: 0; }
+                .sd-faq-footer { margin-top: 32px; display: flex; align-items: center; gap: 14px; }
+                .sd-faq-footer span { font-size: 0.8rem; color: #94a3b8; }
+                .sd-faq-footer a { font-size: 0.8rem; font-weight: 700; color: #0ea5e9; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
+
+                /* --- Responsive --- */
                 @media (max-width: 991px) {
-                    .service-details-area { padding-top: 30px !important; padding-bottom: 40px !important; }
-                    .service-details-area .col-lg-8 p { font-size: 0.88rem !important; line-height: 1.7 !important; }
-                    .col-lg-4.d-none.d-lg-block { display: block !important; margin-top: 30px; }
-                    .service-sidebar-sticky { position: static !important; }
-                    .benefits-section { padding-bottom: 40px !important; }
-                    .benefits-section h2 { font-size: 1.5rem !important; }
-                    .faq-section { padding-bottom: 40px !important; }
-                    .faq-section h2 { font-size: 1.5rem !important; }
-                    .svc-faq-split { flex-direction: column !important; gap: 0 !important; }
-                    .svc-faq-qlist { width: 100% !important; border-bottom: 1px solid #e2e8f0; margin-bottom: 20px; }
-                    .svc-faq-apanel { width: 100% !important; }
-                    .svc-pkg-num { font-size: 1.3rem !important; min-width: 36px !important; }
-                    .svc-stat-num { font-size: 1.7rem !important; }
-                    .svc-pkg-row { gap: 16px !important; padding: 18px 0 !important; }
-                    .svc-feature-row { padding: 12px 0 !important; }
+                    .sd-grid { grid-template-columns: 1fr; gap: 60px; }
+                    .sd-sidebar { position: static; }
+                    .sd-sectors { flex-wrap: wrap; }
+                    .sd-sector-tag { border-bottom: 1px solid #e2e8f0; }
+                    .sd-benefits-grid { grid-template-columns: 1fr; gap: 40px; }
+                    .sd-faq-grid { grid-template-columns: 1fr; gap: 30px; }
+                    .sd-benefits { padding: 80px 0; }
+                    .sd-faq { padding: 80px 0; }
                 }
                 @media (max-width: 575px) {
-                    .service-details-area .svc-feature-col { flex: 0 0 100% !important; max-width: 100% !important; }
+                    .sd-main { padding: 60px 0 0; }
+                    .sd-stats { flex-direction: column; }
+                    .sd-stat { border-right: none; border-bottom: 1px solid #e2e8f0; padding: 24px 0; }
+                    .sd-stat:last-child { border-bottom: none; }
+                    .sd-sectors { flex-direction: column; }
+                    .sd-sector-tag { border-right: none; }
+                    .sd-sidebar-cta { padding: 32px 24px; }
+                    .sd-sidebar-block { padding: 24px; }
+                    .sd-faq-answer { padding: 28px; }
                 }
-
-                /* ── Editorial feature list ── */
-                .svc-feature-row { display: flex; align-items: center; gap: 16px; padding: 15px 0; border-bottom: 1px solid #edf2f7; border-left: 3px solid transparent; transition: border-left-color 0.2s ease, padding-left 0.2s ease; }
-                .svc-feature-row:hover { border-left-color: var(--primary-cyan); padding-left: 10px; }
-                .svc-feature-num { font-size: 0.65rem; font-weight: 900; color: rgba(0,204,255,0.3); letter-spacing: 1px; min-width: 28px; flex-shrink: 0; }
-                .svc-feature-title { font-size: 0.88rem; font-weight: 700; color: #0d1b33; line-height: 1.3; }
-
-                /* ── Freestanding stats ── */
-                .svc-stats-band { display: flex; gap: 0; margin-top: 28px; border-top: 1px solid #edf2f7; padding-top: 24px; }
-                .svc-stat-block { flex: 1; text-align: center; position: relative; padding: 0 16px; }
-                .svc-stat-block + .svc-stat-block::before { content: ''; position: absolute; left: 0; top: 50%; transform: translateY(-50%); height: 36px; width: 1px; background: #e2e8f0; }
-                .svc-stat-num { font-size: 2.2rem; font-weight: 900; color: #0d1b33; letter-spacing: -2px; line-height: 1; display: block; }
-                .svc-stat-label { font-size: 0.62rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: #94a3b8; margin-top: 5px; display: block; }
-
-                /* ── Editorial package rows ── */
-                .svc-pkg-list { border-top: 1px solid #edf2f7; }
-                .svc-pkg-row { display: flex; align-items: flex-start; gap: 24px; padding: 24px 0; border-bottom: 1px solid #edf2f7; border-left: 3px solid transparent; padding-left: 0; transition: border-left-color 0.2s ease, padding-left 0.2s ease; }
-                .svc-pkg-row:hover { border-left-color: var(--primary-cyan); padding-left: 14px; }
-                .svc-pkg-num { font-size: 1.7rem; font-weight: 900; color: rgba(0,204,255,0.2); letter-spacing: -1px; min-width: 44px; line-height: 1; flex-shrink: 0; margin-top: 3px; }
-                .svc-pkg-body { flex: 1; }
-                .svc-pkg-title { font-size: 1rem; font-weight: 800; color: #0d1b33; margin: 0 0 5px 0; }
-                .svc-pkg-desc { font-size: 0.83rem; color: #64748b; line-height: 1.6; margin: 0; }
-                .svc-pkg-arrow { margin-left: auto; color: rgba(0,204,255,0.35); font-size: 0.9rem; flex-shrink: 0; align-self: center; transition: color 0.2s ease, transform 0.2s ease; }
-                .svc-pkg-row:hover .svc-pkg-arrow { color: var(--primary-cyan); transform: translateX(4px); }
-
-                /* ── Two-column FAQ ── */
-                .svc-faq-split { display: flex; gap: 48px; align-items: flex-start; }
-                .svc-faq-qlist { flex: 0 0 42%; }
-                .svc-faq-apanel { flex: 1; }
-                .svc-faq-q { display: block; width: 100%; text-align: left; background: none; border: none; outline: none; border-left: 3px solid transparent; padding: 13px 16px; font-size: 0.86rem; font-weight: 600; color: #64748b; cursor: pointer; transition: all 0.18s ease; border-bottom: 1px solid #f1f5f9; font-family: 'Poppins', sans-serif; }
-                .svc-faq-q.active { border-left-color: var(--primary-cyan); color: #0d1b33; font-weight: 800; background: rgba(0,204,255,0.04); }
-                .svc-faq-q:hover:not(.active) { border-left-color: rgba(0,204,255,0.25); color: #0d1b33; }
-                .svc-faq-answer { background: #f8fafc; border-radius: 16px; padding: 36px 32px 32px; position: relative; min-height: 180px; }
-                .svc-faq-answer::before { content: '\\201C'; position: absolute; top: 4px; left: 18px; font-size: 5rem; color: rgba(0,204,255,0.14); line-height: 1; font-family: Georgia, serif; pointer-events: none; }
-                .svc-faq-answer-text { font-size: 0.95rem; color: #4b5563; line-height: 1.75; padding-top: 16px; }
             `}</style>
 
-            <Breadcrumb breadcrumbTitle={service.title} breadcrumbSubtitle={service.subtitle} breadcrumbBg={service.breadcrumbImg}>
-                <ul className="pf-service-checklist d-none d-lg-flex" style={{ listStyle: 'none', padding: 0, margin: 0, flexDirection: 'column', gap: '12px' }}>
-                    {service.heroChecklist && service.heroChecklist.map((item, index) => (
-                        <li key={index} style={{ display: 'flex', alignItems: 'center', gap: '12px', fontSize: '1rem', fontWeight: '500', color: 'rgba(255,255,255,0.95)' }}>
-                            <div style={{ width: '24px', height: '24px', background: 'var(--primary-cyan)', borderRadius: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '11px', color: '#0d1b33', flexShrink: 0 }}>
-                                <i className="fas fa-check"></i>
-                            </div>
-                            {item}
-                        </li>
-                    ))}
-                </ul>
-            </Breadcrumb>
+            <Breadcrumb breadcrumbTitle={service.title} breadcrumbSubtitle={service.subtitle} breadcrumbBg={service.breadcrumbImg} />
 
-            <section className="service-details-area pt-80 pb-100" style={{ overflow: 'visible', background: '#f7f9fc', position: 'relative' }}>
-                <style dangerouslySetInnerHTML={{__html: `
-                    .row.sticky-support { align-items: flex-start !important; min-height: 800px; }
-                    .service-sidebar-sticky { position: -webkit-sticky !important; position: sticky !important; top: 150px !important; z-index: 10; }
-                `}} />
-                <div className="container" style={{ overflow: 'visible' }}>
-                    <div className="row g-5 sticky-support" style={{ overflow: 'visible' }}>
+            {/* ===== MAIN CONTENT ===== */}
+            <section className="sd-main">
+                <div className="container">
+                    <div className="sd-grid">
 
-                        {/* LEFT COLUMN */}
-                        <div className="col-lg-8">
+                        {/* --- LEFT COLUMN --- */}
+                        <div>
 
-                            <p className="text-slate mb-30" style={{ fontSize: '1.05rem', lineHeight: '1.8' }}>{service.description}</p>
+                            {/* Lede */}
+                            <p className="sd-lede wow fadeInUp" data-wow-delay=".1s">{service.description}</p>
 
-                            {/* Specialized Areas */}
+                            {/* Sectors */}
                             {service.specializedAreas && service.specializedAreas.length > 0 && (
-                                <div className="mb-40 wow fadeInUp">
-                                    <div className="d-flex flex-wrap gap-2">
-                                        {service.specializedAreas.map((area, idx) => (
-                                            <span key={idx} style={{ padding: '8px 16px', background: 'rgba(0,204,255,0.06)', border: '1px solid rgba(0,204,255,0.15)', borderRadius: '30px', color: '#0d1b33', fontWeight: '600', fontSize: '0.82rem' }}>
-                                                {area}
-                                            </span>
-                                        ))}
-                                    </div>
+                                <div className="sd-sectors wow fadeInUp" data-wow-delay=".15s">
+                                    {service.specializedAreas.map((area, idx) => (
+                                        <span key={idx} className="sd-sector-tag">{area}</span>
+                                    ))}
                                 </div>
                             )}
 
-                            {/* What We Cover — editorial numbered list */}
+                            {/* What We Cover */}
                             {service.detailedServices && service.detailedServices.length > 0 && (
-                                <div className="mb-50 wow fadeInUp">
-                                    <span style={{ fontSize: '0.7rem', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '2px', color: '#94a3b8', display: 'block', marginBottom: '6px' }}>What We Cover</span>
-                                    <h2 className="text-navy" style={{ fontSize: '1.6rem', fontWeight: '900', letterSpacing: '-0.5px', marginBottom: '20px' }}>Our Services</h2>
-                                    <div className="row g-0">
-                                        <div className="col-md-6 svc-feature-col" style={{ paddingRight: '20px' }}>
-                                            {service.detailedServices.slice(0, Math.ceil(service.detailedServices.length / 2)).map((item, idx) => (
-                                                <div className="svc-feature-row" key={idx}>
-                                                    <span className="svc-feature-num">{String(idx + 1).padStart(2, '0')}</span>
-                                                    <span className="svc-feature-title">{item.title}</span>
-                                                </div>
-                                            ))}
-                                        </div>
-                                        <div className="col-md-6 svc-feature-col" style={{ paddingLeft: '20px', borderLeft: '1px solid #edf2f7' }}>
-                                            {service.detailedServices.slice(Math.ceil(service.detailedServices.length / 2)).map((item, idx) => (
-                                                <div className="svc-feature-row" key={idx}>
-                                                    <span className="svc-feature-num">{String(Math.ceil(service.detailedServices.length / 2) + idx + 1).padStart(2, '0')}</span>
-                                                    <span className="svc-feature-title">{item.title}</span>
-                                                </div>
-                                            ))}
-                                        </div>
-                                    </div>
+                                <div className="wow fadeInUp" data-wow-delay=".2s">
+                                    <span className="sd-overline">Scope of Work</span>
+                                    <h2 className="sd-heading">What we cover.</h2>
+                                    <ul className="sd-service-list">
+                                        {service.detailedServices.map((item, idx) => (
+                                            <li key={idx} className="sd-service-item">
+                                                <span className="sd-service-idx">{String(idx + 1).padStart(2, '0')}</span>
+                                                <span className="sd-service-name">{item.title}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
                                 </div>
                             )}
 
-                            {/* Why sections + freestanding stats */}
+                            {/* Narrative */}
                             {service.whySections && service.whySections.map((section, index) => (
-                                <div key={index} className="mb-40 wow fadeInUp">
-                                    <h2 className="text-navy" style={{ fontSize: '1.6rem', fontWeight: '800', marginBottom: '15px', letterSpacing: '-0.5px' }}>{section.title}</h2>
-                                    <p className="text-slate mb-30" style={{ fontSize: '0.95rem', lineHeight: '1.75' }}>{section.desc}</p>
-                                    {index === 0 && (
-                                        <div className="svc-stats-band">
-                                            {[{ num: "500+", label: "Clients Served" }, { num: "98%", label: "Client Retention" }, { num: "24/7", label: "Support Available" }].map((stat, si) => (
-                                                <div className="svc-stat-block" key={si}>
-                                                    <span className="svc-stat-num">{stat.num}</span>
-                                                    <span className="svc-stat-label">{stat.label}</span>
-                                                </div>
-                                            ))}
-                                        </div>
-                                    )}
+                                <div key={index} className="sd-narrative wow fadeInUp" data-wow-delay=".2s">
+                                    <h3 className="sd-narrative-title">{section.title}</h3>
+                                    <p className="sd-narrative-body">{section.desc}</p>
                                 </div>
                             ))}
 
-                            {/* Packages — editorial rows */}
+                            {/* Stats */}
+                            <div className="sd-stats wow fadeInUp" data-wow-delay=".2s">
+                                {[{ num: "500+", label: "Clients Served" }, { num: "98%", label: "Retention Rate" }, { num: "24/7", label: "Support" }].map((stat, si) => (
+                                    <div className="sd-stat" key={si}>
+                                        <span className="sd-stat-val">{stat.num}</span>
+                                        <span className="sd-stat-lbl">{stat.label}</span>
+                                    </div>
+                                ))}
+                            </div>
+
+                            {/* Packages */}
                             {service.packages && service.packages.length > 0 && (
-                                <div className="mb-40 wow fadeInUp">
-                                    <span style={{ fontSize: '0.7rem', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '2px', color: '#94a3b8', display: 'block', marginBottom: '6px' }}>Service Options</span>
-                                    <h2 className="text-navy" style={{ fontSize: '1.6rem', fontWeight: '900', letterSpacing: '-0.5px', marginBottom: '4px' }}>Packages</h2>
-                                    <div className="svc-pkg-list">
+                                <div className="sd-packages wow fadeInUp" data-wow-delay=".2s">
+                                    <span className="sd-overline">Service Options</span>
+                                    <h2 className="sd-heading">Available packages.</h2>
+                                    <ul className="sd-pkg-list">
                                         {service.packages.map((pkg, idx) => (
-                                            <div className="svc-pkg-row" key={idx}>
-                                                <span className="svc-pkg-num">{String(idx + 1).padStart(2, '0')}</span>
-                                                <div className="svc-pkg-body">
-                                                    <p className="svc-pkg-title">{pkg.title}</p>
-                                                    <p className="svc-pkg-desc">{pkg.desc}</p>
+                                            <li key={idx} className="sd-pkg-item">
+                                                <span className="sd-pkg-idx">{String(idx + 1).padStart(2, '0')}</span>
+                                                <div className="sd-pkg-info">
+                                                    <p className="sd-pkg-name">{pkg.title}</p>
+                                                    <p className="sd-pkg-desc">{pkg.desc}</p>
                                                 </div>
-                                                <i className="fas fa-arrow-right svc-pkg-arrow"></i>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            )}
+                        </div>
+
+                        {/* --- RIGHT COLUMN (Sidebar) --- */}
+                        <div>
+                            <div className="sd-sidebar">
+
+                                {/* CTA */}
+                                <div className="sd-sidebar-cta">
+                                    <h3>Get a quote for {service.title.toLowerCase()}.</h3>
+                                    <p>Priority scheduling. Transparent pricing. No obligation.</p>
+                                    <a href="tel:1800418411" className="sd-sidebar-phone">
+                                        <i className="fas fa-phone-alt"></i> 1800 418 411
+                                    </a>
+                                    <Link href="/contact" className="sd-sidebar-quote">
+                                        Request Free Quote <i className="fas fa-arrow-right" style={{ marginLeft: '8px' }}></i>
+                                    </Link>
+                                    <div className="sd-sidebar-wa">
+                                        <a href="https://wa.me/61483798622" target="_blank" rel="noopener noreferrer">
+                                            <i className="fab fa-whatsapp" style={{ fontSize: '1.1rem' }}></i> WhatsApp us
+                                        </a>
+                                    </div>
+                                </div>
+
+                                {/* Commitment */}
+                                <div className="sd-sidebar-block">
+                                    <h4>Our Commitment</h4>
+                                    {["Fully Insured & Bonded", "Police Checked Staff", "ISO 9001 Standards", "Eco-Friendly Products"].map((text, i) => (
+                                        <div key={i} className="sd-commit-item">
+                                            <span className="sd-commit-dash"></span>
+                                            <span className="sd-commit-text">{text}</span>
+                                        </div>
+                                    ))}
+                                </div>
+
+                                {/* Process */}
+                                {service.process && service.process.length > 0 && (
+                                    <div className="sd-sidebar-block">
+                                        <h4>How We Work</h4>
+                                        {service.process.map((step, index) => (
+                                            <div key={index} className="sd-process-item">
+                                                <span className="sd-process-num">{String(index + 1).padStart(2, '0')}</span>
+                                                <div className="sd-process-info">
+                                                    <h5>{step.title}</h5>
+                                                    <p>{step.desc}</p>
+                                                </div>
                                             </div>
                                         ))}
                                     </div>
-                                </div>
-                            )}
+                                )}
 
-                        </div>
-
-                        {/* RIGHT COLUMN — sticky sidebar */}
-                        <div className="col-lg-4 d-none d-lg-block">
-                            <div className="service-sidebar-sticky">
-                                <div className="service-sidebar">
-
-                                    {/* Request Quote Widget */}
-                                    <div className="sidebar-widget wow fadeInUp" style={{ background: '#0d1b33', borderRadius: '24px', padding: '40px 30px', color: 'white', boxShadow: '0 20px 40px rgba(13,27,51,0.15)', position: 'relative', overflow: 'hidden' }}>
-                                        <div style={{ position: 'absolute', top: '-10%', right: '-10%', width: '150px', height: '150px', background: 'var(--primary-cyan)', opacity: 0.1, borderRadius: '50%', pointerEvents: 'none', filter: 'blur(30px)' }}></div>
-                                        <h3 style={{ fontSize: '1.4rem', fontWeight: '800', marginBottom: '15px', color: 'white' }}>Need {service.title}?</h3>
-                                        <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.85rem', marginBottom: '30px', lineHeight: '1.5' }}>Speak to our specialists to secure priority scheduling and transparent pricing.</p>
-                                        <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
-                                            <a href="tel:1800418411" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', background: 'rgba(255,255,255,0.05)', color: 'white', padding: '16px', borderRadius: '12px', textDecoration: 'none', fontWeight: '700', fontSize: '0.95rem', border: '1px solid rgba(255,255,255,0.1)' }}>
-                                                <i className="fas fa-phone-alt" style={{ color: 'var(--primary-cyan)' }}></i> 1800 418 411
-                                            </a>
-                                            <Link href="/contact" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'var(--primary-cyan)', color: '#0d1b33', padding: '16px', borderRadius: '12px', textDecoration: 'none', fontWeight: '800', fontSize: '0.9rem', textTransform: 'uppercase' }}>
-                                                Request Free Quote <i className="fas fa-arrow-right" style={{ marginLeft: '8px' }}></i>
-                                            </Link>
-                                        </div>
-                                        <div className="mt-30 text-center">
-                                            <span style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.5)', display: 'block', marginBottom: '10px' }}>Prefer to chat?</span>
-                                            <a href="https://wa.me/61483798622" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', color: '#25D366', textDecoration: 'none', fontSize: '0.85rem', fontWeight: '600' }}>
-                                                <i className="fab fa-whatsapp" style={{ fontSize: '1.2rem' }}></i> WhatsApp Support
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                    {/* Our Commitment */}
-                                    <div className="sidebar-widget mt-30 wow fadeInUp" style={{ background: '#fff', border: '1px solid #f0f4f8', borderRadius: '24px', padding: '30px', boxShadow: '0 10px 30px rgba(0,0,0,0.02)' }}>
-                                        <h4 className="text-navy mb-25" style={{ fontSize: '1.1rem', fontWeight: '800' }}>Our Commitment</h4>
-                                        <div className="d-flex flex-column gap-3">
-                                            {[{ icon: "fas fa-shield-alt", text: "Fully Insured & Bonded" }, { icon: "fas fa-user-check", text: "Police Checked Staff" }, { icon: "fas fa-certificate", text: "ISO 9001 Standards" }, { icon: "fas fa-leaf", text: "Eco-Friendly Products" }].map((item, i) => (
-                                                <div key={i} className="d-flex align-items-center gap-3">
-                                                    <div style={{ width: '32px', height: '32px', background: 'rgba(0,204,255,0.08)', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--primary-cyan)', fontSize: '13px' }}>
-                                                        <i className={item.icon}></i>
-                                                    </div>
-                                                    <span style={{ fontSize: '0.85rem', fontWeight: '600', color: '#4b5563' }}>{item.text}</span>
-                                                </div>
-                                            ))}
-                                        </div>
-                                    </div>
-
-                                    {/* Sectors We Cover */}
-                                    {service.specializedAreas && service.specializedAreas.length > 0 && (
-                                        <div className="sidebar-widget mt-30 wow fadeInUp" style={{ background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: '24px', padding: '30px' }}>
-                                            <h4 className="text-navy mb-20" style={{ fontSize: '1.1rem', fontWeight: '800' }}>Sectors We Cover</h4>
-                                            <div className="d-flex flex-wrap gap-2">
-                                                {service.specializedAreas.map((area, idx) => (
-                                                    <span key={idx} style={{ padding: '6px 12px', background: 'white', border: '1px solid #e2e8f0', borderRadius: '20px', color: '#0d1b33', fontWeight: '600', fontSize: '0.75rem' }}>
-                                                        {area}
-                                                    </span>
-                                                ))}
-                                            </div>
-                                        </div>
-                                    )}
-
-                                    {/* How We Work */}
-                                    {service.process && service.process.length > 0 && (
-                                        <div className="sidebar-widget mt-30 wow fadeInUp" style={{ background: '#fff', border: '1px solid #f0f4f8', borderRadius: '24px', padding: '30px', boxShadow: '0 10px 30px rgba(0,0,0,0.02)' }}>
-                                            <h4 className="text-navy mb-25" style={{ fontSize: '1.1rem', fontWeight: '800' }}>How We Work</h4>
-                                            <div className="process-steps">
-                                                {service.process.map((step, index) => (
-                                                    <div key={index} className="process-step mb-25" style={{ position: 'relative' }}>
-                                                        <div className="d-flex gap-3">
-                                                            <div style={{ flexShrink: 0, width: '35px', height: '35px', background: 'rgba(0,204,255,0.1)', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--primary-cyan)', fontSize: '14px' }}>
-                                                                <i className={step.icon}></i>
-                                                            </div>
-                                                            <div>
-                                                                <h5 style={{ fontSize: '0.95rem', fontWeight: '800', marginBottom: '5px' }}>{step.title}</h5>
-                                                                <p style={{ fontSize: '0.8rem', color: '#666', lineHeight: '1.4', margin: 0 }}>{step.desc}</p>
-                                                            </div>
-                                                        </div>
-                                                        {index < service.process.length - 1 && (
-                                                            <div style={{ position: 'absolute', left: '17px', top: '35px', width: '1px', height: '25px', background: '#e2e8f0' }}></div>
-                                                        )}
-                                                    </div>
-                                                ))}
-                                            </div>
-                                        </div>
-                                    )}
-
-                                </div>
                             </div>
                         </div>
 
@@ -1114,28 +1112,27 @@ const ServiceDetail = () => {
                 </div>
             </section>
 
-            {/* Benefits — editorial full-width split */}
+            {/* ===== BENEFITS (Dark) ===== */}
             {service.benefits && service.benefits.length > 0 && (
-                <section className="benefits-section pb-100" style={{ background: '#0d1b33', paddingTop: '80px', position: 'relative', overflow: 'hidden' }}>
-                    <div style={{ position: 'absolute', bottom: '-15%', left: '-5%', width: '400px', height: '400px', background: 'var(--primary-cyan)', opacity: 0.04, borderRadius: '50%', filter: 'blur(80px)', pointerEvents: 'none' }}></div>
-                    <div className="container wow fadeInUp">
-                        <div className="row align-items-start g-5">
-                            <div className="col-lg-4">
-                                <span style={{ fontSize: '0.68rem', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '2.5px', color: 'var(--primary-cyan)', display: 'block', marginBottom: '16px' }}>Why It Matters</span>
-                                <h2 style={{ fontSize: 'clamp(1.8rem, 3vw, 2.6rem)', fontWeight: '900', color: '#fff', lineHeight: '1.05', letterSpacing: '-1.5px', margin: 0 }}>
-                                    Why Partnering<br />With Us <span style={{ color: 'var(--primary-cyan)' }}>Works.</span>
+                <section className="sd-benefits">
+                    <div className="container">
+                        <div className="sd-benefits-grid">
+                            <div>
+                                <span className="sd-overline" style={{ color: '#475569' }}>Why It Matters</span>
+                                <h2 className="sd-benefits-title wow fadeInUp" data-wow-delay=".2s">
+                                    Why partnering with<br />Icon <span style={{ color: '#0ea5e9' }}>works.</span>
                                 </h2>
                             </div>
-                            <div className="col-lg-8">
+                            <div>
                                 {service.benefits.map((benefit, idx) => {
                                     const words = benefit.split(' ');
-                                    const accentWords = words.slice(0, 2).join(' ');
-                                    const rest = words.slice(2).join(' ');
+                                    const lead = words.slice(0, 3).join(' ');
+                                    const rest = words.slice(3).join(' ');
                                     return (
-                                        <div key={idx} style={{ padding: '22px 0', borderBottom: idx < service.benefits.length - 1 ? '1px solid rgba(255,255,255,0.08)' : 'none', display: 'flex', alignItems: 'flex-start', gap: '20px' }}>
-                                            <span style={{ flexShrink: 0, fontSize: '0.65rem', fontWeight: '900', color: 'rgba(0,204,255,0.4)', letterSpacing: '1px', marginTop: '4px', minWidth: '24px' }}>{String(idx + 1).padStart(2, '0')}</span>
-                                            <p style={{ margin: 0, fontSize: '0.95rem', lineHeight: '1.65', color: 'rgba(255,255,255,0.75)' }}>
-                                                <strong style={{ color: 'var(--primary-cyan)', fontWeight: '700' }}>{accentWords}</strong>{rest ? ` ${rest}` : ''}
+                                        <div key={idx} className="sd-benefit-row wow fadeInUp" data-wow-delay={`${idx * 0.05}s`}>
+                                            <span className="sd-benefit-idx">{String(idx + 1).padStart(2, '0')}</span>
+                                            <p className="sd-benefit-text">
+                                                <strong>{lead}</strong>{rest ? ` ${rest}` : ''}
                                             </p>
                                         </div>
                                     );
@@ -1146,30 +1143,30 @@ const ServiceDetail = () => {
                 </section>
             )}
 
-            {/* FAQ — two-column split */}
+            {/* ===== FAQ ===== */}
             {service.faqs && service.faqs.length > 0 && (
-                <section className="faq-section pt-80 pb-100" style={{ background: '#fff' }}>
+                <section className="sd-faq">
                     <div className="container">
-                        <div className="mb-50 wow fadeInUp">
-                            <span style={{ fontSize: '0.68rem', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '2.5px', color: 'var(--primary-cyan)', display: 'block', marginBottom: '10px' }}>Got Questions?</span>
-                            <h2 className="text-navy" style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)', fontWeight: '900', letterSpacing: '-1.5px', margin: 0 }}>Frequently Asked</h2>
+                        <div style={{ marginBottom: '60px' }}>
+                            <span className="sd-overline wow fadeInUp" data-wow-delay=".1s">Questions</span>
+                            <h2 className="sd-heading wow fadeInUp" data-wow-delay=".15s">Frequently asked.</h2>
                         </div>
-                        <div className="svc-faq-split wow fadeInUp">
-                            <div className="svc-faq-qlist">
+                        <div className="sd-faq-grid wow fadeInUp" data-wow-delay=".2s">
+                            <div>
                                 {service.faqs.map((faq, index) => (
-                                    <button key={index} className={`svc-faq-q${activeFaq === index ? ' active' : ''}`} onClick={() => setActiveFaq(index)} type="button">
+                                    <button key={index} className={`sd-faq-q${activeFaq === index ? ' active' : ''}`} onClick={() => setActiveFaq(index)} type="button">
                                         {faq.q}
                                     </button>
                                 ))}
                             </div>
-                            <div className="svc-faq-apanel">
-                                <div className="svc-faq-answer">
-                                    <p className="svc-faq-answer-text">{service.faqs[activeFaq].a}</p>
+                            <div>
+                                <div className="sd-faq-answer">
+                                    <p>{service.faqs[activeFaq].a}</p>
                                 </div>
-                                <div style={{ marginTop: '32px', display: 'flex', alignItems: 'center', gap: '16px' }}>
-                                    <span style={{ fontSize: '0.82rem', color: '#94a3b8' }}>Still need help?</span>
-                                    <Link href="/contact" style={{ fontSize: '0.82rem', fontWeight: '700', color: 'var(--primary-cyan)', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
-                                        Talk to a specialist <i className="fas fa-arrow-right" style={{ fontSize: '0.75rem' }}></i>
+                                <div className="sd-faq-footer">
+                                    <span>Still need help?</span>
+                                    <Link href="/contact">
+                                        Talk to a specialist <i className="fas fa-arrow-right" style={{ fontSize: '0.7rem' }}></i>
                                     </Link>
                                 </div>
                             </div>
