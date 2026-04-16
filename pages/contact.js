@@ -1,9 +1,9 @@
 import Layout from "@/components/layout/Layout"
+import Breadcrumb from "@/components/layout/Breadcrumb"
 import Link from "next/link"
 import { useState } from "react"
 
 export default function Contact() {
-    const [activeTab, setActiveTab] = useState('call')
     const [formData, setFormData] = useState({
         name: "",
         email: "",
@@ -18,306 +18,291 @@ export default function Contact() {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        
-        // Format the WhatsApp message
         const whatsappNumber = "61483798622"
-        const message = `*New Quote Request from Website*
---------------------------------
-*Name:* ${formData.name}
-*Email:* ${formData.email}
-*Phone:* ${formData.phone}
-*Service:* ${formData.service || 'Not Selected'}
-
-*Requirements:*
-${formData.message || 'No additional requirements provided.'}`
-
+        const message = `*New Quote Request from Website*\n--------------------------------\n*Name:* ${formData.name}\n*Email:* ${formData.email}\n*Phone:* ${formData.phone}\n*Service:* ${formData.service || 'Not Selected'}\n\n*Requirements:*\n${formData.message || 'No additional requirements provided.'}`
         const encodedMessage = encodeURIComponent(message)
-        const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`
-        
-        window.open(whatsappUrl, '_blank')
+        window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, '_blank')
     }
 
     return (
-        <>
-            <Layout headerCls="transparent-header">
-                {/* Hero Section */}
-                <section className="pf-hero pf-bg-navy" style={{ padding: '150px 0 100px', position: 'relative', overflow: 'hidden' }}>
-                    <style jsx>{`
-                        @media (max-width: 767px) {
-                            .pf-hero { 
-                                padding: 120px 0 80px !important; 
-                                min-height: 50vh; 
-                                display: flex; 
-                                align-items: center; 
-                                justify-content: center;
-                            }
-                            .hero-title-mobile { 
-                                font-size: 2.4rem !important; 
-                                line-height: 1.1 !important; 
-                                letter-spacing: -1px !important; 
-                                margin-bottom: 20px !important; 
-                            }
-                            .hero-desc-mobile { 
-                                font-size: 1rem !important; 
-                                line-height: 1.6 !important; 
-                                opacity: 0.9; 
-                                max-width: 90% !important;
-                                margin: 0 auto !important;
-                            }
-                            
-                            /* Simple High-Contrast Info - Mobile Only */
-                            .editorial-info-stack {
-                                display: flex;
-                                flex-direction: column;
-                                gap: 40px;
-                                text-align: center;
-                                padding: 20px 0;
-                            }
-                            .editorial-info-row {
-                                text-decoration: none !important;
-                                display: flex;
-                                flex-direction: column;
-                                align-items: center;
-                                gap: 8px;
-                            }
-                            .editorial-icon-box {
-                                font-size: 2rem;
-                                color: #000 !important;
-                                margin-bottom: 2px;
-                            }
-                            .editorial-value {
-                                font-size: 1.8rem;
-                                font-weight: 900;
-                                color: #000 !important; /* Force solid black for readability */
-                                line-height: 1;
-                                letter-spacing: -1px;
-                            }
-                        }
-                        @media (min-width: 768px) {
-                            .editorial-info-stack { display: none !important; }
-                        }
-                    `}</style>
+        <Layout headerCls="transparent-header">
+            <style jsx global>{`
+                .contact-input {
+                    width: 100%;
+                    border: 1.5px solid #e2e8f0;
+                    border-radius: 10px;
+                    padding: 13px 16px;
+                    font-size: 0.92rem;
+                    color: #0d1b33;
+                    background: #fff;
+                    outline: none;
+                    transition: border-color 0.2s ease;
+                    font-family: 'Poppins', sans-serif;
+                }
+                .contact-input:focus {
+                    border-color: var(--primary-cyan);
+                }
+                .contact-input::placeholder { color: #94a3b8; }
+                .contact-label {
+                    display: block;
+                    font-size: 0.78rem;
+                    font-weight: 700;
+                    color: #64748b;
+                    text-transform: uppercase;
+                    letter-spacing: 0.8px;
+                    margin-bottom: 7px;
+                }
+                .contact-info-row {
+                    padding: 20px 0;
+                    border-bottom: 1px solid #f1f5f9;
+                    display: flex;
+                    align-items: flex-start;
+                    gap: 16px;
+                }
+                .contact-info-row:last-child { border-bottom: none; }
+                .contact-info-icon {
+                    width: 36px;
+                    height: 36px;
+                    background: rgba(0,204,255,0.08);
+                    border-radius: 8px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: var(--primary-cyan);
+                    font-size: 14px;
+                    flex-shrink: 0;
+                    margin-top: 2px;
+                }
+                .contact-info-label {
+                    font-size: 0.68rem;
+                    font-weight: 700;
+                    text-transform: uppercase;
+                    letter-spacing: 1px;
+                    color: #94a3b8;
+                    display: block;
+                    margin-bottom: 3px;
+                }
+                .contact-info-value {
+                    font-size: 0.92rem;
+                    font-weight: 700;
+                    color: #0d1b33;
+                    text-decoration: none;
+                    display: block;
+                    line-height: 1.4;
+                }
+                .contact-info-value:hover { color: var(--primary-cyan); }
 
-                    <div className="container">
-                        <div className="row justify-content-center">
-                            <div className="col-lg-10 text-center">
-                                <h1 className="title hero-title-mobile wow fadeInUp" data-wow-delay=".2s" style={{ color: '#fff', fontSize: '4rem', fontWeight: '800', marginBottom: '20px' }}>
-                                    Get a <span style={{ color: 'var(--primary-cyan)' }}>Professional</span> Quote
-                                </h1>
-                                <p className="hero-desc-mobile wow fadeInUp" data-wow-delay=".4s" style={{ color: '#e2e8f0', fontSize: '1.25rem', maxWidth: '700px', margin: '0 auto' }}>
-                                    Whether it's a commercial office, a retail space, or a specialized industrial facility, Icon Facility Services delivers excellence every time.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    {/* Decorative Background Elements */}
-                    <div style={{ position: 'absolute', top: '-10%', right: '-5%', width: '400px', height: '400px', background: 'radial-gradient(circle, rgba(0, 229, 255, 0.1) 0%, transparent 70%)', borderRadius: '50%' }}></div>
-                    <div style={{ position: 'absolute', bottom: '-10%', left: '-5%', width: '300px', height: '300px', background: 'radial-gradient(circle, rgba(0, 229, 255, 0.05) 0%, transparent 70%)', borderRadius: '50%' }}></div>
-                </section>
+                /* Strip */
+                .contact-strip-item {
+                    display: flex;
+                    align-items: center;
+                    gap: 14px;
+                    flex: 1;
+                    min-width: 0;
+                }
+                .contact-strip-item + .contact-strip-item {
+                    border-left: 1px solid rgba(255,255,255,0.1);
+                    padding-left: 32px;
+                    margin-left: 32px;
+                }
+                @media (max-width: 767px) {
+                    .contact-strip { flex-wrap: wrap !important; }
+                    .contact-strip-item + .contact-strip-item {
+                        border-left: none;
+                        border-top: 1px solid rgba(255,255,255,0.1);
+                        padding-left: 0;
+                        margin-left: 0;
+                        padding-top: 20px;
+                        margin-top: 20px;
+                    }
+                    .contact-strip-item { flex: 0 0 100%; }
+                }
+            `}</style>
 
-                <section className="contact-area pt-100 pb-100" style={{ background: '#f8fafc' }}>
-                    <div className="container">
-                        <div className="row g-5">
-                            {/* Contact Information Column */}
-                            <div className="col-lg-5 d-none d-md-block">
-                                <div className="contact-info-content">
-                                    <div className="section-title mb-40">
-                                        <span className="sub-title" style={{ color: 'var(--primary-cyan)', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.8rem' }}>Contact Info</span>
-                                        <h2 className="title" style={{ fontSize: '1.8rem', fontWeight: '800', color: '#0f1437' }}>Let's Start a <br />Conversation</h2>
-                                    </div>
-                                    
-                                    <div className="contact-info-list" style={{ flexDirection: 'column', gap: '30px', display: 'flex' }}>
-                                        {/* Phone Item */}
-                                        <a href="tel:1800418411" className="info-item d-flex align-items-center" style={{ background: '#fff', padding: '25px', borderRadius: '20px', boxShadow: '0 10px 30px rgba(0,0,0,0.05)', textDecoration: 'none', transition: 'transform 0.3s' }}>
-                                            <div className="icon" style={{ width: '60px', height: '60px', background: 'rgba(0, 204, 255, 0.1)', borderRadius: '15px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginRight: '20px', color: 'var(--primary-cyan)', fontSize: '24px' }}>
-                                                <i className="fas fa-phone-alt"></i>
-                                            </div>
-                                            <div className="content">
-                                                <h4 style={{ margin: '0 0 5px', fontSize: '1.1rem', fontWeight: '700', color: '#0f1437' }}>Phone Number</h4>
-                                                <span style={{ fontSize: '1.25rem', color: '#64748b', fontWeight: '600' }}>1800 418 411</span>
-                                            </div>
-                                        </a>
+            <Breadcrumb breadcrumbTitle="Contact Us" breadcrumbSubtitle="Reach out to discuss your facility needs. Our team responds within 24 hours." />
 
-                                        {/* Email Item */}
-                                        <a href="mailto:info@iconfacilitys.com.au" className="info-item d-flex align-items-center" style={{ background: '#fff', padding: '25px', borderRadius: '20px', boxShadow: '0 10px 30px rgba(0,0,0,0.05)', textDecoration: 'none' }}>
-                                            <div className="icon" style={{ width: '60px', height: '60px', background: 'rgba(0, 204, 255, 0.1)', borderRadius: '15px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginRight: '20px', color: 'var(--primary-cyan)', fontSize: '24px' }}>
-                                                <i className="fas fa-envelope"></i>
-                                            </div>
-                                            <div className="content">
-                                                <h4 style={{ margin: '0 0 5px', fontSize: '1.1rem', fontWeight: '700', color: '#0f1437' }}>Email Address</h4>
-                                                <span style={{ fontSize: '1.1rem', color: '#64748b', fontWeight: '600', wordBreak: 'break-all' }}>info@iconfacilitys.com.au</span>
-                                            </div>
-                                        </a>
+            {/* Form + Sidebar */}
+            <section style={{ background: '#f8fafc', padding: '80px 0' }}>
+                <div className="container">
+                    <div className="row g-5 align-items-start">
 
-                                        {/* WhatsApp Item */}
-                                        <a href="https://wa.me/61483798622" target="_blank" rel="noopener noreferrer" className="info-item d-flex align-items-center" style={{ background: '#fff', padding: '25px', borderRadius: '20px', boxShadow: '0 10px 30px rgba(0,0,0,0.05)', textDecoration: 'none', transition: 'transform 0.3s' }}>
-                                            <div className="icon" style={{ width: '60px', height: '60px', background: 'rgba(37, 211, 102, 0.1)', borderRadius: '15px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginRight: '20px', color: '#25D366', fontSize: '28px' }}>
-                                                <i className="fab fa-whatsapp"></i>
-                                            </div>
-                                            <div className="content">
-                                                <h4 style={{ margin: '0 0 5px', fontSize: '1.1rem', fontWeight: '700', color: '#0f1437' }}>WhatsApp Support</h4>
-                                                <span style={{ fontSize: '1.25rem', color: '#64748b', fontWeight: '600' }}>0483 798 622</span>
-                                            </div>
-                                        </a>
+                        {/* LEFT — Form */}
+                        <div className="col-lg-7 wow fadeInLeft" data-wow-delay=".2s">
+                            <div style={{ background: '#fff', borderRadius: '24px', padding: '48px 44px', boxShadow: '0 4px 24px rgba(0,0,0,0.04)', border: '1px solid #f0f4f8' }}>
+                                <span style={{ fontSize: '0.68rem', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '2px', color: 'var(--primary-cyan)', display: 'block', marginBottom: '8px' }}>Get in Touch</span>
+                                <h2 style={{ fontSize: 'clamp(1.6rem, 3vw, 2.2rem)', fontWeight: '900', color: '#0d1b33', letterSpacing: '-1px', marginBottom: '8px' }}>Request a Service Quote</h2>
+                                <p style={{ fontSize: '0.9rem', color: '#64748b', marginBottom: '36px', lineHeight: '1.6' }}>Fill in the form and our team will respond within 24 hours.</p>
 
-                                        {/* Office Location */}
-                                        <div className="info-item d-flex align-items-center" style={{ background: '#fff', padding: '25px', borderRadius: '20px', boxShadow: '0 10px 30px rgba(0,0,0,0.05)' }}>
-                                            <div className="icon" style={{ width: '60px', height: '60px', background: 'rgba(0, 204, 255, 0.1)', borderRadius: '15px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginRight: '20px', color: 'var(--primary-cyan)', fontSize: '24px' }}>
-                                                <i className="fas fa-map-marker-alt"></i>
-                                            </div>
-                                            <div className="content">
-                                                <h4 style={{ margin: '0 0 5px', fontSize: '1.1rem', fontWeight: '700' }}>Head Office</h4>
-                                                <p style={{ margin: 0, fontSize: '1.1rem', color: '#64748b', fontWeight: '500' }}>2/38 Railway Parade, <br /> Lakemba NSW 2195</p>
-                                            </div>
+                                <form onSubmit={handleSubmit}>
+                                    <div className="row g-3">
+                                        <div className="col-md-6">
+                                            <label className="contact-label">Full Name</label>
+                                            <input className="contact-input" type="text" name="name" value={formData.name} onChange={handleChange} required placeholder="John Smith" />
+                                        </div>
+                                        <div className="col-md-6">
+                                            <label className="contact-label">Email Address</label>
+                                            <input className="contact-input" type="email" name="email" value={formData.email} onChange={handleChange} required placeholder="john@company.com" />
+                                        </div>
+                                        <div className="col-md-6">
+                                            <label className="contact-label">Phone Number</label>
+                                            <input className="contact-input" type="text" name="phone" value={formData.phone} onChange={handleChange} required placeholder="04xx xxx xxx" />
+                                        </div>
+                                        <div className="col-md-6">
+                                            <label className="contact-label">Service Required</label>
+                                            <select className="contact-input" name="service" value={formData.service} onChange={handleChange} required>
+                                                <option value="">Select service...</option>
+                                                <option value="Workplace">Workplace Cleaning</option>
+                                                <option value="Retail">Retail Environment</option>
+                                                <option value="Industrial">Industrial Facility</option>
+                                                <option value="Healthcare">Healthcare Hygiene</option>
+                                                <option value="Educational">Educational Facility</option>
+                                                <option value="Hospitality">Hospitality Cleaning</option>
+                                                <option value="Fitness">Fitness Facility</option>
+                                                <option value="Residential">Residential & Tower</option>
+                                                <option value="Event">Event Preparation</option>
+                                                <option value="PostConstruction">Post-Construction</option>
+                                                <option value="Exterior">Exterior & Parking</option>
+                                                <option value="Other">Other</option>
+                                            </select>
+                                        </div>
+                                        <div className="col-12">
+                                            <label className="contact-label">Requirements</label>
+                                            <textarea className="contact-input" name="message" value={formData.message} onChange={handleChange} placeholder="Brief description of your facility and cleaning needs..." style={{ minHeight: '130px', resize: 'vertical' }}></textarea>
+                                        </div>
+                                        <div className="col-12" style={{ marginTop: '8px' }}>
+                                            <button type="submit" style={{ width: '100%', background: '#0d1b33', color: '#fff', border: 'none', borderRadius: '12px', padding: '16px', fontSize: '0.95rem', fontWeight: '800', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', transition: 'background 0.2s' }}>
+                                                Send via WhatsApp <i className="fab fa-whatsapp" style={{ fontSize: '1.1rem', color: '#25D366' }}></i>
+                                            </button>
                                         </div>
                                     </div>
+                                </form>
+                            </div>
+                        </div>
 
-                                    <div className="social-links mt-40">
-                                        <h4 style={{ fontSize: '1.2rem', fontWeight: '700', marginBottom: '20px', color: '#0f1437' }}>Follow Our Impact</h4>
-                                        <div className="d-flex gap-3">
-                                            {[
-                                                { icon: 'fab fa-facebook-f', color: '#1877F2', url: '#' },
-                                                { icon: 'fab fa-instagram', color: '#E4405F', url: '#' },
-                                                { icon: 'fab fa-linkedin-in', color: '#0A66C2', url: '#' },
-                                                { icon: 'fab fa-whatsapp', color: '#25D366', url: 'https://wa.me/61483798622' }
-                                            ].map((social, idx) => (
-                                                <Link key={idx} href={social.url} target={social.url?.startsWith('http') ? '_blank' : '_self'} style={{ width: '50px', height: '50px', borderRadius: '12px', background: social.color, display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: '20px', transition: 'transform 0.3s' }}>
-                                                    <i className={social.icon}></i>
-                                                </Link>
-                                            ))}
+                        {/* RIGHT — Sidebar info (no cards) */}
+                        <div className="col-lg-5 wow fadeInRight" data-wow-delay=".3s">
+                            <div style={{ paddingLeft: 'clamp(0px, 3vw, 32px)' }}>
+                                <span style={{ fontSize: '0.68rem', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '2px', color: 'var(--primary-cyan)', display: 'block', marginBottom: '8px' }}>Contact Details</span>
+                                <h3 style={{ fontSize: '1.6rem', fontWeight: '900', color: '#0d1b33', letterSpacing: '-0.5px', marginBottom: '32px' }}>Let's Start a Conversation</h3>
+
+                                <div>
+                                    <a href="tel:1800418411" className="contact-info-row" style={{ textDecoration: 'none' }}>
+                                        <div className="contact-info-icon"><i className="fas fa-phone-alt"></i></div>
+                                        <div>
+                                            <span className="contact-info-label">Phone</span>
+                                            <span className="contact-info-value">1800 418 411</span>
+                                        </div>
+                                    </a>
+                                    <a href="mailto:info@iconfacilitys.com.au" className="contact-info-row" style={{ textDecoration: 'none' }}>
+                                        <div className="contact-info-icon"><i className="fas fa-envelope"></i></div>
+                                        <div>
+                                            <span className="contact-info-label">Email</span>
+                                            <span className="contact-info-value">info@iconfacilitys.com.au</span>
+                                        </div>
+                                    </a>
+                                    <a href="https://wa.me/61483798622" target="_blank" rel="noopener noreferrer" className="contact-info-row" style={{ textDecoration: 'none' }}>
+                                        <div className="contact-info-icon" style={{ background: 'rgba(37,211,102,0.08)', color: '#25D366' }}><i className="fab fa-whatsapp"></i></div>
+                                        <div>
+                                            <span className="contact-info-label">WhatsApp</span>
+                                            <span className="contact-info-value">0483 798 622</span>
+                                        </div>
+                                    </a>
+                                    <div className="contact-info-row">
+                                        <div className="contact-info-icon"><i className="fas fa-map-marker-alt"></i></div>
+                                        <div>
+                                            <span className="contact-info-label">Head Office</span>
+                                            <span className="contact-info-value">2/38 Railway Parade<br />Lakemba NSW 2195</span>
+                                        </div>
+                                    </div>
+                                    <div className="contact-info-row">
+                                        <div className="contact-info-icon"><i className="fas fa-clock"></i></div>
+                                        <div>
+                                            <span className="contact-info-label">Response Time</span>
+                                            <span className="contact-info-value">Within 24 hours<br /><span style={{ fontSize: '0.8rem', fontWeight: '500', color: '#94a3b8' }}>Emergency support available 24/7</span></span>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            {/* Quote Form Column */}
-                            <div className="col-lg-7">
-                                <div className="contact-form-container" style={{ background: '#0f1437', padding: '50px', borderRadius: '30px', boxShadow: '0 20px 50px rgba(15, 20, 55, 0.2)', position: 'relative', overflow: 'hidden' }}>
-                                    <div style={{ position: 'absolute', top: 0, right: 0, width: '100%', height: '100%', background: 'linear-gradient(135deg, rgba(0, 229, 255, 0.05) 0%, transparent 100%)', pointerEvents: 'none' }}></div>
-                                    
-                                    <h2 style={{ color: '#fff', fontSize: '2rem', fontWeight: '800', marginBottom: '10px' }}>Request a Service</h2>
-                                    <p style={{ color: '#94a3b8', marginBottom: '30px' }}>Connect with our facility management team within 24 hours.</p>
-                                    
-                                    <form className="contact-form" onSubmit={handleSubmit}>
-                                        <div className="row g-3 compact-grid">
-                                            <div className="col-md-6">
-                                                <div className="form-grp-custom">
-                                                    <label style={{ color: '#cbd5e1', display: 'block', marginBottom: '8px', fontSize: '0.85rem', fontWeight: '600' }}>Full Name</label>
-                                                    <input type="text" name="name" value={formData.name} onChange={handleChange} required placeholder="Name" style={{ width: '100%', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '12px', padding: '12px 15px', color: '#fff', outline: 'none', fontSize: '0.95rem' }} />
-                                                </div>
-                                            </div>
-                                            <div className="col-md-6">
-                                                <div className="form-grp-custom">
-                                                    <label style={{ color: '#cbd5e1', display: 'block', marginBottom: '8px', fontSize: '0.85rem', fontWeight: '600' }}>Email Address</label>
-                                                    <input type="email" name="email" value={formData.email} onChange={handleChange} required placeholder="Email" style={{ width: '100%', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '12px', padding: '12px 15px', color: '#fff', outline: 'none', fontSize: '0.95rem' }} />
-                                                </div>
-                                            </div>
-                                            <div className="col-md-6 compact-full">
-                                                <div className="form-grp-custom">
-                                                    <label style={{ color: '#cbd5e1', display: 'block', marginBottom: '8px', fontSize: '0.85rem', fontWeight: '600' }}>Phone Number</label>
-                                                    <input type="text" name="phone" value={formData.phone} onChange={handleChange} required placeholder="Phone" style={{ width: '100%', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '12px', padding: '12px 15px', color: '#fff', outline: 'none', fontSize: '0.95rem' }} />
-                                                </div>
-                                            </div>
-                                            <div className="col-md-6 compact-full">
-                                                <div className="form-grp-custom">
-                                                    <label style={{ color: '#cbd5e1', display: 'block', marginBottom: '8px', fontSize: '0.85rem', fontWeight: '600' }}>Service Required</label>
-                                                    <select name="service" value={formData.service} onChange={handleChange} required style={{ width: '100%', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '12px', padding: '15px 20px', color: '#fff', outline: 'none', appearance: 'none', fontSize: '0.95rem' }}>
-                                                        <option value="" style={{ background: '#0f1437' }}>Select service...</option>
-                                                        <option value="Workplace" style={{ background: '#0f1437' }}>Workplace Cleaning</option>
-                                                        <option value="Retail" style={{ background: '#0f1437' }}>Retail Environment</option>
-                                                        <option value="Industrial" style={{ background: '#0f1437' }}>Industrial Facility</option>
-                                                        <option value="Pressure Washing" style={{ background: '#0f1437' }}>Pressure Washing</option>
-                                                        <option value="Specialized" style={{ background: '#0f1437' }}>Other Specialists</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div className="col-12 compact-full">
-                                                <div className="form-grp-custom">
-                                                    <label style={{ color: '#cbd5e1', display: 'block', marginBottom: '8px', fontSize: '0.85rem', fontWeight: '600' }}>Requirements</label>
-                                                    <textarea name="message" value={formData.message} onChange={handleChange} placeholder="Quick summary of needs..." style={{ width: '100%', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '12px', padding: '15px 20px', color: '#fff', outline: 'none', minHeight: '120px', fontSize: '0.95rem' }}></textarea>
-                                                </div>
-                                            </div>
-                                            <div className="col-12 mt-10 compact-full">
-                                                <button type="submit" className="btn btn-two" style={{ width: '100%', padding: '18px', fontSize: '1rem', fontWeight: '700', borderRadius: '15px' }}>
-                                                    Get My Quote <i className="fas fa-paper-plane" style={{ marginLeft: '10px' }}></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </form>
+                                <div style={{ marginTop: '32px', paddingTop: '28px', borderTop: '1px solid #f1f5f9' }}>
+                                    <span style={{ fontSize: '0.72rem', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '1px', color: '#94a3b8', display: 'block', marginBottom: '14px' }}>Follow Us</span>
+                                    <div style={{ display: 'flex', gap: '10px' }}>
+                                        {[
+                                            { icon: 'fab fa-facebook-f', bg: '#1877F2', url: '#' },
+                                            { icon: 'fab fa-instagram', bg: '#E4405F', url: '#' },
+                                            { icon: 'fab fa-linkedin-in', bg: '#0A66C2', url: '#' },
+                                            { icon: 'fab fa-whatsapp', bg: '#25D366', url: 'https://wa.me/61483798622' }
+                                        ].map((s, i) => (
+                                            <a key={i} href={s.url} target={s.url.startsWith('http') ? '_blank' : '_self'} rel="noopener noreferrer" style={{ width: '40px', height: '40px', borderRadius: '10px', background: s.bg, display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: '16px', textDecoration: 'none' }}>
+                                                <i className={s.icon}></i>
+                                            </a>
+                                        ))}
+                                    </div>
                                 </div>
                             </div>
                         </div>
+
                     </div>
-                </section>
+                </div>
+            </section>
 
-                {/* Map Section */}
-                <section className="contact-map-area">
-                    <div className="container">
-                        <div style={{ 
-                            height: '450px', 
-                            width: '100%', 
-                            borderRadius: '30px', 
-                            overflow: 'hidden',
-                            boxShadow: '0 20px 40px rgba(0,0,0,0.1)',
-                            border: '1px solid rgba(0,0,0,0.05)'
-                        }}>
-                            <iframe 
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3310.821422896584!2d151.0772422!3d-33.9197!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b12ba765275e3d7%3A0xf017d7dc2fd2f7b8!2s2%2F38%20Railway%20Parade%2C%20Lakemba%20NSW%202195%2C%20Australia!5e0!3m2!1sen!2sus!4v1712720000000!5m2!1sen!2sus" 
-                                width="100%" 
-                                height="100%" 
-                                style={{ border: 0 }} 
-                                allowFullScreen="" 
-                                loading="lazy" 
-                                referrerPolicy="no-referrer-when-downgrade">
-                            </iframe>
+            {/* Contact Info Strip — dark navy band */}
+            <section style={{ background: '#0d1b33', padding: '40px 0' }}>
+                <div className="container">
+                    <div className="contact-strip" style={{ display: 'flex', alignItems: 'center' }}>
+                        <div className="contact-strip-item">
+                            <div style={{ width: '44px', height: '44px', background: 'rgba(0,204,255,0.1)', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--primary-cyan)', fontSize: '18px', flexShrink: 0 }}>
+                                <i className="fas fa-phone-alt"></i>
+                            </div>
+                            <div>
+                                <span style={{ fontSize: '0.62rem', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '1px', color: 'rgba(255,255,255,0.4)', display: 'block' }}>Call Us</span>
+                                <a href="tel:1800418411" style={{ color: '#fff', fontWeight: '700', fontSize: '0.95rem', textDecoration: 'none' }}>1800 418 411</a>
+                            </div>
                         </div>
-                    </div>
-                </section>
-
-                {/* Mobile Info Context - Repositioned Below Map */}
-                <section className="mobile-contact-details d-md-none pt-60 pb-80" style={{ background: '#f8fafc' }}>
-                    <div className="container text-center">
-                        <div className="section-title mb-40">
-                            <span className="sub-title" style={{ color: 'var(--primary-cyan)', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.8rem' }}>Contact Info</span>
-                            <h2 className="title" style={{ fontSize: '1.8rem', fontWeight: '800', color: '#0f1437' }}>Let's Start a <br />Conversation</h2>
+                        <div className="contact-strip-item">
+                            <div style={{ width: '44px', height: '44px', background: 'rgba(0,204,255,0.1)', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--primary-cyan)', fontSize: '18px', flexShrink: 0 }}>
+                                <i className="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <span style={{ fontSize: '0.62rem', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '1px', color: 'rgba(255,255,255,0.4)', display: 'block' }}>Email</span>
+                                <a href="mailto:info@iconfacilitys.com.au" style={{ color: '#fff', fontWeight: '700', fontSize: '0.95rem', textDecoration: 'none' }}>info@iconfacilitys.com.au</a>
+                            </div>
                         </div>
-
-                        <div className="editorial-info-stack">
-                            {/* Phone Row */}
-                            <a href="tel:1800418411" className="editorial-info-row">
-                                <div className="editorial-icon-box">
-                                    <i className="fas fa-phone-alt" style={{ color: '#000 !important' }}></i>
-                                </div>
-                                <span className="editorial-value" style={{ color: '#000 !important' }}>1800 418 411</span>
-                            </a>
-
-                            {/* Email Row */}
-                            <a href="mailto:info@iconfacilitys.com.au" className="editorial-info-row">
-                                <div className="editorial-icon-box">
-                                    <i className="fas fa-envelope" style={{ color: '#000 !important' }}></i>
-                                </div>
-                                <span className="editorial-value" style={{ fontSize: '1.25rem', color: '#000 !important' }}>info@iconfacilitys.com.au</span>
-                            </a>
+                        <div className="contact-strip-item">
+                            <div style={{ width: '44px', height: '44px', background: 'rgba(37,211,102,0.1)', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#25D366', fontSize: '18px', flexShrink: 0 }}>
+                                <i className="fab fa-whatsapp"></i>
+                            </div>
+                            <div>
+                                <span style={{ fontSize: '0.62rem', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '1px', color: 'rgba(255,255,255,0.4)', display: 'block' }}>WhatsApp</span>
+                                <a href="https://wa.me/61483798622" target="_blank" rel="noopener noreferrer" style={{ color: '#fff', fontWeight: '700', fontSize: '0.95rem', textDecoration: 'none' }}>0483 798 622</a>
+                            </div>
                         </div>
-
-                        <div className="social-links mt-60 text-center">
-                            <h4 style={{ fontSize: '1.2rem', fontWeight: '700', marginBottom: '20px', color: '#0f1437' }}>Follow Our Impact</h4>
-                            <div className="d-flex gap-3 justify-content-center">
-                                {[
-                                    { icon: 'fab fa-facebook-f', color: '#1877F2', url: '#' },
-                                    { icon: 'fab fa-instagram', color: '#E4405F', url: '#' },
-                                    { icon: 'fab fa-linkedin-in', color: '#0A66C2', url: '#' },
-                                    { icon: 'fab fa-whatsapp', color: '#25D366', url: 'https://wa.me/61483798622' }
-                                ].map((social, idx) => (
-                                    <Link key={idx} href={social.url} target={social.url?.startsWith('http') ? '_blank' : '_self'} style={{ width: '50px', height: '50px', borderRadius: '12px', background: social.color, display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: '20px', transition: 'transform 0.3s' }}>
-                                        <i className={social.icon}></i>
-                                    </Link>
-                                ))}
+                        <div className="contact-strip-item">
+                            <div style={{ width: '44px', height: '44px', background: 'rgba(0,204,255,0.1)', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--primary-cyan)', fontSize: '18px', flexShrink: 0 }}>
+                                <i className="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <span style={{ fontSize: '0.62rem', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '1px', color: 'rgba(255,255,255,0.4)', display: 'block' }}>Office</span>
+                                <span style={{ color: '#fff', fontWeight: '700', fontSize: '0.95rem' }}>Lakemba NSW 2195</span>
                             </div>
                         </div>
                     </div>
-                </section>
-            </Layout>
-        </>
+                </div>
+            </section>
+
+            {/* Map */}
+            <section style={{ background: '#f8fafc', padding: '60px 0 80px' }}>
+                <div className="container">
+                    <span style={{ fontSize: '0.68rem', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '2px', color: 'var(--primary-cyan)', display: 'block', marginBottom: '8px' }}>Find Us</span>
+                    <h3 style={{ fontSize: '1.6rem', fontWeight: '900', color: '#0d1b33', letterSpacing: '-0.5px', marginBottom: '28px' }}>Our Location</h3>
+                    <div style={{ borderRadius: '20px', overflow: 'hidden', boxShadow: '0 10px 40px rgba(0,0,0,0.08)', border: '1px solid #e2e8f0', height: '420px' }}>
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3310.821422896584!2d151.0772422!3d-33.9197!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b12ba765275e3d7%3A0xf017d7dc2fd2f7b8!2s2%2F38%20Railway%20Parade%2C%20Lakemba%20NSW%202195%2C%20Australia!5e0!3m2!1sen!2sus!4v1712720000000!5m2!1sen!2sus"
+                            width="100%" height="100%" style={{ border: 0 }} allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+            </section>
+
+        </Layout>
     )
 }

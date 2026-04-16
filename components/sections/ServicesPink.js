@@ -89,9 +89,57 @@ export default function ServicesPink() {
         }
     ];
 
+    const slugMap = {
+        1: "workplace-cleaning",
+        2: "retail-care",
+        3: "industrial-cleaning",
+        4: "healthcare-hygiene",
+        5: "educational-cleaning",
+        6: "hospitality-cleaning",
+        7: "fitness-maintenance",
+        8: "residential-cleaning",
+        9: "event-preparation",
+        10: "exterior-parking",
+        11: "post-construction",
+        12: "luxury-display"
+    };
+
     return (
         <section id="services" className="Services-area pf-bg-light" style={{ padding: '60px 0', position: 'relative', overflow: 'hidden' }}>
             <style jsx>{`
+
+                /* ─── SECTION HEADER ─────────────────────────── */
+                .section-header {
+                    padding-left: max(5vw, 140px);
+                    margin-bottom: clamp(60px, 10vh, 140px);
+                    position: relative;
+                    z-index: 1;
+                }
+                .subtitle {
+                    display: inline-block;
+                    color: var(--primary-cyan);
+                    text-transform: uppercase;
+                    letter-spacing: 5px;
+                    font-weight: 800;
+                    font-size: 0.9rem;
+                    margin-bottom: 20px;
+                }
+                .main-title {
+                    font-size: var(--font-h2);
+                    font-weight: 900;
+                    color: #0a162b;
+                    line-height: 1.1;
+                    letter-spacing: -0.04em;
+                }
+                .header-desc {
+                    color: #64748b;
+                    line-height: 1.7;
+                    font-size: 1.05rem;
+                    margin-bottom: 0;
+                    max-width: 600px;
+                }
+
+                /* ─── DESKTOP: FROSTED-GLASS CARD GRID ──────── */
                 .service-grid {
                     display: grid;
                     grid-template-columns: repeat(3, 1fr);
@@ -104,30 +152,8 @@ export default function ServicesPink() {
                         gap: 30px;
                     }
                 }
-                @media (max-width: 768px) {
-                    .service-grid {
-                        display: flex !important;
-                        flex-wrap: nowrap !important;
-                        overflow-x: auto !important;
-                        gap: 20px !important;
-                        padding: 0 20px 30px !important;
-                        scroll-snap-type: x mandatory;
-                        -webkit-overflow-scrolling: touch;
-                        scrollbar-width: none; /* Hide scrollbar for clean look */
-                    }
-                    .service-grid::-webkit-scrollbar {
-                        display: none;
-                    }
-                    .service-grid > div {
-                        flex: 0 0 85% !important;
-                        scroll-snap-align: start;
-                    }
-                    .pf-service-card {
-                        height: 480px !important;
-                    }
-                }
                 .pf-service-card {
-                    height: clamp(500px, 55vh, 700px); // Fluid height scales with the screen
+                    height: clamp(500px, 55vh, 700px);
                     border-radius: 32px;
                     position: relative;
                     overflow: hidden;
@@ -157,21 +183,21 @@ export default function ServicesPink() {
                     bottom: 0;
                     left: 0;
                     width: 100%;
-                    height: 50%; 
-                    background: rgba(255, 255, 255, 0.86); 
-                    backdrop-filter: blur(80px); 
+                    height: 50%;
+                    background: rgba(255, 255, 255, 0.86);
+                    backdrop-filter: blur(80px);
                     -webkit-backdrop-filter: blur(80px);
                     border-top: 1px solid rgba(255, 255, 255, 0.5);
-                    padding: 60px 40px 40px; // Increased top padding to account for the floating icon
+                    padding: 60px 40px 40px;
                     display: flex;
                     flex-direction: column;
                     justify-content: flex-start;
                     transition: all 0.5s ease;
                     z-index: 1;
-                    overflow: visible; // Critical to prevent icon clipping
+                    overflow: visible;
                 }
                 .pf-service-card:hover .frosted-overlay {
-                    height: 62%; // Consistency with hover growth
+                    height: 62%;
                     background: rgba(255, 255, 255, 0.94);
                 }
                 .icon-circle {
@@ -190,7 +216,7 @@ export default function ServicesPink() {
                     color: var(--primary-cyan);
                     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
                     transition: all 0.4s ease;
-                    z-index: 5; // Ensure it sits on top of the border
+                    z-index: 5;
                 }
                 .pf-service-card:hover .icon-circle {
                     background: var(--primary-cyan);
@@ -205,25 +231,48 @@ export default function ServicesPink() {
                     letter-spacing: -0.01em;
                 }
                 .service-desc {
-                    color: #0a162b; // Darkened for absolute readability
+                    color: #0a162b;
                     line-height: 1.7;
                     font-size: 1.05rem;
                     margin-bottom: 0;
                     opacity: 0.9;
                 }
-                .section-header {
-                   padding-left: max(5vw, 140px);
-                   margin-bottom: clamp(60px, 10vh, 140px);
-                   position: relative;
-                   z-index: 1;
+                .glass-glow {
+                    position: absolute;
+                    top: 20px;
+                    right: 20px;
+                    width: 40px;
+                    height: 40px;
+                    background: rgba(255,255,255,0.4);
+                    backdrop-filter: blur(5px);
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: #fff;
+                    z-index: 2;
                 }
-                @media (max-width: 991px) {
-                    .section-header {
-                        padding-left: 20px !important;
-                        margin-bottom: 30px !important;
+
+                /* ─── MOBILE: EDITORIAL NARRATIVE LIST ───────── */
+                /* Hidden on desktop, shown only on mobile        */
+                .svc-editorial-list {
+                    display: none;
+                }
+
+                @media (max-width: 768px) {
+                    /* Hide desktop grid on mobile */
+                    .service-grid {
+                        display: none !important;
                     }
-                    #services {
-                        padding: 60px 0 !important;
+                    /* Show editorial list on mobile */
+                    .svc-editorial-list {
+                        display: block;
+                    }
+
+                    .section-header {
+                        padding-left: 24px !important;
+                        padding-right: 24px !important;
+                        margin-bottom: 40px !important;
                     }
                     .main-title {
                         font-size: var(--font-h2-mob) !important;
@@ -235,95 +284,113 @@ export default function ServicesPink() {
                         font-size: 0.75rem !important;
                         margin-bottom: 12px !important;
                     }
-                    .service-grid {
-                       padding-left: 0 !important;
+                    .header-desc {
+                        font-size: 0.9rem !important;
                     }
-                    .frosted-overlay, 
-                    .pf-service-card:hover .frosted-overlay {
-                        padding: 50px 25px 50px !important;
-                        background: rgba(0, 204, 255, 0.86) !important;
+
+                    /* Editorial item */
+                    .svc-ed-item {
+                        display: block;
+                        text-decoration: none;
+                        border-bottom: 1px solid #e8edf2;
+                        overflow: hidden;
                     }
-                    .service-title {
-                        font-size: var(--font-h3-mob) !important;
+                    .svc-ed-item:first-child {
+                        border-top: 1px solid #e8edf2;
                     }
-                    .service-desc {
-                        font-size: var(--font-p-mob) !important;
-                        line-height: 1.5 !important;
+
+                    /* Full-bleed image */
+                    .svc-ed-img {
+                        width: 100%;
+                        height: 240px;
+                        object-fit: cover;
+                        display: block;
+                        transition: transform 0.6s ease;
+                    }
+                    .svc-ed-item:active .svc-ed-img {
+                        transform: scale(1.03);
+                    }
+
+                    /* Text block below image */
+                    .svc-ed-body {
+                        padding: 22px 24px 26px;
+                        background: #fff;
+                    }
+                    .svc-ed-num {
+                        font-size: 0.65rem;
+                        font-weight: 900;
+                        letter-spacing: 2px;
+                        color: var(--primary-cyan);
+                        text-transform: uppercase;
+                        margin-bottom: 8px;
+                        display: block;
+                    }
+                    .svc-ed-title {
+                        font-size: 1.45rem;
+                        font-weight: 900;
+                        color: #0d1b33;
+                        letter-spacing: -0.5px;
+                        line-height: 1.15;
+                        margin-bottom: 10px;
+                    }
+                    .svc-ed-desc {
+                        font-size: 0.85rem;
+                        color: #64748b;
+                        line-height: 1.7;
+                        margin-bottom: 16px;
+                    }
+                    .svc-ed-link {
+                        display: inline-flex;
+                        align-items: center;
+                        gap: 6px;
+                        font-size: 0.78rem;
+                        font-weight: 800;
+                        color: var(--primary-cyan);
+                        text-transform: uppercase;
+                        letter-spacing: 1px;
+                    }
+                    .svc-ed-link i {
+                        font-size: 0.7rem;
+                        transition: transform 0.2s;
+                    }
+                    .svc-ed-item:active .svc-ed-link i {
+                        transform: translateX(4px);
                     }
                 }
-                .subtitle {
-                    display: inline-block;
-                    color: var(--primary-cyan);
-                    text-transform: uppercase;
-                    letter-spacing: 5px;
-                    font-weight: 800;
-                    font-size: 0.9rem;
-                    margin-bottom: 20px;
-                }
-                .main-title {
-                    font-size: var(--font-h2); 
-                    font-weight: 900;
-                    color: #0a162b;
-                    line-height: 1.1;
-                    letter-spacing: -0.04em;
-                }
-                .glass-glow {
-                   position: absolute;
-                   top: 20px;
-                   right: 20px;
-                   width: 40px;
-                   height: 40px;
-                   background: rgba(255,255,255,0.4);
-                   backdrop-filter: blur(5px);
-                   border-radius: 50%;
-                   display: flex;
-                   align-items: center;
-                   justify-content: center;
-                   color: #fff;
-                   z-index: 2;
+
+                @media (min-width: 769px) and (max-width: 991px) {
+                    .section-header {
+                        padding-left: 20px !important;
+                        margin-bottom: 40px !important;
+                    }
+                    .main-title {
+                        font-size: var(--font-h2-mob) !important;
+                    }
                 }
             `}</style>
 
-                <div className="section-header wow fadeInUp">
-                    <span className="subtitle">Premium Solutions</span>
-                    <h2 className="main-title">Excellence In Every Sector</h2>
-                    <p className="service-desc" style={{ maxWidth: '600px' }}>
-                        Specialized maintenance protocols for Australia's most demanding industries.
-                    </p>
-                </div>
+            {/* Section header */}
+            <div className="section-header wow fadeInUp">
+                <span className="subtitle">Premium Solutions</span>
+                <h2 className="main-title">Excellence In Every Sector</h2>
+                <p className="header-desc">
+                    Specialized maintenance protocols for Australia's most demanding industries.
+                </p>
+            </div>
 
+            {/* ── DESKTOP: frosted-glass card grid ── */}
             <div className="container-fluid" style={{ padding: '0', maxWidth: '100vw' }}>
                 <div className="service-grid" style={{ paddingLeft: 'max(5vw, 100px)' }}>
-                    {cleaningServices.map((service, index) => {
-                        // Generate slug based on title (or map it manually for precision)
-                        const slugMap = {
-                            1: "workplace-cleaning",
-                            2: "retail-care",
-                            3: "industrial-cleaning",
-                            4: "healthcare-hygiene",
-                            5: "educational-cleaning",
-                            6: "hospitality-cleaning",
-                            7: "fitness-maintenance",
-                            8: "residential-cleaning",
-                            9: "event-preparation",
-                            10: "exterior-parking",
-                            11: "post-construction",
-                            12: "luxury-display"
-                        };
+                    {cleaningServices.map((service) => {
                         const slug = slugMap[service.id];
-
                         return (
                             <div key={service.id}>
                                 <Link href={`/services/${slug}`}>
                                     <div className="pf-service-card" style={{ cursor: 'pointer' }}>
-                                        {/* Visible Image at full opacity */}
                                         <div className="card-bg" style={{ backgroundImage: `url(${service.bgImage})` }}></div>
-                                        
                                         <div className="glass-glow">
                                             <i className="fas fa-arrow-right" style={{ fontSize: '0.8rem' }}></i>
                                         </div>
-
-                                        {/* Transparent Glass Box Overlay */}
                                         <div className="frosted-overlay">
                                             <div className="icon-circle">
                                                 <i className={service.icon}></i>
@@ -338,6 +405,32 @@ export default function ServicesPink() {
                     })}
                 </div>
             </div>
+
+            {/* ── MOBILE: editorial narrative list ── */}
+            <div className="svc-editorial-list">
+                {cleaningServices.map((service, index) => {
+                    const slug = slugMap[service.id];
+                    const num = String(index + 1).padStart(2, '0');
+                    return (
+                        <Link href={`/services/${slug}`} key={service.id} className="svc-ed-item">
+                            <img
+                                src={service.bgImage}
+                                alt={service.title}
+                                className="svc-ed-img"
+                            />
+                            <div className="svc-ed-body">
+                                <span className="svc-ed-num">{num}</span>
+                                <h3 className="svc-ed-title">{service.title}</h3>
+                                <p className="svc-ed-desc">{service.description}</p>
+                                <span className="svc-ed-link">
+                                    View Service <i className="fas fa-arrow-right"></i>
+                                </span>
+                            </div>
+                        </Link>
+                    );
+                })}
+            </div>
+
         </section>
     );
 }

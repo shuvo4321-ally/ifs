@@ -3,133 +3,270 @@ import Link from 'next/link';
 
 export default function AboutPink() {
     return (
-        <section className="about-area pf-bg-light" style={{ padding: '60px 0' }}>
-            <div className="container">
-                <div className="row align-items-center">
-                    
-                    {/* Left: Desktop 2x2 Image Grid / Mobile Bento Mosaic */}
-                    <div className="col-lg-6">
-                        {/* Desktop View (Traditional Grid) */}
-                        <div className="pf-about-img-grid pr-lg-5 wow fadeInLeft d-none d-lg-grid" data-wow-delay=".2s">
-                            <div className="pf-about-img-wrap" style={{ height: '300px' }}>
-                                <img src="/assets/img/services/office_cleaning_premium.jpg" alt="Corporate Office Maintenance" />
-                            </div>
-                            <div className="pf-about-img-wrap" style={{ height: '260px', marginTop: '40px' }}>
-                                <img src="/assets/img/services/industrial_cleaning_premium.jpg" alt="Industrial Facility Care" />
-                            </div>
-                            <div className="pf-about-img-wrap" style={{ height: '260px', marginTop: '-20px' }}>
-                                <img src="/assets/img/services/retail_cleaning_premium.jpg" alt="Retail Environment Excellence" />
-                            </div>
-                            <div className="pf-about-img-wrap" style={{ height: '300px', marginTop: '20px' }}>
-                                <img src="/assets/img/services/about_collage_4.jpg" alt="Comprehensive Facility Support" />
-                            </div>
-                        </div>
+        <section className="about-area" style={{ background: '#fff', overflow: 'hidden' }}>
+            <style jsx>{`
 
-                        {/* Mobile View: High-End Compact Bento Mosaic */}
-                        <div className="d-lg-none mb-4" style={{ 
-                            display: 'grid', 
-                            gridTemplateColumns: '1fr 1fr', 
-                            gridAutoRows: '140px',
-                            gap: '12px',
-                            padding: '0 5px'
-                        }}>
-                            {/* Tall Feature */}
-                            <div style={{ gridRow: 'span 2', borderRadius: '20px', overflow: 'hidden', position: 'relative', boxShadow: '0 8px 25px rgba(0,0,0,0.1)' }}>
-                                <img src="/assets/img/services/office_cleaning_premium.jpg" style={{ width: '100%', height: '100%', objectFit: 'cover' }} alt="Office" />
-                                <div style={{ position: 'absolute', bottom: '10px', left: '10px', background: 'rgba(255,255,255,0.9)', padding: '4px 10px', borderRadius: '10px', fontSize: '0.65rem', fontWeight: '800', color: 'var(--primary-navy)', textTransform: 'uppercase' }}>Office</div>
-                            </div>
-                            {/* Retail/New */}
-                            <div style={{ borderRadius: '20px', overflow: 'hidden', position: 'relative', boxShadow: '0 8px 25px rgba(0,0,0,0.1)' }}>
-                                <img src="/assets/img/services/about_collage_4.jpg" style={{ width: '100%', height: '100%', objectFit: 'cover' }} alt="Retail" />
-                                <div style={{ position: 'absolute', bottom: '10px', left: '10px', background: 'rgba(255,255,255,0.9)', padding: '4px 10px', borderRadius: '10px', fontSize: '0.65rem', fontWeight: '800', color: 'var(--primary-navy)', textTransform: 'uppercase' }}>Support</div>
-                            </div>
-                            {/* Industry */}
-                            <div style={{ borderRadius: '20px', overflow: 'hidden', position: 'relative', boxShadow: '0 8px 25px rgba(0,0,0,0.1)' }}>
-                                <img src="/assets/img/services/industrial_cleaning_premium.jpg" style={{ width: '100%', height: '100%', objectFit: 'cover' }} alt="Industrial" />
-                                <div style={{ position: 'absolute', bottom: '10px', left: '10px', background: 'rgba(255,255,255,0.9)', padding: '4px 10px', borderRadius: '10px', fontSize: '0.65rem', fontWeight: '800', color: 'var(--primary-navy)', textTransform: 'uppercase' }}>Industry</div>
-                            </div>
+                /* ── Layout: full-viewport flex, no container ── */
+                .about-wrap {
+                    display: flex;
+                    align-items: stretch;
+                    min-height: 700px;
+                }
+
+                /* ── Left: image bleeds to viewport edge ──────── */
+                .about-img-zone {
+                    flex: 0 0 52%;
+                    position: relative;
+                    overflow: hidden;
+                }
+                .about-img-zone img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    display: block;
+                }
+                /* Subtle right-edge fade so image meets content naturally */
+                .about-img-zone::after {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    width: 120px;
+                    height: 100%;
+                    background: linear-gradient(to right, transparent, #fff);
+                    pointer-events: none;
+                }
+
+                /* ── Right: content zone ──────────────────────── */
+                .about-content-zone {
+                    flex: 1;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    padding: 90px max(40px, 7vw) 90px 48px;
+                }
+
+                /* Overline */
+                .about-eyebrow {
+                    font-size: 0.65rem;
+                    font-weight: 700;
+                    text-transform: uppercase;
+                    letter-spacing: 3px;
+                    color: #94a3b8;
+                    margin-bottom: 20px;
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                }
+                .about-eyebrow::before {
+                    content: '';
+                    display: block;
+                    width: 28px;
+                    height: 1.5px;
+                    background: var(--primary-cyan);
+                    flex-shrink: 0;
+                }
+
+                /* Headline */
+                .about-headline {
+                    font-size: clamp(2.4rem, 4vw, 3.6rem);
+                    font-weight: 900;
+                    color: #0d1b33;
+                    line-height: 1.07;
+                    letter-spacing: -2px;
+                    margin: 0 0 24px;
+                }
+                .about-headline-accent {
+                    color: var(--primary-cyan);
+                    font-style: italic;
+                }
+
+                /* Body */
+                .about-body {
+                    font-size: 1rem;
+                    color: #64748b;
+                    line-height: 1.85;
+                    margin: 0 0 44px;
+                    max-width: 440px;
+                }
+
+                /* Stats — pure typography, zero containers */
+                .about-stat-band {
+                    display: flex;
+                    gap: 40px;
+                    margin-bottom: 40px;
+                }
+                .about-stat-item {
+                    display: flex;
+                    flex-direction: column;
+                }
+                .about-stat-num {
+                    font-size: 3rem;
+                    font-weight: 900;
+                    color: #0d1b33;
+                    letter-spacing: -3px;
+                    line-height: 1;
+                }
+                .about-stat-label {
+                    font-size: 0.62rem;
+                    font-weight: 700;
+                    text-transform: uppercase;
+                    letter-spacing: 1.5px;
+                    color: #94a3b8;
+                    margin-top: 7px;
+                }
+
+                /* Horizontal rule between stats and trust marks */
+                .about-rule {
+                    width: 100%;
+                    height: 1px;
+                    background: #f1f5f9;
+                    margin: 0 0 32px;
+                }
+
+                /* Trust marks — dash style, no bullets/icons */
+                .about-trust-list {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 9px;
+                    margin-bottom: 40px;
+                }
+                .about-trust-item {
+                    font-size: 0.84rem;
+                    color: #475569;
+                    font-weight: 500;
+                    letter-spacing: 0.1px;
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                }
+                .about-trust-item::before {
+                    content: '—';
+                    color: var(--primary-cyan);
+                    font-weight: 400;
+                    flex-shrink: 0;
+                }
+
+                /* CTA */
+                .about-cta {
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 10px;
+                    font-size: 0.85rem;
+                    font-weight: 800;
+                    color: #0d1b33;
+                    text-decoration: none;
+                    text-transform: uppercase;
+                    letter-spacing: 1px;
+                    border-bottom: 1.5px solid #0d1b33;
+                    padding-bottom: 3px;
+                    transition: color 0.2s, border-color 0.2s;
+                    width: fit-content;
+                }
+                .about-cta:hover {
+                    color: var(--primary-cyan);
+                    border-color: var(--primary-cyan);
+                }
+                .about-cta i {
+                    font-size: 0.75rem;
+                    transition: transform 0.2s;
+                }
+                .about-cta:hover i {
+                    transform: translateX(4px);
+                }
+
+                /* ── Mobile ────────────────────────────────────── */
+                @media (max-width: 991px) {
+                    .about-wrap {
+                        flex-direction: column;
+                        min-height: auto;
+                    }
+                    .about-img-zone {
+                        flex: none;
+                        height: 300px;
+                        width: 100%;
+                    }
+                    .about-img-zone::after {
+                        display: none;
+                    }
+                    .about-content-zone {
+                        padding: 48px 24px 56px;
+                    }
+                    .about-headline {
+                        font-size: 2rem !important;
+                        letter-spacing: -1px !important;
+                    }
+                    .about-stat-num {
+                        font-size: 2.2rem !important;
+                        letter-spacing: -2px !important;
+                    }
+                    .about-stat-band {
+                        gap: 28px !important;
+                    }
+                    .about-body {
+                        margin-bottom: 32px !important;
+                    }
+                }
+            `}</style>
+
+            <div className="about-wrap">
+
+                {/* Left — full-bleed image, no rounded corners, no badge */}
+                <div className="about-img-zone wow fadeInLeft" data-wow-delay=".2s">
+                    <img
+                        src="/assets/img/services/office_cleaning_premium.jpg"
+                        alt="Icon Facility Services"
+                    />
+                </div>
+
+                {/* Right — editorial content */}
+                <div className="about-content-zone wow fadeInRight" data-wow-delay=".3s">
+
+                    <div className="about-eyebrow">
+                        Est. 2010 &middot; Sydney, Australia
+                    </div>
+
+                    <h2 className="about-headline">
+                        Complete Facility<br />
+                        Solutions For<br />
+                        <span className="about-headline-accent">Modern Business.</span>
+                    </h2>
+
+                    <p className="about-body">
+                        Icon Facility Services is your trusted partner in maintaining high-performance environments. From clinical sanitation to industrial maintenance — we protect your assets and keep your operations seamless.
+                    </p>
+
+                    {/* Stats — pure floating typography, zero boxes */}
+                    <div className="about-stat-band">
+                        <div className="about-stat-item">
+                            <span className="about-stat-num">500+</span>
+                            <span className="about-stat-label">Clients Served</span>
+                        </div>
+                        <div className="about-stat-item">
+                            <span className="about-stat-num">98%</span>
+                            <span className="about-stat-label">Retention Rate</span>
+                        </div>
+                        <div className="about-stat-item">
+                            <span className="about-stat-num">12+</span>
+                            <span className="about-stat-label">Industries</span>
                         </div>
                     </div>
 
-                    <div className="col-lg-6">
-                        <div className="about-content wow fadeInRight" data-wow-delay=".4s" style={{ paddingLeft: 'var(--about-text-pad, 40px)', paddingRight: 'var(--about-text-pad-right, 0px)' }}>
-                            <style jsx>{`
-                                .about-content {
-                                    --about-text-pad: 0 0 0 clamp(40px, 6vw, 100px);
-                                    --about-text-pad-right: 0;
-                                    --about-h2-size: var(--font-h2);
-                                    --about-accent-size: 1.8rem;
-                                    --about-p-size: var(--font-p);
-                                    --about-li-size: var(--font-body);
-                                    --about-btn-width: fit-content;
-                                }
-                                @media (max-width: 991px) {
-                                    .about-content {
-                                        --about-text-pad: 20px;
-                                        --about-text-pad-right: 20px;
-                                        --about-h2-size: var(--font-h2-mob);
-                                        --about-accent-size: 1.4rem;
-                                        --about-p-size: var(--font-p-mob);
-                                        --about-li-size: 0.85rem;
-                                        --about-btn-width: fit-content;
-                                        padding: 0 !important;
-                                    }
-                                    .about-area {
-                                        padding: 60px 0 !important;
-                                    }
-                                    .about-cta {
-                                        margin-top: 5px !important;
-                                        display: inline-flex !important;
-                                        align-items: center;
-                                        white-space: nowrap;
-                                    }
-                                    .pf-subtitle {
-                                        font-size: 0.8rem !important;
-                                        margin-bottom: 8px !important;
-                                    }
-                                }
-                            `}</style>
-                            <span className="pf-subtitle">Global Standards, Local Excellence</span>
-                            
-                            <h2 className="title" style={{ fontSize: 'var(--about-h2-size, 3rem)', fontWeight: '800', marginBottom: '20px', lineHeight: '1.2' }}>
-                                Complete Facility Solutions For <br />
-                                <span className="pf-accent" style={{ fontSize: 'var(--about-accent-size, 2.2rem)' }}>Modern Businesses</span>
-                            </h2>
-                            
-                            <p style={{ fontSize: 'var(--about-p-size, 1.1rem)', color: '#64748b', marginBottom: '30px', lineHeight: '1.7' }}>
-                                Icon Facility Services is your trusted partner in maintaining high-performance environments. We deliver integrated facility management—from clinical sanitation to industrial maintenance—ensuring your assets are protected and your operations run seamlessly.
-                            </p>
+                    <div className="about-rule"></div>
 
-                            <div className="row" style={{ marginBottom: '30px' }}>
-                                <div className="col-sm-6">
-                                    <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-                                        <li style={{ marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '10px', fontSize: 'var(--about-li-size, 1.05rem)', fontWeight: '500' }}>
-                                            <i className="fas fa-check-circle text-cyan" style={{ fontSize: '18px' }}></i> Integrated Maintenance
-                                        </li>
-                                        <li style={{ marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '10px', fontSize: 'var(--about-li-size, 1.05rem)', fontWeight: '500' }}>
-                                            <i className="fas fa-check-circle text-cyan" style={{ fontSize: '18px' }}></i> Specialized Sanitation
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div className="col-sm-6">
-                                    <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-                                        <li style={{ marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '10px', fontSize: 'var(--about-li-size, 1.05rem)', fontWeight: '500' }}>
-                                            <i className="fas fa-check-circle text-cyan" style={{ fontSize: '18px' }}></i> Scalable Solutions
-                                        </li>
-                                        <li style={{ marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '10px', fontSize: 'var(--about-li-size, 1.05rem)', fontWeight: '500' }}>
-                                            <i className="fas fa-check-circle text-cyan" style={{ fontSize: '18px' }}></i> Safety Compliance
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            
-                            <Link href="/about" className="pf-btn about-cta" style={{ padding: '10px 24px', fontSize: '0.9rem', width: 'var(--about-btn-width, auto)' }}>
-                                Discover More About Us <i className="fas fa-arrow-right"></i>
-                            </Link>
-                        </div>
+                    {/* Trust marks */}
+                    <div className="about-trust-list">
+                        <div className="about-trust-item">ISO 9001 Certified Quality Management</div>
+                        <div className="about-trust-item">Fully insured, police-checked staff on every job</div>
+                        <div className="about-trust-item">24/7 emergency response &amp; dedicated account managers</div>
                     </div>
+
+                    <Link href="/about" className="about-cta">
+                        Discover More <i className="fas fa-arrow-right"></i>
+                    </Link>
 
                 </div>
+
             </div>
         </section>
     );
