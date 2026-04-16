@@ -19,13 +19,19 @@ export default function AboutPink() {
                     position: relative;
                     overflow: hidden;
                 }
-                .about-img-zone img {
-                    width: 100%;
+                /* Shade effect: hide the far left with a gradient from white to align with global padding */
+                .about-img-zone::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: max(5vw, 140px);
                     height: 100%;
-                    object-fit: cover;
-                    display: block;
+                    background: linear-gradient(to right, #fff, transparent);
+                    z-index: 2;
+                    pointer-events: none;
                 }
-                /* Subtle right-edge fade so image meets content naturally */
+                /* Right edge shade for smooth transition to content */
                 .about-img-zone::after {
                     content: '';
                     position: absolute;
@@ -35,7 +41,15 @@ export default function AboutPink() {
                     height: 100%;
                     background: linear-gradient(to right, transparent, #fff);
                     pointer-events: none;
+                    z-index: 2;
                 }
+                .about-img-zone img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    display: block;
+                }
+
 
                 /* ── Right: content zone ──────────────────────── */
                 .about-content-zone {
@@ -143,7 +157,7 @@ export default function AboutPink() {
                 .about-trust-item::before {
                     content: '—';
                     color: var(--primary-cyan);
-                    font-weight: 400;
+                    font-weight: 700;
                     flex-shrink: 0;
                 }
 
