@@ -911,30 +911,29 @@ const ServiceDetail = () => {
                 .sd-pkg-desc { font-size: 0.88rem; color: #475569; line-height: 1.7; margin: 0; }
 
                 /* --- Sidebar --- */
-                .sd-sidebar { position: sticky; top: 120px; }
-                .sd-sidebar-cta { background: #0a0f1a; padding: 40px 32px; margin-bottom: 2px; }
-                .sd-sidebar-cta h3 { font-size: 1.15rem; font-weight: 800; color: #fff; margin: 0 0 12px; line-height: 1.3; }
-                .sd-sidebar-cta p { font-size: 0.82rem; color: #94a3b8; line-height: 1.6; margin: 0 0 28px; }
-                .sd-sidebar-phone { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 14px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); color: #fff; text-decoration: none; font-weight: 700; font-size: 0.95rem; margin-bottom: 10px; transition: background 0.2s ease; }
+                .sd-sidebar { position: sticky; top: 120px; display: flex; flex-direction: column; gap: 12px; }
+                .sd-sidebar-cta { background: #0a0f1a; padding: 36px 28px; }
+                .sd-sidebar-cta h3 { font-size: 1.1rem; font-weight: 800; color: #fff; margin: 0 0 10px; line-height: 1.3; }
+                .sd-sidebar-cta p { font-size: 0.8rem; color: #94a3b8; line-height: 1.6; margin: 0 0 24px; }
+                .sd-sidebar-phone { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 12px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); color: #fff; text-decoration: none; font-weight: 700; font-size: 0.92rem; margin-bottom: 8px; transition: background 0.2s ease; }
                 .sd-sidebar-phone:hover { background: rgba(255,255,255,0.12); }
                 .sd-sidebar-phone i { color: #0ea5e9; }
-                .sd-sidebar-quote { display: flex; align-items: center; justify-content: center; padding: 14px; background: #0ea5e9; color: #0a0f1a; text-decoration: none; font-weight: 800; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; transition: background 0.2s ease; }
+                .sd-sidebar-quote { display: flex; align-items: center; justify-content: center; padding: 12px; background: #0ea5e9; color: #0a0f1a; text-decoration: none; font-weight: 800; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.5px; transition: background 0.2s ease; }
                 .sd-sidebar-quote:hover { background: #38bdf8; }
-                .sd-sidebar-wa { text-align: center; padding: 16px; background: rgba(255,255,255,0.04); border-top: 1px solid rgba(255,255,255,0.08); }
-                .sd-sidebar-wa a { color: #25D366; text-decoration: none; font-size: 0.82rem; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; }
+                .sd-sidebar-wa { text-align: center; padding: 14px; background: rgba(255,255,255,0.03); border-top: 1px solid rgba(255,255,255,0.06); }
+                .sd-sidebar-wa a { color: #25D366; text-decoration: none; font-size: 0.8rem; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; }
 
-                .sd-sidebar-block { padding: 28px 32px; background: #ffffff; border: 1px solid #e2e8f0; border-top: none; }
-                .sd-sidebar-block:first-of-type { border-top: 1px solid #e2e8f0; }
-                .sd-sidebar-block h4 { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #64748b; margin: 0 0 20px; padding-bottom: 12px; border-bottom: 1px solid #f1f5f9; }
-                .sd-commit-item { display: flex; align-items: center; gap: 14px; padding: 10px 0; }
-                .sd-commit-dash { width: 16px; height: 2px; background: #0ea5e9; flex-shrink: 0; }
-                .sd-commit-text { font-size: 0.82rem; font-weight: 600; color: #1e293b; }
+                .sd-sidebar-block { padding: 24px 28px; background: #ffffff; border: 1px solid #e2e8f0; }
+                .sd-sidebar-block h4 { font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #94a3b8; margin: 0 0 16px; }
+                .sd-commit-item { display: flex; align-items: center; gap: 12px; padding: 7px 0; }
+                .sd-commit-dash { width: 14px; height: 2px; background: #0ea5e9; flex-shrink: 0; }
+                .sd-commit-text { font-size: 0.8rem; font-weight: 600; color: #1e293b; }
 
-                .sd-process-item { display: flex; gap: 16px; padding: 14px 0; border-bottom: 1px solid #f1f5f9; }
+                .sd-process-item { display: flex; gap: 14px; padding: 10px 0; border-bottom: 1px solid #f1f5f9; }
                 .sd-process-item:last-child { border-bottom: none; }
-                .sd-process-num { font-size: 0.65rem; font-weight: 800; color: #0ea5e9; min-width: 20px; padding-top: 2px; }
-                .sd-process-info h5 { font-size: 0.88rem; font-weight: 800; color: #0a0f1a; margin: 0 0 4px; }
-                .sd-process-info p { font-size: 0.78rem; color: #475569; line-height: 1.5; margin: 0; }
+                .sd-process-num { font-size: 0.6rem; font-weight: 800; color: #0ea5e9; min-width: 18px; padding-top: 2px; }
+                .sd-process-info h5 { font-size: 0.85rem; font-weight: 800; color: #0a0f1a; margin: 0 0 3px; }
+                .sd-process-info p { font-size: 0.75rem; color: #64748b; line-height: 1.5; margin: 0; }
 
                 /* --- Benefits (dark panel) --- */
                 .sd-benefits { padding: 120px 0; background: #0a0f1a; }
