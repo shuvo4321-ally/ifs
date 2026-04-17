@@ -6,7 +6,7 @@
     position: absolute;
     object-fit: cover;
     /* support for plugin https://github.com/bfred-it/object-fit-images */
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Inter', sans-serif;
     top: 0;
     left: 0;
     width: 100%;

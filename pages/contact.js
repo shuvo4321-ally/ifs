@@ -160,7 +160,7 @@ export default function Contact() {
 
                 /* ─── PICK YOUR PATH — Cards ─────────────────── */
                 .ct-paths-section {
-                    background: #f8fafb;
+                    background: #0d1b33;
                     padding: 0;
                     position: relative;
                 }
@@ -192,7 +192,7 @@ export default function Contact() {
                     transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
                 }
                 .ct-path-card:hover {
-                    box-shadow: 0 20px 48px rgba(10, 22, 43, 0.08);
+                    box-shadow: 0 20px 48px rgba(10, 22, 43, 0.15);
                     transform: translateY(-4px);
                     border-color: transparent;
                 }
@@ -262,8 +262,8 @@ export default function Contact() {
 
                 /* ─── FORM SECTION ────────────────────────────── */
                 .ct-form-section {
-                    background: #f8fafb;
-                    padding: 0 0 100px;
+                    background: #f0f4f8;
+                    padding: 60px 0 100px;
                 }
                 .ct-form-container {
                     max-width: 860px;
@@ -272,13 +272,14 @@ export default function Contact() {
                 }
                 .ct-form-card {
                     background: #ffffff;
-                    border: 1px solid #eef2f6;
+                    border: 1px solid #d1d5db;
                     padding: clamp(36px, 5vw, 64px);
+                    box-shadow: 0 4px 24px rgba(10, 22, 43, 0.06);
                 }
                 .ct-form-header {
                     margin-bottom: 40px;
                     padding-bottom: 32px;
-                    border-bottom: 1px solid #eef2f6;
+                    border-bottom: 2px solid #e2e8f0;
                 }
                 .ct-form-title {
                     font-size: clamp(1.6rem, 3vw, 2rem);
@@ -289,7 +290,7 @@ export default function Contact() {
                 }
                 .ct-form-subtitle {
                     font-size: 0.9rem;
-                    color: #94a3b8;
+                    color: #64748b;
                     margin: 0;
                     line-height: 1.6;
                 }
@@ -322,12 +323,12 @@ export default function Contact() {
                 .ct-form-input {
                     width: 100%;
                     background: #f8fafb;
-                    border: 1.5px solid #e2e8f0;
+                    border: 2px solid #cbd5e1;
                     padding: 14px 16px;
                     font-size: 0.92rem;
                     font-weight: 500;
                     color: #0d1b33;
-                    font-family: 'Poppins', sans-serif;
+                    font-family: 'Inter', sans-serif;
                     outline: none;
                     transition: all 0.2s ease;
                 }
@@ -337,7 +338,7 @@ export default function Contact() {
                     box-shadow: 0 0 0 3px rgba(58, 176, 255, 0.08);
                 }
                 .ct-form-input::placeholder {
-                    color: #b8c4d0;
+                    color: #94a3b8;
                 }
                 textarea.ct-form-input {
                     min-height: 120px;
@@ -351,12 +352,12 @@ export default function Contact() {
                 .ct-svc-trigger {
                     width: 100%;
                     background: #f8fafb;
-                    border: 1.5px solid #e2e8f0;
+                    border: 2px solid #cbd5e1;
                     padding: 14px 16px;
                     font-size: 0.92rem;
                     font-weight: 500;
                     color: #0d1b33;
-                    font-family: 'Poppins', sans-serif;
+                    font-family: 'Inter', sans-serif;
                     text-align: left;
                     cursor: pointer;
                     display: flex;
@@ -371,7 +372,7 @@ export default function Contact() {
                     box-shadow: 0 0 0 3px rgba(58, 176, 255, 0.08);
                 }
                 .ct-svc-trigger .placeholder {
-                    color: #b8c4d0;
+                    color: #94a3b8;
                 }
                 .ct-svc-trigger i {
                     font-size: 0.58rem;
@@ -472,7 +473,7 @@ export default function Contact() {
                     letter-spacing: 0.8px;
                     cursor: pointer;
                     transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-                    font-family: 'Poppins', sans-serif;
+                    font-family: 'Inter', sans-serif;
                 }
                 .ct-form-submit:hover {
                     background: var(--primary-cyan);
@@ -501,9 +502,7 @@ export default function Contact() {
 
                 /* ─── CONTACT INFO BAR ───────────────────────── */
                 .ct-info-bar {
-                    background: #ffffff;
-                    border-top: 1px solid #eef2f6;
-                    border-bottom: 1px solid #eef2f6;
+                    background: #0d1b33;
                     padding: 56px 0;
                 }
                 .ct-info-grid {
@@ -522,7 +521,7 @@ export default function Contact() {
                     transition: transform 0.2s ease;
                 }
                 .ct-info-item + .ct-info-item {
-                    border-left: 1px solid #eef2f6;
+                    border-left: 1px solid rgba(255,255,255,0.08);
                 }
                 .ct-info-item:hover {
                     transform: translateY(-2px);
@@ -535,12 +534,12 @@ export default function Contact() {
                     justify-content: center;
                     margin: 0 auto 14px;
                     font-size: 1rem;
-                    color: var(--primary-cyan);
-                    background: #f0f7ff;
+                    color: #0ea5e9;
+                    background: rgba(14,165,233,0.1);
                     transition: all 0.2s ease;
                 }
                 .ct-info-item:hover .ct-info-item-icon {
-                    background: var(--primary-cyan);
+                    background: #0ea5e9;
                     color: #ffffff;
                 }
                 .ct-info-item-label {
@@ -549,13 +548,13 @@ export default function Contact() {
                     font-weight: 700;
                     text-transform: uppercase;
                     letter-spacing: 1.5px;
-                    color: #94a3b8;
+                    color: rgba(255,255,255,0.4);
                     margin-bottom: 4px;
                 }
                 .ct-info-item-value {
                     font-size: 0.92rem;
                     font-weight: 700;
-                    color: #0d1b33;
+                    color: #ffffff;
                     display: block;
                 }
 
@@ -706,7 +705,7 @@ export default function Contact() {
                         border-left: none;
                     }
                     .ct-info-item:nth-child(even) {
-                        border-left: 1px solid #eef2f6;
+                        border-left: 1px solid rgba(255,255,255,0.08);
                     }
                     .ct-map-section {
                         flex-direction: column;
@@ -729,7 +728,7 @@ export default function Contact() {
                     }
                     .ct-info-item + .ct-info-item {
                         border-left: none;
-                        border-top: 1px solid #eef2f6;
+                        border-top: 1px solid rgba(255,255,255,0.08);
                         padding-top: 20px;
                     }
                 }
