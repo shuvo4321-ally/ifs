@@ -923,6 +923,16 @@ const ServiceDetail = () => {
                 .sd-sidebar-wa { text-align: center; padding: 14px; background: rgba(255,255,255,0.03); border-top: 1px solid rgba(255,255,255,0.06); }
                 .sd-sidebar-wa a { color: #25D366; text-decoration: none; font-size: 0.8rem; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; }
 
+                .sd-sidebar-form { display: flex; flex-direction: column; gap: 10px; margin-bottom: 0; }
+                .sd-sidebar-input { width: 100%; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); padding: 11px 14px; font-size: 0.85rem; font-weight: 500; color: #fff; font-family: 'Inter', sans-serif; outline: none; transition: all 0.2s ease; }
+                .sd-sidebar-input::placeholder { color: rgba(255,255,255,0.3); }
+                .sd-sidebar-input:focus { border-color: #0ea5e9; background: rgba(14,165,233,0.06); box-shadow: 0 0 0 2px rgba(14,165,233,0.1); }
+                .sd-sidebar-submit { width: 100%; padding: 12px; background: #0ea5e9; color: #0a0f1a; border: none; font-weight: 800; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.5px; cursor: pointer; font-family: 'Inter', sans-serif; transition: background 0.2s ease; display: flex; align-items: center; justify-content: center; margin-top: 2px; }
+                .sd-sidebar-submit:hover { background: #38bdf8; }
+                .sd-sidebar-or { display: flex; align-items: center; gap: 12px; margin: 16px 0 12px; }
+                .sd-sidebar-or::before, .sd-sidebar-or::after { content: ''; flex: 1; height: 1px; background: rgba(255,255,255,0.08); }
+                .sd-sidebar-or span { font-size: 0.68rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.25); white-space: nowrap; }
+
                 .sd-sidebar-block { padding: 24px 28px; background: #ffffff; border: 1px solid #e2e8f0; }
                 .sd-sidebar-block h4 { font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #94a3b8; margin: 0 0 16px; }
                 .sd-commit-item { display: flex; align-items: center; gap: 12px; padding: 7px 0; }
@@ -1061,16 +1071,27 @@ const ServiceDetail = () => {
                         <div>
                             <div className="sd-sidebar">
 
-                                {/* CTA */}
+                                {/* CTA with inline form */}
                                 <div className="sd-sidebar-cta">
                                     <h3>Get a quote for {service.title.toLowerCase()}.</h3>
                                     <p>Priority scheduling. Transparent pricing. No obligation.</p>
+                                    
+                                    <form onSubmit={handleFormSubmit} className="sd-sidebar-form">
+                                        <input type="text" name="Name" placeholder="Your name" required className="sd-sidebar-input" />
+                                        <input type="email" name="Email" placeholder="Email address" required className="sd-sidebar-input" />
+                                        <input type="text" name="Address" placeholder="Phone / Site address" className="sd-sidebar-input" />
+                                        <button type="submit" className="sd-sidebar-submit">
+                                            Request Free Quote <i className="fas fa-arrow-right" style={{ marginLeft: '8px' }}></i>
+                                        </button>
+                                    </form>
+
+                                    <div className="sd-sidebar-or">
+                                        <span>or contact us directly</span>
+                                    </div>
+
                                     <a href="tel:1800418411" className="sd-sidebar-phone">
                                         <i className="fas fa-phone-alt"></i> 1800 418 411
                                     </a>
-                                    <Link href="/contact" className="sd-sidebar-quote">
-                                        Request Free Quote <i className="fas fa-arrow-right" style={{ marginLeft: '8px' }}></i>
-                                    </Link>
                                     <div className="sd-sidebar-wa">
                                         <a href="https://wa.me/61483798622" target="_blank" rel="noopener noreferrer">
                                             <i className="fab fa-whatsapp" style={{ fontSize: '1.1rem' }}></i> WhatsApp us
