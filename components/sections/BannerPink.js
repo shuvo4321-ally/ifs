@@ -278,36 +278,7 @@ export default function BannerPink() {
                             zIndex: 2
                         }}></div>
                         
-                        {/* Top Right Decorative Dot Grid */}
-                        <div style={{ 
-                            position: 'absolute', 
-                            top: '120px', 
-                            right: '40px', 
-                            width: '180px', 
-                            height: '200px', 
-                            backgroundImage: 'radial-gradient(rgba(58, 176, 255, 0.4) 1px, transparent 1px)', 
-                            backgroundSize: '12px 12px', 
-                            opacity: 1,
-                            zIndex: 3
-                        }}></div>
 
-                        {/* Bottom Right Decorative Geometric Pattern */}
-                        <div style={{ 
-                            position: 'absolute', 
-                            bottom: '0', 
-                            right: '0', 
-                            width: '400px', 
-                            height: '400px', 
-                            background: 'radial-gradient(circle at bottom right, rgba(58, 176, 255, 0.15) 0%, transparent 70%)',
-                            zIndex: 3
-                        }}>
-                             <svg width="400" height="400" viewBox="0 0 400 400" style={{ position: 'absolute', bottom: 0, right: 0, opacity: 0.3 }}>
-                                <path d="M400,100 L300,400 M350,50 L200,400 M380,0 L100,400 M400,200 L350,400" stroke="var(--primary-cyan)" strokeWidth="0.5" fill="none" strokeDasharray="4 4" />
-                                <circle cx="380" cy="50" r="3" fill="var(--primary-cyan)" />
-                                <circle cx="320" cy="180" r="2" fill="var(--primary-cyan)" />
-                                <circle cx="250" cy="320" r="1.5" fill="var(--primary-cyan)" />
-                            </svg>
-                        </div>
 
                         {/* Immersive Dark Gradient Overlay - Sharpened to leave right side clear */}
                         <div style={{ 
@@ -328,10 +299,11 @@ export default function BannerPink() {
                                                 margin: '0 0 8px', 
                                                 display: 'inline-flex',
                                                 backgroundColor: 'rgba(255,255,255,0.05)',
-                                                border: '1px solid rgba(255,255,255,0.1)',
+                                                border: '1px solid rgba(255,255,255,0.08)',
+                                                borderLeft: '3px solid var(--primary-cyan)',
                                                 backdropFilter: 'blur(10px)',
                                                 padding: '8px 20px',
-                                                borderRadius: '50px',
+                                                borderRadius: '0',
                                                 color: '#fff',
                                                 fontSize: '0.9rem'
                                             }}>
@@ -368,9 +340,11 @@ export default function BannerPink() {
                                                 <div key={index} className="col-12 col-md-6 hero-feature-col">
                                                     <div style={{ display: 'flex', alignItems: 'flex-start', gap: '15px' }}>
                                                         <div style={{ 
-                                                            width: '45px', height: '45px', borderRadius: '50%', border: '1px solid var(--primary-cyan)', 
+                                                            width: '40px', height: '40px', borderRadius: '4px', 
+                                                            border: '1px solid rgba(58, 176, 255, 0.25)',
+                                                            background: 'rgba(58, 176, 255, 0.08)',
                                                             display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--primary-cyan)',
-                                                            flexShrink: 0
+                                                            flexShrink: 0, fontSize: '0.9rem'
                                                         }}>
                                                             <i className={feat.icon}></i>
                                                         </div>

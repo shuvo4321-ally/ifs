@@ -105,186 +105,219 @@ export default function ServicesPink() {
     };
 
     return (
-        <section id="services" className="Services-area pf-bg-light" style={{ padding: '60px 0', position: 'relative', overflow: 'hidden' }}>
+        <section id="services" className="Services-area pf-bg-light" style={{ padding: '100px 0', position: 'relative', overflow: 'hidden' }}>
             <style jsx>{`
 
-                /* ─── SECTION HEADER ─────────────────────────── */
-                .section-header {
+                /* ─── SECTION HEADER — editorial left-align ──── */
+                .svc-header {
                     padding-left: max(5vw, 140px);
-                    margin-bottom: clamp(60px, 10vh, 140px);
+                    padding-right: max(5vw, 140px);
+                    margin-bottom: clamp(50px, 8vh, 100px);
                     position: relative;
                     z-index: 1;
                 }
-                .subtitle {
-                    display: inline-block;
-                    color: var(--primary-cyan);
+                .svc-eyebrow {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    font-size: 0.65rem;
+                    font-weight: 700;
                     text-transform: uppercase;
-                    letter-spacing: 5px;
-                    font-weight: 800;
-                    font-size: 0.9rem;
+                    letter-spacing: 3px;
+                    color: #94a3b8;
                     margin-bottom: 20px;
                 }
-                .main-title {
+                .svc-eyebrow::before {
+                    content: '';
+                    display: block;
+                    width: 28px;
+                    height: 1.5px;
+                    background: var(--primary-cyan);
+                    flex-shrink: 0;
+                }
+                .svc-headline {
                     font-size: var(--font-h2);
                     font-weight: 900;
                     color: #0a162b;
-                    line-height: 1.1;
+                    line-height: 1.08;
                     letter-spacing: -0.04em;
+                    margin: 0 0 18px;
                 }
-                .header-desc {
+                .svc-tagline {
                     color: #64748b;
                     line-height: 1.7;
                     font-size: 1.05rem;
-                    margin-bottom: 0;
-                    max-width: 600px;
+                    margin: 0;
+                    max-width: 520px;
                 }
 
-                /* ─── DESKTOP: FROSTED-GLASS CARD GRID ──────── */
-                .service-grid {
+                /* ─── DESKTOP: DARK OVERLAY IMAGE CARDS ──────── */
+                .svc-grid {
                     display: grid;
                     grid-template-columns: repeat(3, 1fr);
-                    gap: 40px;
-                    padding: 0 5vw;
+                    gap: 20px;
+                    padding: 0 max(5vw, 100px);
                 }
-                @media (max-width: 1200px) {
-                    .service-grid {
+                @media (min-width: 769px) and (max-width: 1200px) {
+                    .svc-grid {
                         grid-template-columns: repeat(2, 1fr);
-                        gap: 30px;
+                        gap: 16px;
                     }
                 }
-                .pf-service-card {
-                    height: clamp(500px, 55vh, 700px);
-                    border-radius: 32px;
+
+                .svc-card-link {
+                    text-decoration: none;
+                    color: inherit;
+                    display: block;
+                }
+                .svc-card {
                     position: relative;
+                    height: clamp(380px, 44vh, 520px);
                     overflow: hidden;
-                    transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-                    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+                    border-radius: 4px;
+                    cursor: pointer;
                 }
-                .pf-service-card:hover {
-                    transform: translateY(-15px);
-                    box-shadow: 0 30px 60px rgba(10, 22, 43, 0.15);
-                }
-                .card-bg {
+                .svc-card-img {
                     position: absolute;
                     top: 0;
                     left: 0;
                     width: 100%;
                     height: 100%;
-                    background-size: cover;
-                    background-position: center;
-                    transition: all 0.8s ease;
-                    z-index: 0;
+                    object-fit: cover;
+                    transition: transform 0.7s cubic-bezier(0.25, 1, 0.5, 1);
                 }
-                .pf-service-card:hover .card-bg {
-                    transform: scale(1.1);
+                .svc-card:hover .svc-card-img {
+                    transform: scale(1.06);
                 }
-                .frosted-overlay {
+
+                /* Dark gradient from bottom — editorial photography style */
+                .svc-card-gradient {
                     position: absolute;
                     bottom: 0;
                     left: 0;
                     width: 100%;
-                    height: 50%;
-                    background: rgba(255, 255, 255, 0.86);
-                    backdrop-filter: blur(80px);
-                    -webkit-backdrop-filter: blur(80px);
-                    border-top: 1px solid rgba(255, 255, 255, 0.5);
-                    padding: 60px 40px 40px;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: flex-start;
-                    transition: all 0.5s ease;
+                    height: 75%;
+                    background: linear-gradient(
+                        to top,
+                        rgba(10, 22, 43, 0.94) 0%,
+                        rgba(10, 22, 43, 0.5) 45%,
+                        transparent 100%
+                    );
                     z-index: 1;
-                    overflow: visible;
+                    transition: all 0.5s ease;
+                    pointer-events: none;
                 }
-                .pf-service-card:hover .frosted-overlay {
-                    height: 62%;
-                    background: rgba(255, 255, 255, 0.94);
+                .svc-card:hover .svc-card-gradient {
+                    height: 85%;
                 }
-                .icon-circle {
+
+                /* Card content — positioned at bottom */
+                .svc-card-content {
                     position: absolute;
-                    top: 0;
-                    left: 40px;
-                    transform: translateY(-50%);
-                    width: 65px;
-                    height: 65px;
-                    background: #ffffff;
-                    border-radius: 50%;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    font-size: 24px;
-                    color: var(--primary-cyan);
-                    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-                    transition: all 0.4s ease;
-                    z-index: 5;
-                }
-                .pf-service-card:hover .icon-circle {
-                    background: var(--primary-cyan);
-                    color: #fff;
-                    transform: translateY(-50%) rotate(360deg) scale(1.1);
-                }
-                .service-title {
-                    font-size: 1.5rem;
-                    font-weight: 800;
-                    color: #0a162b;
-                    margin-bottom: 15px;
-                    letter-spacing: -0.01em;
-                }
-                .service-desc {
-                    color: #0a162b;
-                    line-height: 1.7;
-                    font-size: 1.05rem;
-                    margin-bottom: 0;
-                    opacity: 0.9;
-                }
-                .glass-glow {
-                    position: absolute;
-                    top: 20px;
-                    right: 20px;
-                    width: 40px;
-                    height: 40px;
-                    background: rgba(255,255,255,0.4);
-                    backdrop-filter: blur(5px);
-                    border-radius: 50%;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    color: #fff;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    padding: 32px;
                     z-index: 2;
+                }
+                .svc-card-num {
+                    display: block;
+                    font-size: 0.6rem;
+                    font-weight: 700;
+                    letter-spacing: 2px;
+                    color: var(--primary-cyan);
+                    margin-bottom: 14px;
+                    opacity: 0.8;
+                }
+                .svc-card-title {
+                    font-size: 1.3rem;
+                    font-weight: 800;
+                    color: #ffffff;
+                    margin: 0 0 0;
+                    letter-spacing: -0.02em;
+                    line-height: 1.25;
+                    transition: all 0.3s ease;
+                }
+                .svc-card:hover .svc-card-title {
+                    margin-bottom: 10px;
+                }
+                .svc-card-desc {
+                    font-size: 0.85rem;
+                    color: rgba(255, 255, 255, 0.6);
+                    line-height: 1.6;
+                    margin: 0;
+                    max-width: 92%;
+                    max-height: 0;
+                    opacity: 0;
+                    overflow: hidden;
+                    transition: all 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+                }
+                .svc-card:hover .svc-card-desc {
+                    max-height: 80px;
+                    opacity: 1;
+                }
+
+                /* Cyan accent line — slides in from left on hover */
+                .svc-card-accent {
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    width: 0;
+                    height: 3px;
+                    background: var(--primary-cyan);
+                    transition: width 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+                    z-index: 3;
+                }
+                .svc-card:hover .svc-card-accent {
+                    width: 100%;
+                }
+
+                /* Arrow indicator — fades in on hover */
+                .svc-card-arrow {
+                    position: absolute;
+                    top: 24px;
+                    right: 24px;
+                    z-index: 2;
+                    color: rgba(255, 255, 255, 0.4);
+                    font-size: 0.75rem;
+                    opacity: 0;
+                    transform: translateX(-8px);
+                    transition: all 0.4s ease;
+                }
+                .svc-card:hover .svc-card-arrow {
+                    opacity: 1;
+                    transform: translateX(0);
+                    color: var(--primary-cyan);
                 }
 
                 /* ─── MOBILE: EDITORIAL NARRATIVE LIST ───────── */
-                /* Hidden on desktop, shown only on mobile        */
                 .svc-editorial-list {
                     display: none;
                 }
 
                 @media (max-width: 768px) {
-                    /* Hide desktop grid on mobile */
-                    .service-grid {
+                    .svc-grid {
                         display: none !important;
                     }
-                    /* Show editorial list on mobile */
                     .svc-editorial-list {
                         display: block;
                     }
-
-                    .section-header {
+                    .svc-header {
                         padding-left: 24px !important;
                         padding-right: 24px !important;
                         margin-bottom: 40px !important;
                     }
-                    .main-title {
+                    .svc-headline {
                         font-size: var(--font-h2-mob) !important;
                         letter-spacing: -0.5px !important;
                         line-height: 1.15 !important;
                     }
-                    .subtitle {
+                    .svc-eyebrow {
                         letter-spacing: 2px !important;
-                        font-size: 0.75rem !important;
+                        font-size: 0.6rem !important;
                         margin-bottom: 12px !important;
                     }
-                    .header-desc {
+                    .svc-tagline {
                         font-size: 0.9rem !important;
                     }
 
@@ -298,8 +331,6 @@ export default function ServicesPink() {
                     .svc-ed-item:first-child {
                         border-top: 1px solid #e8edf2;
                     }
-
-                    /* Full-bleed image */
                     .svc-ed-img {
                         width: 100%;
                         height: 240px;
@@ -310,8 +341,6 @@ export default function ServicesPink() {
                     .svc-ed-item:active .svc-ed-img {
                         transform: scale(1.03);
                     }
-
-                    /* Text block below image */
                     .svc-ed-body {
                         padding: 22px 24px 26px;
                         background: #fff;
@@ -359,51 +388,56 @@ export default function ServicesPink() {
                 }
 
                 @media (min-width: 769px) and (max-width: 991px) {
-                    .section-header {
-                        padding-left: 20px !important;
+                    .svc-header {
+                        padding-left: 24px !important;
+                        padding-right: 24px !important;
                         margin-bottom: 40px !important;
                     }
-                    .main-title {
+                    .svc-headline {
                         font-size: var(--font-h2-mob) !important;
+                    }
+                    .svc-grid {
+                        padding: 0 24px !important;
                     }
                 }
             `}</style>
 
-            {/* Section header */}
-            <div className="section-header wow fadeInUp">
-                <span className="subtitle">Premium Solutions</span>
-                <h2 className="main-title">Excellence In Every Sector</h2>
-                <p className="header-desc">
+            {/* ── Section header — editorial left-aligned ── */}
+            <div className="svc-header wow fadeInUp">
+                <span className="svc-eyebrow">Premium Solutions</span>
+                <h2 className="svc-headline">Excellence In Every Sector</h2>
+                <p className="svc-tagline">
                     Specialized maintenance protocols for Australia's most demanding industries.
                 </p>
             </div>
 
-            {/* ── DESKTOP: frosted-glass card grid ── */}
-            <div className="container-fluid" style={{ padding: '0', maxWidth: '100vw' }}>
-                <div className="service-grid" style={{ paddingLeft: 'max(5vw, 100px)' }}>
-                    {cleaningServices.map((service) => {
-                        const slug = slugMap[service.id];
-                        return (
-                            <div key={service.id}>
-                                <Link href={`/services/${slug}`}>
-                                    <div className="pf-service-card" style={{ cursor: 'pointer' }}>
-                                        <div className="card-bg" style={{ backgroundImage: `url(${service.bgImage})` }}></div>
-                                        <div className="glass-glow">
-                                            <i className="fas fa-arrow-right" style={{ fontSize: '0.8rem' }}></i>
-                                        </div>
-                                        <div className="frosted-overlay">
-                                            <div className="icon-circle">
-                                                <i className={service.icon}></i>
-                                            </div>
-                                            <h3 className="service-title">{service.title}</h3>
-                                            <p className="service-desc">{service.description}</p>
-                                        </div>
-                                    </div>
-                                </Link>
+            {/* ── DESKTOP: dark overlay image cards ── */}
+            <div className="svc-grid">
+                {cleaningServices.map((service, index) => {
+                    const slug = slugMap[service.id];
+                    const num = String(index + 1).padStart(2, '0');
+                    return (
+                        <Link href={`/services/${slug}`} key={service.id} className="svc-card-link">
+                            <div className="svc-card">
+                                <img
+                                    src={service.bgImage}
+                                    alt={service.title}
+                                    className="svc-card-img"
+                                />
+                                <div className="svc-card-gradient" />
+                                <span className="svc-card-arrow">
+                                    <i className="fas fa-arrow-right" />
+                                </span>
+                                <div className="svc-card-content">
+                                    <span className="svc-card-num">{num}</span>
+                                    <h3 className="svc-card-title">{service.title}</h3>
+                                    <p className="svc-card-desc">{service.description}</p>
+                                </div>
+                                <div className="svc-card-accent" />
                             </div>
-                        );
-                    })}
-                </div>
+                        </Link>
+                    );
+                })}
             </div>
 
             {/* ── MOBILE: editorial narrative list ── */}
@@ -423,7 +457,7 @@ export default function ServicesPink() {
                                 <h3 className="svc-ed-title">{service.title}</h3>
                                 <p className="svc-ed-desc">{service.description}</p>
                                 <span className="svc-ed-link">
-                                    View Service <i className="fas fa-arrow-right"></i>
+                                    View Service <i className="fas fa-arrow-right" />
                                 </span>
                             </div>
                         </Link>
