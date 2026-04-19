@@ -86,7 +86,8 @@ export default function Breadcrumb({ breadcrumbTitle, breadcrumbSubtitle, breadc
                     @media (max-width: 991px) {
                         .pf-luxury-hero {
                             height: auto;
-                            padding: 180px 0 100px;
+                            min-height: auto !important;
+                            padding: 140px 0 70px;
                         }
                         .pf-hero-overlay {
                             background: linear-gradient(to bottom, rgba(13, 27, 51, 0.9) 0%, rgba(13, 27, 51, 0.85) 100%);
@@ -96,6 +97,28 @@ export default function Breadcrumb({ breadcrumbTitle, breadcrumbSubtitle, breadc
                         }
                         .pf-hero-desc {
                             font-size: 1rem;
+                        }
+                    }
+                    @media (max-width: 767px) {
+                        .pf-luxury-hero {
+                            padding: 110px 0 50px !important;
+                            min-height: auto !important;
+                        }
+                        .pf-hero-eyebrow {
+                            font-size: 0.6rem !important;
+                            letter-spacing: 3px !important;
+                            margin-bottom: 16px !important;
+                        }
+                        .pf-hero-title {
+                            font-size: 2rem !important;
+                            letter-spacing: -1px !important;
+                            margin-bottom: 18px !important;
+                            line-height: 1.1 !important;
+                        }
+                        .pf-hero-desc {
+                            font-size: 0.88rem !important;
+                            line-height: 1.65 !important;
+                            max-width: 100% !important;
                         }
                     }
                 `}</style>

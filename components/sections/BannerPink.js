@@ -1,384 +1,325 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Slider from 'react-slick';
 import Link from 'next/link';
 
-const NextArrow = (props) => {
-    const { className, style, onClick } = props;
-    return (
-        <button className="pf-slider-arrow pf-next-arrow" onClick={onClick}>
-            <i className="fas fa-chevron-right"></i>
-        </button>
-    );
-};
-
-const PrevArrow = (props) => {
-    const { className, style, onClick } = props;
-    return (
-        <button className="pf-slider-arrow pf-prev-arrow" onClick={onClick}>
-            <i className="fas fa-chevron-left"></i>
-        </button>
-    );
-};
-
 export default function BannerPink() {
+    const [currentSlide, setCurrentSlide] = useState(0);
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
+
     const settings = {
         autoplay: true,
-        autoplaySpeed: 6000,
+        autoplaySpeed: 7000,
         infinite: true,
-        speed: 1500, // Slightly slower transition for premium feel
+        speed: 1400,
         fade: true,
-        arrows: true, // Enable arrows
-        nextArrow: <NextArrow />,
-        prevArrow: <PrevArrow />,
+        arrows: false,
         dots: true,
-        pauseOnHover: true,
-        cssEase: 'cubic-bezier(0.25, 1, 0.5, 1)',
+        pauseOnHover: false,
+        beforeChange: (current, next) => setCurrentSlide(next),
+        customPaging: i => (
+            <div className={`hero-paging-dot ${i === currentSlide ? 'active' : ''}`}>
+               <div className="dot-progress-bg">
+                   <div className="dot-progress-fill"></div>
+               </div>
+               <span className="dot-number">0{i + 1}</span>
+            </div>
+        ),
+        appendDots: dots => (
+            <div className="hero-dots-wrapper">
+                <div className="container">
+                    <ul className="hero-dots-list"> {dots} </ul>
+                </div>
+            </div>
+        ),
     };
 
     const slides = [
         {
             id: 1,
             bgImage: "/assets/img/services/office_team.jpg",
-            badge: "Premium Commercial Cleaning",
-            heading1: "Elevate Your",
-            heading2: "Workspace Experience",
+            category: "Commercial Cleaning",
+            headline: "Elevate Your",
+            headlineHighlight: "Workspace.",
             desc: "Immaculate cleaning solutions tailored for modern enterprises. We deliver exceptional standards that reflect the true quality of your business.",
-            features: [
-                { icon: "fas fa-hand-sparkles", title: "Workplace<br/>Hygiene", desc: "Healthier environments for your team" },
-                { icon: "fas fa-clock", title: "Tailored<br/>Schedules", desc: "Non-disruptive after-hours service" },
-                { icon: "fas fa-clipboard-check", title: "Quality<br/>Guaranteed", desc: "Rigorous QA checks on every job" }
-            ]
+            features: ["Workplace Hygiene", "Tailored Schedules", "Guaranteed Quality"]
         },
         {
             id: 2,
             bgImage: "/assets/img/services/brick_washing.jpg",
-            badge: "Advanced Exterior Care",
-            heading1: "Restore Your",
-            heading2: "Property's Brilliance",
+            category: "Exterior Care",
+            headline: "Restore Your",
+            headlineHighlight: "Brilliance.",
             desc: "Industrial-grade pressure and soft washing. We instantly strip away years of grime, mould, and weathering from any commercial or residential surface.",
-            features: [
-                { icon: "fas fa-water", title: "Deep Grime<br/>Removal", desc: "Instant restoration capabilities" },
-                { icon: "fas fa-shield-alt", title: "Surface<br/>Protection", desc: "Damage-free pressure tuning" },
-                { icon: "fas fa-leaf", title: "Eco-Friendly<br/>Solvents", desc: "Completely safe for landscaping" }
-            ]
+            features: ["Deep Grime Removal", "Surface Protection", "Eco-Friendly Solvents"]
         },
         {
             id: 3,
             bgImage: "/assets/img/services/heavy_duty_maintenance.jpg",
-            badge: "Specialized Industrial Services",
-            heading1: "Heavy-Duty",
-            heading2: "Facility Maintenance",
+            category: "Facility Maintenance",
+            headline: "Heavy-Duty",
+            headlineHighlight: "Precision.",
             desc: "Unmatched safety and cleanliness for warehouses, factories, and industrial sites. Our certified teams handle the toughest environments with precision.",
-            features: [
-                { icon: "fas fa-cogs", title: "Specialized<br/>Equipment", desc: "Heavy degreasing & oil removal" },
-                { icon: "fas fa-hard-hat", title: "Safety &<br/>Compliance", desc: "Strict adherence to WHS standards" },
-                { icon: "fas fa-certificate", title: "Certified<br/>Operators", desc: "Trained for high-risk environments" }
-            ]
+            features: ["Specialized Equipment", "Safety & Compliance", "Certified Operators"]
         },
         {
             id: 4,
             bgImage: "/assets/img/services/pressure_washing_hero.jpg",
-            badge: "Pressure Washing",
-            heading1: "Powerful",
-            heading2: "Surface Restoration",
-            desc: "Remove years of dirt, grime, mould, and stains with our high-performance pressure washing services. Our expert team delivers deep, damage-free cleaning for all commercial and industrial surfaces.",
-            features: [
-                { icon: "fas fa-tools", title: "Specialized<br/>Equipment", desc: "Advanced high-pressure systems for deep cleaning" },
-                { icon: "fas fa-shield-alt", title: "Surface<br/>Protection", desc: "Precision-controlled pressure to prevent damage" },
-                { icon: "fas fa-user-check", title: "Certified<br/>Operators", desc: "Trained professionals for safe, effective results" },
-                { icon: "fas fa-clipboard-check", title: "Safety &<br/>Compliance", desc: "Strict adherence to industry standards" }
-            ]
+            category: "Pressure Washing",
+            headline: "Powerful",
+            headlineHighlight: "Restoration.",
+            desc: "Remove years of dirt, grime, mould, and stains with our high-performance pressure washing services. Deep, damage-free cleaning for all commercial surfaces.",
+            features: ["Advanced Systems", "Precision Control", "Industry Standards"]
         }
     ];
 
     return (
-        <section className="pf-hero-section" style={{ position: 'relative', width: '100vw', overflow: 'hidden', backgroundColor: '#0a162b' }}>
+        <section className={`premium-hero-wrapper ${mounted ? 'is-mounted' : ''}`}>
             <style jsx global>{`
-                .pf-hero-section {
+                .premium-hero-wrapper {
+                    position: relative;
                     width: 100%;
-                    max-width: 100vw;
+                    height: 100vh;
+                    min-height: 700px;
+                    background-color: var(--primary-navy, #0a162b);
+                    overflow: hidden;
+                }
+                
+                /* Custom Paging & Dots Layout */
+                .hero-dots-wrapper {
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    width: 100%;
+                    padding-bottom: 5vh;
+                    z-index: 20;
+                }
+                .hero-dots-list {
+                    display: flex;
+                    gap: 30px;
+                    list-style: none;
                     margin: 0;
                     padding: 0;
                 }
-                .pf-hero-slider {
-                    width: 100%;
-                }
-                .pf-hero-slider .slick-slide {
-                    width: 100vw !important; /* Force true 100% viewport width */
-                }
-                .pf-hero-slider .slick-slide > div {
+                .hero-dots-list li {
+                    width: auto;
                     height: auto;
-                    min-height: 600px;
-                    width: 100%;
+                    margin: 0;
                 }
-                @media (max-width: 767px) {
-                    .pf-hero-slider .slick-slide > div {
-                        min-height: 440px !important;
-                    }
-                }
-                
-                /* Dots */
-                .pf-hero-slider .slick-dots {
-                    bottom: 50px;
-                    z-index: 10;
-                }
-                .pf-hero-slider .slick-dots li {
-                    margin: 0 6px;
-                }
-                .pf-hero-slider .slick-dots li button:before {
-                    display: none;
-                }
-                .pf-hero-slider .slick-dots li button {
-                    width: 12px;
-                    height: 12px;
-                    border-radius: 50%;
-                    background: rgba(255, 255, 255, 0.4);
-                    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-                    padding: 0;
-                }
-                .pf-hero-slider .slick-dots li.slick-active button {
-                    width: 40px;
-                    border-radius: 10px;
-                    background: var(--primary-cyan);
-                    box-shadow: 0 0 15px rgba(58, 176, 255, 0.6);
-                }
-
-                @media (max-width: 767px) {
-                    .pf-hero-slider .slick-dots {
-                        bottom: 25px !important;
-                    }
-                }
-                
-                /* Arrows */
-                .pf-slider-arrow {
-                    position: absolute;
-                    top: 40%;
-                    transform: translateY(-50%);
-                    width: 65px;
-                    height: 65px;
-                    border-radius: 50%;
-                    background: rgba(255,255,255,0.05);
-                    border: 1px solid rgba(255,255,255,0.1);
-                    color: white;
-                    font-size: 24px;
-                    display: flex !important;
+                .hero-paging-dot {
+                    display: flex;
                     align-items: center;
-                    justify-content: center;
+                    gap: 12px;
                     cursor: pointer;
-                    opacity: 0;
-                    backdrop-filter: blur(10px);
-                    transition: all 0.4s ease;
-                    z-index: 10;
+                    opacity: 0.5;
+                    transition: opacity 0.4s ease;
                 }
-                .pf-hero-slider:hover .pf-slider-arrow {
+                .hero-paging-dot.active {
                     opacity: 1;
                 }
-                .pf-slider-arrow:hover {
-                    background: var(--primary-cyan);
-                    border-color: var(--primary-cyan);
-                    transform: translateY(-50%) scale(1.1);
-                    box-shadow: 0 0 20px rgba(58, 176, 255, 0.4);
-                }
-                .pf-prev-arrow {
-                    left: 40px;
-                }
-                .pf-next-arrow {
-                    right: 40px;
-                }
-
-                @media (max-width: 767px) {
-                    .pf-slider-arrow {
-                        display: none !important;
-                    }
-                    .text-start {
-                        padding-left: 20px !important;
-                        padding-right: 20px !important;
-                    }
-                    .hero-content-wrapper {
-                        padding-top: 15vh !important;
-                        padding-bottom: 70px !important; // Slightly more compact
-                        min-height: 440px;
-                        display: flex;
-                        flex-direction: column;
-                        justify-content: flex-end;
-                    }
-                    h1.title {
-                        font-size: var(--font-h1-mob) !important;
-                        margin-bottom: 12px !important;
-                        line-height: 1.15 !important;
-                    }
-                    h1.title span.pf-accent {
-                        font-size: 1.4rem !important;
-                    }
-                    p {
-                        font-size: var(--font-p-mob) !important;
-                        line-height: 1.5 !important;
-                        margin-bottom: 15px !important;
-                        max-width: 100% !important;
-                    }
-                    h2 {
-                        margin-bottom: 15px !important;
-                        font-size: 1.8rem !important;
-                        letter-spacing: -0.5px !important;
-                    }
-                    .pf-pill {
-                        margin-bottom: 10px !important;
-                        padding: 5px 12px !important;
-                        font-size: 0.75rem !important;
-                    }
-                    .hero-feature-col {
-                        display: none !important;
-                    }
-                    .hero-primary-cta {
-                        margin-top: 20px !important;
-                    }
-                    .hero-primary-cta a {
-                        padding: 12px 25px !important;
-                        font-size: 0.9rem !important;
-                        width: fit-content !important;
-                    }
-                }
-
-                .pf-accent {
-                    color: var(--primary-cyan) !important;
-                }
-                .pf-accent-bg {
-                    background-color: var(--primary-cyan) !important;
-                }
-
-                .hero-content-wrapper {
+                .dot-progress-bg {
+                    width: 40px;
+                    height: 2px;
+                    background: rgba(255,255,255,0.2);
                     position: relative;
-                    padding-top: clamp(160px, 18vh, 300px); // Fluid scaling for vertical presence
-                    padding-bottom: clamp(60px, 8vh, 120px);
-                    width: 100%;
-                    z-index: 5;
+                    overflow: hidden;
+                }
+                .dot-progress-fill {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    height: 100%;
+                    width: 0%;
+                    background: var(--primary-cyan, #00CCFF);
+                }
+                .hero-paging-dot.active .dot-progress-fill {
+                    animation: fillProgress 7s linear forwards;
+                }
+                @keyframes fillProgress {
+                    from { width: 0%; }
+                    to { width: 100%; }
+                }
+                .dot-number {
+                    color: white;
+                    font-family: 'DM Sans', sans-serif;
+                    font-size: 0.85rem;
+                    font-weight: 700;
+                    letter-spacing: 1px;
+                }
+
+                @media (max-width: 900px) {
+                    .hero-dots-list { gap: 15px; }
+                    .dot-progress-bg { width: 25px; }
+                    .dot-number { display: none; }
+                }
+
+                /* Slick Slider Overrides */
+                .premium-hero-slider, .slick-list, .slick-track, .slick-slide > div {
+                    height: 100%;
+                }
+                
+                /* Animations for Active Slide Text */
+                .slick-slide.slick-active .anim-fade-up {
+                    animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+                }
+                .slick-slide.slick-active .slide-bg {
+                    animation: kenBurns 10s ease-out forwards;
+                }
+                
+                @keyframes fadeUp {
+                    from {
+                        opacity: 0;
+                        transform: translateY(30px);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                }
+                
+                @keyframes kenBurns {
+                    from { transform: scale(1.05); }
+                    to { transform: scale(1); }
+                }
+
+                /* Premium Button Styling */
+                .btn-premium {
+                    display: inline-flex;
+                    align-items: center;
+                    background: transparent;
+                    color: #fff;
+                    font-family: 'DM Sans', sans-serif;
+                    font-weight: 600;
+                    font-size: 0.95rem;
+                    letter-spacing: 0.5px;
+                    padding: 16px 32px;
+                    border: 1px solid rgba(255,255,255,0.2);
+                    border-radius: 4px;
+                    text-decoration: none;
+                    transition: all 0.4s ease;
+                    position: relative;
+                    overflow: hidden;
+                    z-index: 1;
+                }
+                .btn-premium::before {
+                    content: '';
+                    position: absolute;
+                    top: 0; left: 0; right: 0; bottom: 0;
+                    background: var(--primary-cyan, #00CCFF);
+                    z-index: -1;
+                    transform: scaleX(0);
+                    transform-origin: right;
+                    transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+                }
+                .btn-premium:hover {
+                    border-color: var(--primary-cyan, #00CCFF);
+                    color: var(--primary-navy, #0a162b);
+                }
+                .btn-premium:hover::before {
+                    transform: scaleX(1);
+                    transform-origin: left;
+                }
+                .btn-premium i {
+                    margin-left: 10px;
+                    transition: transform 0.3s ease;
+                }
+                .btn-premium:hover i {
+                    transform: translateX(5px);
+                }
+
+                /* Minimal Features List */
+                .minimal-features {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 20px;
+                    list-style: none;
+                    padding: 0;
+                    margin: 40px 0;
+                }
+                .minimal-features li {
+                    color: rgba(255,255,255,0.7);
+                    font-family: 'DM Sans', sans-serif;
+                    font-size: 0.9rem;
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                }
+                .minimal-features li i {
+                    color: var(--primary-cyan, #00CCFF);
+                    font-size: 0.7rem;
                 }
             `}</style>
 
-            <Slider {...settings} className="pf-hero-slider">
-                {slides.map(slide => (
-                    <div key={slide.id} style={{ position: 'relative', height: '100%', width: '100vw' }}>
-                        <div style={{ 
-                            position: 'absolute', 
-                            top: 0, left: 0, 
-                            width: '100vw', height: '100%', 
-                            backgroundImage: `url(${slide.bgImage})`, 
-                            backgroundSize: 'cover', 
-                            backgroundPosition: 'center',
-                            opacity: 0.85, // Slightly reduced for better overall readability
-                            zIndex: 1
-                        }}></div>
-                        
-                        {/* Top-Down Gradient for Header Readability */}
-                        <div style={{ 
-                            position: 'absolute', 
-                            top: 0, left: 0, 
-                            width: '100vw', height: '25%', // Targets the header area
-                            background: 'linear-gradient(to bottom, rgba(10,22,43,0.85) 0%, rgba(10,22,43,0) 100%)',
-                            zIndex: 2
-                        }}></div>
-                        
+            <Slider {...settings} className="premium-hero-slider">
+                {slides.map((slide, index) => (
+                    <div key={slide.id} className="premium-slide">
+                        <div style={{ position: 'relative', height: '100vh', width: '100%', overflow: 'hidden' }}>
+                            
+                            {/* Background Image with Ken Burns */}
+                            <div className="slide-bg" style={{ 
+                                position: 'absolute', 
+                                top: 0, left: 0, 
+                                width: '100%', height: '100%', 
+                                backgroundImage: `url(${slide.bgImage})`, 
+                                backgroundSize: 'cover', 
+                                backgroundPosition: 'center',
+                                zIndex: 1,
+                                transform: 'scale(1.05)'
+                            }}></div>
+                            
+                            {/* Sophisticated Dark Gradient Overlay (Cinematic Shadow) */}
+                            <div style={{ 
+                                position: 'absolute', 
+                                top: 0, left: 0, 
+                                width: '100%', height: '100%', 
+                                background: 'linear-gradient(90deg, rgba(10,22,43,0.95) 0%, rgba(10,22,43,0.85) 25%, rgba(10,22,43,0.3) 65%, transparent 100%)',
+                                zIndex: 2 
+                            }}></div>
+                            <div style={{ 
+                                position: 'absolute', 
+                                top: 0, left: 0, 
+                                width: '100%', height: '100%', 
+                                background: 'linear-gradient(0deg, rgba(10,22,43,0.6) 0%, transparent 20%, transparent 80%, rgba(10,22,43,0.4) 100%)',
+                                zIndex: 2 
+                            }}></div>
+
+                            {/* Content Alignment */}
+                            <div className="container" style={{ position: 'relative', zIndex: 10, height: '100%', display: 'flex', alignItems: 'center' }}>
+                                <div style={{ maxWidth: '800px', paddingTop: '5vh' }}>
+                                    
+                                    {/* Massive Ultra-Premium Typography */}
+                                    <h1 className="anim-fade-up title" style={{ 
+                                        animationDelay: '0.3s', opacity: 0,
+                                        color: '#ffffff', 
+                                        fontSize: 'clamp(3rem, 6vw, 5.5rem)', 
+                                        lineHeight: '1.05', 
+                                        marginBottom: '25px',
+                                        textTransform: 'none'
+                                    }}>
+                                        {slide.headline} <br />
+                                        <span style={{ color: 'var(--primary-cyan, #00CCFF)', fontStyle: 'italic' }}>
+                                            {slide.headlineHighlight}
+                                        </span>
+                                    </h1>
+
+                                    {/* Sub-description paragraph */}
+                                    <p className="anim-fade-up" style={{ 
+                                        animationDelay: '0.5s', opacity: 0,
+                                        color: 'rgba(255,255,255,0.85)', 
+                                        fontSize: 'clamp(1rem, 1.2vw, 1.15rem)',
+                                        lineHeight: '1.7',
+                                        maxWidth: '600px',
+                                        margin: '0'
+                                    }}>
+                                        {slide.desc}
+                                    </p>
 
 
-                        {/* Immersive Dark Gradient Overlay - Sharpened to leave right side clear */}
-                        <div style={{ 
-                            position: 'absolute', 
-                            top: 0, left: 0, 
-                            width: '100vw', height: '100%', 
-                            background: 'linear-gradient(to right, rgba(10,22,43,1) 0%, rgba(10,22,43,0.95) 30%, rgba(10,22,43,0) 55%)', 
-                            zIndex: 2 
-                        }}></div>
-                        <div style={{ position: 'relative', width: '100vw', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', paddingTop: 'max(1vh, 20px)', paddingBottom: '20px' }}>
-                            <div className="hero-content-wrapper">
-                                <div className="text-start" style={{ paddingLeft: 'clamp(20px, 8vw, 140px)', paddingRight: '12vw' }}>
-                                <div className="row m-0">
-                                    <div className="col-lg-10 col-xl-9 p-0">
-                                        <div 
-                                            className="pf-pill" 
-                                            style={{ 
-                                                margin: '0 0 8px', 
-                                                display: 'inline-flex',
-                                                backgroundColor: 'rgba(255,255,255,0.05)',
-                                                border: '1px solid rgba(255,255,255,0.08)',
-                                                borderLeft: '3px solid var(--primary-cyan)',
-                                                backdropFilter: 'blur(10px)',
-                                                padding: '8px 20px',
-                                                borderRadius: '0',
-                                                color: '#fff',
-                                                fontSize: '0.9rem'
-                                            }}>
-                                            <i className="fas fa-gem" style={{ color: 'var(--primary-cyan)', marginRight: '10px' }}></i>
-                                            {slide.badge}
-                                        </div>
-                                        
-                                        <h1 
-                                            className="title" 
-                                            style={{ 
-                                                color: '#ffffff', 
-                                                fontSize: 'var(--font-h1)', 
-                                                fontWeight: '800', 
-                                                lineHeight: '1.15', 
-                                                marginBottom: '35px',
-                                            }}>
-                                            {slide.heading1} <br />
-                                            <span className="pf-accent" style={{ fontSize: '0.85em' }}>{slide.heading2}</span>
-                                        </h1>
-                                        
-                                        <p style={{ 
-                                            fontSize: 'var(--font-p)', 
-                                            color: '#e2e8f0', 
-                                            maxWidth: '750px', 
-                                            margin: '0 0 45px', 
-                                            lineHeight: '1.8',
-                                        }}>
-                                            {slide.desc}
-                                        </p>
-
-                                        {/* Features Row */}
-                                        <div className="row g-4 hero-feature-row" style={{ maxWidth: '850px', marginTop: '10px' }}>
-                                            {slide.features.map((feat, index) => (
-                                                <div key={index} className="col-12 col-md-6 hero-feature-col">
-                                                    <div style={{ display: 'flex', alignItems: 'flex-start', gap: '15px' }}>
-                                                        <div style={{ 
-                                                            width: '40px', height: '40px', borderRadius: '4px', 
-                                                            border: '1px solid rgba(58, 176, 255, 0.25)',
-                                                            background: 'rgba(58, 176, 255, 0.08)',
-                                                            display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--primary-cyan)',
-                                                            flexShrink: 0, fontSize: '0.9rem'
-                                                        }}>
-                                                            <i className={feat.icon}></i>
-                                                        </div>
-                                                        <div>
-                                                            <h5 style={{ color: '#fff', fontSize: '1rem', margin: '0 0 8px', fontWeight: '700' }} dangerouslySetInnerHTML={{ __html: feat.title }}></h5>
-                                                            <p style={{ color: '#a0aec0', fontSize: '0.85rem', lineHeight: '1.4', margin: 0 }}>{feat.desc}</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            ))}
-                                        </div>
-
-                                        {/* Primary CTA Row */}
-                                        <div className="hero-primary-cta" style={{ marginTop: '50px', display: 'flex', alignItems: 'center', gap: '30px' }}>
-                                            <Link href="/contact" className="pf-accent-bg" style={{ 
-                                                color: '#0a162b', 
-                                                textDecoration: 'none', 
-                                                padding: '16px 35px', 
-                                                borderRadius: '8px',
-                                                fontSize: '1rem',
-                                                fontWeight: '800',
-                                                display: 'flex',
-                                                alignItems: 'center',
-                                                gap: '12px',
-                                                transition: 'all 0.3s ease',
-                                                boxShadow: '0 10px 20px rgba(58, 176, 255, 0.3)'
-                                            }}>
-                                                Get a Quote <i className="fas fa-arrow-right"></i>
-                                            </Link>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
-                        </div>
                         </div>
                     </div>
                 ))}

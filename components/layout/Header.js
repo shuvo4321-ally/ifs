@@ -107,19 +107,36 @@ export default function Header({ headerCls, headerTop }) {
         display: none !important;
     }
     .mobile-menu .menu-box {
-        background-color: rgba(10, 22, 43, 0.7) !important;
-        backdrop-filter: blur(25px) saturate(180%);
-        -webkit-backdrop-filter: blur(25px) saturate(180%);
-        border-left: 1px solid rgba(255, 255, 255, 0.1) !important;
+        background-color: rgba(10, 22, 43, 0.85) !important;
+        backdrop-filter: blur(30px) saturate(200%);
+        -webkit-backdrop-filter: blur(30px) saturate(200%);
+        border-left: 1px solid rgba(255, 255, 255, 0.06) !important;
         z-index: 1001 !important;
         overflow-y: auto !important;
         overflow-x: hidden !important;
-        padding-bottom: 150px !important;
+        padding-bottom: 180px !important;
         width: 100% !important;
     }
     .mobile-menu {
         z-index: 1002 !important;
         padding-right: 0px !important;
+    }
+    /* Close button — refined */
+    .mobile-menu .close-btn {
+        position: absolute !important;
+        top: 20px !important;
+        right: 24px !important;
+        font-size: 20px !important;
+        width: 44px !important;
+        height: 44px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        background: rgba(255,255,255,0.05) !important;
+        border: 1px solid rgba(255,255,255,0.08) !important;
+        border-radius: 50% !important;
+        transition: all 0.3s ease !important;
+        z-index: 10 !important;
     }
     .mobile-menu .navigation {
         width: 100% !important;
@@ -127,25 +144,106 @@ export default function Header({ headerCls, headerTop }) {
     }
     .mobile-menu .navigation li a {
         color: white !important;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.04) !important;
         white-space: normal !important;
         overflow-wrap: break-word !important;
-        word-break: break-all !important; /* Forces it to break if really long */
+        word-break: break-all !important;
         line-height: 1.4 !important;
         display: block !important;
-        padding-right: 25px !important;
+        padding: 16px 24px 16px 24px !important;
+        font-size: 1rem !important;
+        font-weight: 600 !important;
+        letter-spacing: 0.2px !important;
+        transition: all 0.2s ease !important;
     }
     .mobile-menu .navigation li.active > a,
     .mobile-menu .navigation li a:hover {
         color: var(--primary-cyan) !important;
+        background: rgba(255,255,255,0.02) !important;
+    }
+    /* Sub-menu categories */
+    .mobile-menu .navigation .mobile-category {
+        font-size: 0.7rem !important;
+        padding: 16px 24px 6px !important;
+    }
+    .mobile-menu .navigation .sub-menu li a {
+        padding: 14px 24px 14px 28px !important;
+        font-size: 0.92rem !important;
+        font-weight: 500 !important;
+    }
+    /* Social links */
+    .mobile-menu .social-links {
+        padding: 24px !important;
+        border-top: 1px solid rgba(255,255,255,0.06) !important;
     }
     .mobile-menu .social-links li a {
-        background: rgba(255, 255, 255, 0.05) !important;
-        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        background: rgba(255, 255, 255, 0.04) !important;
+        border: 1px solid rgba(255, 255, 255, 0.08) !important;
         color: white !important;
+        width: 44px !important;
+        height: 44px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        border-radius: 50% !important;
+        transition: all 0.25s ease !important;
     }
     .mobile-menu .social-links li a:hover {
         background: var(--primary-cyan) !important;
+        color: #0a162b !important;
+        border-color: var(--primary-cyan) !important;
+    }
+    /* Mobile nav logo */
+    .mobile-menu .nav-logo {
+        padding: 28px 24px 20px !important;
+        border-bottom: 1px solid rgba(255,255,255,0.05) !important;
+        margin-bottom: 8px !important;
+    }
+    .mobile-menu .nav-logo img {
+        max-height: 40px !important;
+    }
+    .header-action {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        margin-left: auto;
+    }
+    .header-phone {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: white;
+        font-family: 'DM Sans', sans-serif;
+        font-weight: 600;
+        font-size: 0.95rem;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+    .header-phone i {
+        color: var(--primary-cyan, #00CCFF);
+        font-size: 0.9rem;
+    }
+    .header-phone:hover {
+        color: var(--primary-cyan, #00CCFF);
+    }
+    .header-quote-btn {
+        background-color: var(--primary-navy, #0a162b);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        color: #ffffff !important;
+        font-family: 'DM Sans', sans-serif;
+        font-weight: 700;
+        font-size: 0.93rem;
+        padding: 10px 24px;
+        border-radius: 4px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+    .header-quote-btn:hover {
+        background-color: var(--primary-cyan, #00CCFF);
+        border-color: var(--primary-cyan, #00CCFF);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 15px rgba(0, 204, 255, 0.3);
         color: #0a162b !important;
     }
 `}</style>
@@ -197,10 +295,15 @@ export default function Header({ headerCls, headerTop }) {
                                                      </ul>
                                                  </li>
                                                 <li><Link href="/pressure-washing">Pressure Washing</Link></li>
-                                                 <li>
-                                                     <Link href="/contact">Contact</Link>
-                                                 </li>
                                             </ul>
+                                        </div>
+                                        <div className="header-action d-none d-lg-flex align-items-center">
+                                            <a href="tel:1800418411" className="header-phone">
+                                                <i className="fas fa-phone-alt" /> 1800 418 411
+                                            </a>
+                                            <Link href="/contact" className="header-quote-btn">
+                                                Get Free Quote
+                                            </Link>
                                         </div>
                                     </nav>
                                 </div>

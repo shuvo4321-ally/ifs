@@ -197,8 +197,11 @@ export default function AboutPink() {
                     }
                     .about-img-zone {
                         flex: none;
-                        height: 300px;
+                        height: 350px;
                         width: 100%;
+                    }
+                    .about-img-zone::before {
+                        display: none;
                     }
                     .about-img-zone::after {
                         display: none;
@@ -219,6 +222,106 @@ export default function AboutPink() {
                     }
                     .about-body {
                         margin-bottom: 32px !important;
+                        max-width: 100% !important;
+                    }
+                }
+                
+                /* ── Premium mobile-only enhancements ────────── */
+                @media (max-width: 767px) {
+                    .about-area {
+                        background: #0a162b !important;
+                    }
+                    .about-img-zone {
+                        height: 300px !important;
+                        position: relative !important;
+                    }
+                    /* Gradient transition from image to dark content */
+                    .about-img-zone::after {
+                        display: block !important;
+                        width: 100% !important;
+                        height: 120px !important;
+                        right: auto !important;
+                        left: 0 !important;
+                        bottom: 0 !important;
+                        top: auto !important;
+                        background: linear-gradient(to top, #0a162b, transparent) !important;
+                    }
+                    .about-content-zone {
+                        padding: 32px 24px 56px !important;
+                        background: #0a162b !important;
+                    }
+                    .about-eyebrow {
+                        color: rgba(255,255,255,0.4) !important;
+                    }
+                    .about-eyebrow::before {
+                        background: var(--primary-cyan) !important;
+                    }
+                    .about-headline {
+                        color: #ffffff !important;
+                        font-size: 1.85rem !important;
+                        letter-spacing: -0.8px !important;
+                        margin-bottom: 18px !important;
+                    }
+                    .about-headline-accent {
+                        color: var(--primary-cyan) !important;
+                    }
+                    .about-body {
+                        color: rgba(255,255,255,0.6) !important;
+                        font-size: 0.92rem !important;
+                        line-height: 1.7 !important;
+                        margin-bottom: 28px !important;
+                    }
+                    /* Stats row — dark theme */
+                    .about-stat-band {
+                        gap: 0 !important;
+                        margin-bottom: 32px !important;
+                        justify-content: space-between !important;
+                    }
+                    .about-stat-item {
+                        text-align: center;
+                        flex: 1;
+                        border-right: 1px solid rgba(255,255,255,0.08);
+                    }
+                    .about-stat-item:last-child {
+                        border-right: none;
+                    }
+                    .about-stat-num {
+                        color: #ffffff !important;
+                        font-size: 2rem !important;
+                    }
+                    .about-stat-label {
+                        color: rgba(255,255,255,0.35) !important;
+                        font-size: 0.58rem !important;
+                    }
+                    .about-rule {
+                        background: rgba(255,255,255,0.08) !important;
+                        margin-bottom: 24px !important;
+                    }
+                    .about-trust-list {
+                        margin-bottom: 32px !important;
+                        gap: 8px !important;
+                    }
+                    .about-trust-item {
+                        color: rgba(255,255,255,0.55) !important;
+                        font-size: 0.82rem !important;
+                    }
+                    .about-trust-item::before {
+                        color: var(--primary-cyan) !important;
+                    }
+                    .about-cta {
+                        color: #0a162b !important;
+                        background: var(--primary-cyan) !important;
+                        border: none !important;
+                        border-bottom: none !important;
+                        padding: 14px 28px !important;
+                        border-radius: 6px !important;
+                        width: 100% !important;
+                        justify-content: center !important;
+                        font-size: 0.82rem !important;
+                        letter-spacing: 1.5px !important;
+                    }
+                    .about-cta:hover {
+                        color: #0a162b !important;
                     }
                 }
             `}</style>
