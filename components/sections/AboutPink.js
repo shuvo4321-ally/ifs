@@ -239,6 +239,7 @@ export default function AboutPink() {
                 @media (max-width: 767px) {
                     .about-area {
                         background: #0a162b !important;
+                        overflow-x: hidden !important;
                     }
                     .about-img-zone {
                         height: 300px !important;

@@ -42,6 +42,11 @@ export default function Header({ headerCls, headerTop }) {
         background-color: rgba(10, 22, 43, 0.98) !important;
         box-shadow: 0 4px 20px rgba(0,0,0,0.1);
     }
+    html, body {
+        overflow-x: hidden !important;
+        position: relative;
+        width: 100%;
+    }
     .menu-area:not(.sticky-menu) {
         background-color: transparent !important;
     }

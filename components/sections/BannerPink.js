@@ -179,9 +179,11 @@ export default function BannerPink() {
                     .premium-hero-wrapper .container {
                         padding-top: 0 !important;
                         padding-bottom: 0 !important;
-                        padding-left: 22px !important;
-                        padding-right: 22px !important;
+                        padding-left: 18px !important;
+                        padding-right: 18px !important;
                         text-align: left !important;
+                        max-width: 100vw !important;
+                        overflow-x: hidden !important;
                     }
                     .premium-hero-wrapper .container > div {
                         margin: 0 !important;
@@ -329,14 +331,14 @@ export default function BannerPink() {
                                 position: 'absolute',
                                 top: 0, left: 0,
                                 width: '100%', height: '100%',
-                                background: 'linear-gradient(90deg, rgba(10,22,43,0.95) 0%, rgba(10,22,43,0.85) 25%, rgba(10,22,43,0.3) 65%, transparent 100%)',
+                                background: 'linear-gradient(90deg, rgba(10,22,43,0.95) 0%, rgba(10,22,43,0.7) 35%, rgba(10,22,43,0.1) 75%, transparent 100%)',
                                 zIndex: 2
                             }}></div>
                             <div style={{
                                 position: 'absolute',
                                 top: 0, left: 0,
                                 width: '100%', height: '100%',
-                                background: 'linear-gradient(0deg, rgba(10,22,43,0.6) 0%, transparent 20%, transparent 80%, rgba(10,22,43,0.4) 100%)',
+                                background: 'linear-gradient(0deg, rgba(10,22,43,0.4) 0%, transparent 25%, transparent 75%, rgba(10,22,43,0.3) 100%)',
                                 zIndex: 2
                             }}></div>
 
