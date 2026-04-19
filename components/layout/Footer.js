@@ -248,7 +248,6 @@ export default function Footer1() {
                 {/* ── Top signoff band ────────────────────────── */}
                 <div className="ifs-foot__signoff">
                     <div>
-                        <div className="ifs-foot__eyebrow">Let&apos;s talk / 05</div>
                         <h2 className="ifs-foot__title">
                             Ready to upgrade your<br/>cleaning contract? <em>Let&apos;s start.</em>
                         </h2>
@@ -334,17 +333,6 @@ export default function Footer1() {
                     </div>
                 </div>
             </footer>
-
-            {/* Floating WhatsApp — restrained, no pulsing cyan glow */}
-            <a
-                href="https://wa.me/61483798622"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="ifs-float"
-                aria-label="Chat on WhatsApp"
-            >
-                <i className="fab fa-whatsapp" />
-            </a>
         </>
     )
 }

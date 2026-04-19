@@ -227,29 +227,14 @@ export default function Faq1() {
                     }
                 }
 
-                /* ─── Premium mobile-only enhancements ────── */
+                /* ─── Mobile layout values (White Theme Inherited) ────── */
                 @media (max-width: 767px) {
                     .faq-editorial {
-                        background: #0a162b !important;
                         padding: 70px 0 !important;
                     }
-                    .faq-eyebrow {
-                        color: rgba(255,255,255,0.4) !important;
-                    }
-                    .faq-eyebrow::before {
-                        background: var(--primary-cyan) !important;
-                    }
                     .faq-headline {
-                        color: #ffffff !important;
                         font-size: 1.75rem !important;
                         margin-bottom: 32px !important;
-                    }
-                    /* Accordion — dark theme */
-                    .faq-item {
-                        border-color: rgba(255,255,255,0.06) !important;
-                    }
-                    .faq-item:first-child {
-                        border-top-color: rgba(255,255,255,0.06) !important;
                     }
                     .faq-question-btn {
                         padding: 22px 0 !important;
@@ -258,42 +243,28 @@ export default function Faq1() {
                         padding-left: 0 !important;
                     }
                     .faq-q-text {
-                        color: rgba(255,255,255,0.85) !important;
                         font-size: 0.95rem !important;
                         line-height: 1.35 !important;
                     }
-                    .faq-q-text.active {
-                        color: var(--primary-cyan) !important;
-                    }
-                    .faq-toggle-icon {
-                        color: rgba(255,255,255,0.3) !important;
-                    }
-                    .faq-toggle-icon.active {
-                        color: var(--primary-cyan) !important;
-                    }
                     .faq-answer-inner p {
-                        color: rgba(255,255,255,0.5) !important;
                         font-size: 0.88rem !important;
                         line-height: 1.7 !important;
                     }
-                    /* CTA sidebar — dark card */
                     .faq-aside {
-                        background: rgba(255,255,255,0.03) !important;
-                        border-left: 3px solid var(--primary-cyan) !important;
                         padding: 36px 28px !important;
+                        background: #f8fafc !important; /* Keep it light like desktop */
                     }
                     .faq-aside-title {
-                        color: #ffffff !important;
                         font-size: 1.15rem !important;
                     }
                     .faq-aside-desc {
-                        color: rgba(255,255,255,0.5) !important;
                         font-size: 0.85rem !important;
                         margin-bottom: 24px !important;
                     }
+                    /* Convert solid mobile button back to light-theme friendly or keep it */
                     .faq-aside-cta {
-                        color: #0a162b !important;
-                        background: var(--primary-cyan) !important;
+                        color: #ffffff !important;
+                        background: var(--primary-navy, #0a162b) !important;
                         border: none !important;
                         border-bottom: none !important;
                         padding: 14px 24px !important;
@@ -305,6 +276,7 @@ export default function Faq1() {
                         display: flex !important;
                     }
                     .faq-aside-cta:hover {
+                        background: var(--primary-cyan) !important;
                         color: #0a162b !important;
                     }
                 }
@@ -312,7 +284,6 @@ export default function Faq1() {
 
             <div className="faq-wrap-ed">
                 {/* ── Editorial header ── */}
-                <div className="faq-eyebrow wow fadeInUp">Expert Knowledge</div>
                 <h2 className="faq-headline wow fadeInUp">Frequently Asked<br/>Questions</h2>
 
                 {/* ── Two-column layout ── */}
