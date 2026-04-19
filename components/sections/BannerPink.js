@@ -12,13 +12,15 @@ export default function BannerPink() {
 
     const settings = {
         autoplay: true,
-        autoplaySpeed: 7000,
+        autoplaySpeed: 1500, // Very fast 1.5s auto-scroll as requested
         infinite: true,
-        speed: 1400,
+        speed: 600, // Adjust transition speed so it completes well within the 1.5s window
         fade: true,
         arrows: false,
         dots: true,
         pauseOnHover: false,
+        pauseOnFocus: false, // Prevents mobile touch from permanently stopping the slider
+        swipeToSlide: true,
         beforeChange: (current, next) => setCurrentSlide(next),
         customPaging: i => (
             <div className={`hero-paging-dot ${i === currentSlide ? 'active' : ''}`}>
@@ -136,7 +138,7 @@ export default function BannerPink() {
                     background: var(--primary-cyan, #00CCFF);
                 }
                 .hero-paging-dot.active .dot-progress-fill {
-                    animation: fillProgress 7s linear forwards;
+                    animation: fillProgress 1.5s linear forwards;
                 }
                 @keyframes fillProgress {
                     from { width: 0%; }
