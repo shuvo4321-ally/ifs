@@ -22,10 +22,10 @@ export default function BannerPink() {
         beforeChange: (current, next) => setCurrentSlide(next),
         customPaging: i => (
             <div className={`hero-paging-dot ${i === currentSlide ? 'active' : ''}`}>
-               <div className="dot-progress-bg">
-                   <div className="dot-progress-fill"></div>
-               </div>
-               <span className="dot-number">0{i + 1}</span>
+                <div className="dot-progress-bg">
+                    <div className="dot-progress-fill"></div>
+                </div>
+                <span className="dot-number">0{i + 1}</span>
             </div>
         ),
         appendDots: dots => (
@@ -257,45 +257,45 @@ export default function BannerPink() {
                 {slides.map((slide, index) => (
                     <div key={slide.id} className="premium-slide">
                         <div style={{ position: 'relative', height: '100vh', width: '100%', overflow: 'hidden' }}>
-                            
+
                             {/* Background Image with Ken Burns */}
-                            <div className="slide-bg" style={{ 
-                                position: 'absolute', 
-                                top: 0, left: 0, 
-                                width: '100%', height: '100%', 
-                                backgroundImage: `url(${slide.bgImage})`, 
-                                backgroundSize: 'cover', 
+                            <div className="slide-bg" style={{
+                                position: 'absolute',
+                                top: 0, left: 0,
+                                width: '100%', height: '100%',
+                                backgroundImage: `url(${slide.bgImage})`,
+                                backgroundSize: 'cover',
                                 backgroundPosition: 'center',
                                 zIndex: 1,
                                 transform: 'scale(1.05)'
                             }}></div>
-                            
+
                             {/* Sophisticated Dark Gradient Overlay (Cinematic Shadow) */}
-                            <div style={{ 
-                                position: 'absolute', 
-                                top: 0, left: 0, 
-                                width: '100%', height: '100%', 
+                            <div style={{
+                                position: 'absolute',
+                                top: 0, left: 0,
+                                width: '100%', height: '100%',
                                 background: 'linear-gradient(90deg, rgba(10,22,43,0.95) 0%, rgba(10,22,43,0.85) 25%, rgba(10,22,43,0.3) 65%, transparent 100%)',
-                                zIndex: 2 
+                                zIndex: 2
                             }}></div>
-                            <div style={{ 
-                                position: 'absolute', 
-                                top: 0, left: 0, 
-                                width: '100%', height: '100%', 
+                            <div style={{
+                                position: 'absolute',
+                                top: 0, left: 0,
+                                width: '100%', height: '100%',
                                 background: 'linear-gradient(0deg, rgba(10,22,43,0.6) 0%, transparent 20%, transparent 80%, rgba(10,22,43,0.4) 100%)',
-                                zIndex: 2 
+                                zIndex: 2
                             }}></div>
 
                             {/* Content Alignment */}
                             <div className="container" style={{ position: 'relative', zIndex: 10, height: '100%', display: 'flex', alignItems: 'center' }}>
                                 <div style={{ maxWidth: '800px', paddingTop: '5vh' }}>
-                                    
+
                                     {/* Massive Ultra-Premium Typography */}
-                                    <h1 className="anim-fade-up title" style={{ 
+                                    <h1 className="anim-fade-up title" style={{
                                         animationDelay: '0.3s', opacity: 0,
-                                        color: '#ffffff', 
-                                        fontSize: 'clamp(3rem, 6vw, 5.5rem)', 
-                                        lineHeight: '1.05', 
+                                        color: '#ffffff',
+                                        fontSize: 'clamp(3rem, 6vw, 5.5rem)',
+                                        lineHeight: '1.05',
                                         marginBottom: '25px',
                                         textTransform: 'none'
                                     }}>
@@ -305,14 +305,17 @@ export default function BannerPink() {
                                         </span>
                                     </h1>
 
-                                    {/* Sub-description paragraph */}
-                                    <p className="anim-fade-up" style={{ 
+                                    {/* Sub-description paragraph with Gradient Mask fade */}
+                                    <p className="anim-fade-up" style={{
                                         animationDelay: '0.5s', opacity: 0,
-                                        color: 'rgba(255,255,255,0.85)', 
-                                        fontSize: 'clamp(1rem, 1.2vw, 1.15rem)',
+                                        color: 'rgba(255,255,255,0.85)',
+                                        fontSize: 'clamp(1.05rem, 1.2vw, 1.2rem)',
                                         lineHeight: '1.7',
-                                        maxWidth: '600px',
-                                        margin: '0'
+                                        maxWidth: '650px',
+                                        margin: '0',
+                                        fontWeight: '400',
+                                        WebkitMaskImage: 'linear-gradient(to right, rgba(0,0,0,1) 40%, rgba(0,0,0,0.05) 100%)',
+                                        maskImage: 'linear-gradient(to right, rgba(0,0,0,1) 40%, rgba(0,0,0,0.05) 100%)'
                                     }}>
                                         {slide.desc}
                                     </p>

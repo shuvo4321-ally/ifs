@@ -75,9 +75,27 @@ export default function Header({ headerCls, headerTop }) {
         border-radius: 20px !important;
         padding: 20px 0 !important;
         box-shadow: 0 20px 50px rgba(0,0,0,0.5) !important;
-        overflow: hidden;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        max-height: 75vh !important;
         min-width: 300px !important;
         width: max-content !important;
+    }
+    
+    /* Custom Scrollbar for Dropdown to maintain premium look */
+    .sub-menu::-webkit-scrollbar {
+        width: 8px;
+    }
+    .sub-menu::-webkit-scrollbar-track {
+        background: transparent;
+        margin: 15px 0; /* Keeps scrollbar away from rounded edges */
+    }
+    .sub-menu::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.15);
+        border-radius: 10px;
+    }
+    .sub-menu::-webkit-scrollbar-thumb:hover {
+        background: rgba(0, 204, 255, 0.5); /* Primary cyan */
     }
     .sub-menu li {
         white-space: nowrap;
@@ -116,6 +134,7 @@ export default function Header({ headerCls, headerTop }) {
         overflow-x: hidden !important;
         padding-bottom: 180px !important;
         width: 100% !important;
+        height: 100vh !important;
     }
     .mobile-menu {
         z-index: 1002 !important;
@@ -200,7 +219,11 @@ export default function Header({ headerCls, headerTop }) {
         margin-bottom: 8px !important;
     }
     .mobile-menu .nav-logo img {
-        max-height: 40px !important;
+        width: auto !important;
+        height: auto !important;
+        max-height: 45px !important;
+        max-width: 200px !important;
+        object-fit: contain !important;
     }
     .header-action {
         display: flex;
@@ -227,9 +250,9 @@ export default function Header({ headerCls, headerTop }) {
         color: var(--primary-cyan, #00CCFF);
     }
     .header-quote-btn {
-        background-color: var(--primary-navy, #0a162b);
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        color: #ffffff !important;
+        background-color: var(--primary-cyan, #00CCFF);
+        border: 1px solid var(--primary-cyan, #00CCFF);
+        color: #0a162b !important;
         font-family: 'DM Sans', sans-serif;
         font-weight: 700;
         font-size: 0.93rem;
@@ -237,13 +260,13 @@ export default function Header({ headerCls, headerTop }) {
         border-radius: 4px;
         text-decoration: none;
         transition: all 0.3s ease;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 4px 10px rgba(0, 204, 255, 0.2);
     }
     .header-quote-btn:hover {
-        background-color: var(--primary-cyan, #00CCFF);
-        border-color: var(--primary-cyan, #00CCFF);
+        background-color: #ffffff;
+        border-color: #ffffff;
         transform: translateY(-2px);
-        box-shadow: 0 6px 15px rgba(0, 204, 255, 0.3);
+        box-shadow: 0 6px 15px rgba(255, 255, 255, 0.3);
         color: #0a162b !important;
     }
 `}</style>

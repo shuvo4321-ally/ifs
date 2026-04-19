@@ -6,9 +6,10 @@ export default function Footer1() {
             <footer className="ifs-foot">
                 <style jsx>{`
                     .ifs-foot {
-                        background: var(--ink);
+                        background: #0a162b;
                         color: #fff;
                         padding: clamp(80px, 12vh, 120px) 0 0;
+                        font-family: 'DM Sans', sans-serif;
                     }
 
                     /* ── Top band: big editorial signoff ──────────── */
@@ -19,12 +20,13 @@ export default function Footer1() {
                         gap: clamp(32px, 6vw, 80px);
                         align-items: end;
                         padding-bottom: clamp(60px, 10vh, 100px);
-                        border-bottom: 1px solid var(--hairline-2);
+                        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
                     }
                     .ifs-foot__eyebrow {
-                        font-family: var(--font-mono);
+                        font-family: 'Inter', sans-serif;
                         font-size: 0.72rem;
                         color: rgba(255,255,255,0.55);
+                        letter-spacing: 2px;
                         display: flex;
                         align-items: center;
                         gap: 12px;
@@ -33,10 +35,10 @@ export default function Footer1() {
                     .ifs-foot__eyebrow::before {
                         content: '';
                         width: 22px; height: 1px;
-                        background: var(--water);
+                        background: var(--primary-cyan, #00CCFF);
                     }
                     .ifs-foot__title {
-                        font-family: var(--font-display);
+                        font-family: 'DM Sans', sans-serif;
                         font-size: clamp(2.4rem, 5.5vw, 5rem);
                         font-weight: 700;
                         color: #fff;
@@ -46,29 +48,29 @@ export default function Footer1() {
                     }
                     .ifs-foot__title em {
                         font-style: normal;
-                        color: var(--water);
+                        color: var(--primary-cyan, #00CCFF);
                     }
                     .ifs-foot__cta {
                         display: inline-flex;
                         align-items: center;
                         gap: 14px;
                         padding: 18px 28px;
-                        background: var(--signal);
-                        color: #fff !important;
+                        background: var(--primary-cyan, #00CCFF);
+                        color: #0a162b !important;
                         text-decoration: none;
                         font-weight: 700;
                         font-size: 0.9375rem;
-                        border-radius: 2px;
-                        transition: background 0.25s var(--ease), transform 0.25s var(--ease);
+                        border-radius: 4px;
+                        transition: background 0.25s ease, transform 0.25s ease;
                         white-space: nowrap;
                         margin-top: 24px;
                     }
                     .ifs-foot__cta:hover {
-                        background: var(--signal-2);
-                        color: #fff !important;
-                        transform: translateY(-1px);
+                        background: #ffffff;
+                        color: #0a162b !important;
+                        transform: translateY(-2px);
                     }
-                    .ifs-foot__cta svg { transition: transform 0.3s var(--ease); }
+                    .ifs-foot__cta svg { transition: transform 0.3s ease; }
                     .ifs-foot__cta:hover svg { transform: translateX(4px); }
 
                     /* ── Main nav columns ─────────────────────────── */
@@ -77,18 +79,17 @@ export default function Footer1() {
                         display: grid;
                         grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
                         gap: clamp(32px, 5vw, 72px);
-                        border-bottom: 1px solid var(--hairline-2);
+                        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
                     }
 
                     .ifs-foot__col-title {
-                        font-family: var(--font-mono);
-                        font-size: 0.7rem;
-                        color: rgba(255,255,255,0.4);
-                        letter-spacing: 0.08em;
-                        text-transform: uppercase;
+                        font-family: 'DM Sans', sans-serif;
+                        font-size: 1.1rem;
+                        color: #ffffff;
+                        font-weight: 700;
                         margin: 0 0 22px;
                         padding-bottom: 16px;
-                        border-bottom: 1px solid var(--hairline-2);
+                        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
                     }
 
                     .ifs-foot__brand-desc {
@@ -99,12 +100,12 @@ export default function Footer1() {
                         max-width: 320px;
                     }
                     .ifs-foot__brand-meta {
-                        font-family: var(--font-mono);
+                        font-family: 'Inter', sans-serif;
                         font-size: 0.72rem;
                         color: rgba(255,255,255,0.4);
                         line-height: 1.6;
                         padding-top: 20px;
-                        border-top: 1px solid var(--hairline-2);
+                        border-top: 1px solid rgba(255, 255, 255, 0.08);
                         margin-top: 8px;
                     }
 
@@ -117,13 +118,13 @@ export default function Footer1() {
                         color: rgba(255,255,255,0.7);
                         text-decoration: none;
                         padding: 8px 0;
-                        transition: color 0.2s var(--ease), padding-left 0.25s var(--ease);
+                        transition: color 0.2s ease, transform 0.25s ease;
                         line-height: 1.5;
                         display: block;
                     }
                     .ifs-foot__link:hover {
-                        color: var(--water);
-                        padding-left: 6px;
+                        color: var(--primary-cyan, #00CCFF);
+                        transform: translateX(4px);
                     }
 
                     /* Contact column */
@@ -132,14 +133,14 @@ export default function Footer1() {
                         grid-template-columns: 80px minmax(0, 1fr);
                         gap: 14px;
                         padding: 14px 0;
-                        border-bottom: 1px solid var(--hairline-2);
-                        align-items: baseline;
+                        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+                        align-items: center;
                     }
                     .ifs-foot__contact-row:first-of-type { padding-top: 0; }
                     .ifs-foot__contact-row:last-of-type { border-bottom: none; }
                     .ifs-foot__contact-label {
-                        font-family: var(--font-mono);
-                        font-size: 0.68rem;
+                        font-family: 'Inter', sans-serif;
+                        font-size: 0.75rem;
                         color: rgba(255,255,255,0.4);
                         letter-spacing: 0.05em;
                         text-transform: uppercase;
@@ -149,9 +150,10 @@ export default function Footer1() {
                         color: #fff;
                         text-decoration: none;
                         line-height: 1.5;
-                        transition: color 0.2s var(--ease);
+                        font-weight: 500;
+                        transition: color 0.2s ease;
                     }
-                    .ifs-foot__contact-val:hover { color: var(--water); }
+                    .ifs-foot__contact-val:hover { color: var(--primary-cyan, #00CCFF); }
 
                     /* ── Bottom bar ───────────────────────────────── */
                     .ifs-foot__bottom {
@@ -160,9 +162,10 @@ export default function Footer1() {
                         justify-content: space-between;
                         align-items: center;
                         gap: 20px;
-                        font-family: var(--font-mono);
-                        font-size: 0.7rem;
+                        font-family: 'Inter', sans-serif;
+                        font-size: 0.75rem;
                         color: rgba(255,255,255,0.4);
+                        border-top: 1px solid rgba(255, 255, 255, 0.08);
                     }
                     .ifs-foot__bottom-links {
                         display: flex;
@@ -183,18 +186,19 @@ export default function Footer1() {
                         z-index: 998;
                         width: 52px;
                         height: 52px;
-                        background: var(--ink-2);
-                        border: 1px solid var(--hairline-2);
-                        border-radius: 2px;
+                        background: #0d1b33;
+                        border: 1px solid rgba(255, 255, 255, 0.08);
+                        border-radius: 50%;
                         display: flex;
                         align-items: center;
                         justify-content: center;
                         text-decoration: none;
-                        transition: background 0.25s var(--ease), border-color 0.25s var(--ease);
+                        transition: all 0.3s ease;
                     }
                     .ifs-float:hover {
-                        background: var(--signal);
-                        border-color: var(--signal);
+                        background: #25D366;
+                        border-color: #25D366;
+                        transform: translateY(-4px);
                     }
                     .ifs-float i {
                         font-size: 1.15rem;

@@ -136,12 +136,13 @@ export default function ServicesPink() {
                     flex-shrink: 0;
                 }
                 .svc-headline {
-                    font-size: var(--font-h2);
+                    font-size: clamp(3.5rem, 6vw, 5.5rem);
                     font-weight: 900;
                     color: #0a162b;
-                    line-height: 1.08;
+                    line-height: 1.05;
                     letter-spacing: -0.04em;
                     margin: 0 0 18px;
+                    text-transform: none;
                 }
                 .svc-tagline {
                     color: #64748b;
@@ -308,9 +309,8 @@ export default function ServicesPink() {
                         margin-bottom: 40px !important;
                     }
                     .svc-headline {
-                        font-size: var(--font-h2-mob) !important;
                         letter-spacing: -0.5px !important;
-                        line-height: 1.15 !important;
+                        line-height: 1.05 !important;
                     }
                     .svc-eyebrow {
                         letter-spacing: 2px !important;
@@ -404,7 +404,6 @@ export default function ServicesPink() {
 
             {/* ── Section header — editorial left-aligned ── */}
             <div className="svc-header wow fadeInUp">
-                <span className="svc-eyebrow">Premium Solutions</span>
                 <h2 className="svc-headline">Excellence In Every Sector</h2>
                 <p className="svc-tagline">
                     Specialized maintenance protocols for Australia's most demanding industries.

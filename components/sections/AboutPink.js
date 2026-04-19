@@ -138,54 +138,63 @@ export default function AboutPink() {
                     margin: 0 0 32px;
                 }
 
-                /* Trust marks — dash style, no bullets/icons */
+                /* Trust marks — icon style */
                 .about-trust-list {
                     display: flex;
                     flex-direction: column;
-                    gap: 9px;
+                    gap: 16px;
                     margin-bottom: 40px;
                 }
                 .about-trust-item {
-                    font-size: 0.84rem;
+                    font-size: 0.88rem;
                     color: #475569;
-                    font-weight: 500;
+                    font-weight: 600;
                     letter-spacing: 0.1px;
                     display: flex;
                     align-items: center;
-                    gap: 10px;
+                    gap: 14px;
+                    line-height: 1.4;
                 }
-                .about-trust-item::before {
-                    content: '—';
-                    color: var(--primary-cyan);
-                    font-weight: 700;
+                .about-trust-item img {
+                    width: 34px;
+                    height: 34px;
+                    object-fit: contain;
                     flex-shrink: 0;
+                    border-radius: 6px;
                 }
 
-                /* CTA */
-                .about-cta {
+                /* CTA Button - Dark Navy Style matching Header BG */
+                :global(.about-cta) {
                     display: inline-flex;
                     align-items: center;
-                    gap: 10px;
-                    font-size: 0.85rem;
-                    font-weight: 800;
-                    color: #0d1b33;
-                    text-decoration: none;
-                    text-transform: uppercase;
-                    letter-spacing: 1px;
-                    border-bottom: 1.5px solid #0d1b33;
-                    padding-bottom: 3px;
-                    transition: color 0.2s, border-color 0.2s;
+                    gap: 12px;
+                    background-color: #0a162b !important;
+                    border: 1px solid #0a162b !important;
+                    color: #ffffff !important;
+                    font-family: 'DM Sans', sans-serif !important;
+                    font-size: 0.93rem !important;
+                    font-weight: 700 !important;
+                    letter-spacing: 0.5px !important;
+                    padding: 14px 32px !important;
+                    border-radius: 4px !important;
+                    text-decoration: none !important;
+                    transition: all 0.3s ease !important;
+                    box-shadow: 0 4px 15px rgba(10, 22, 43, 0.2) !important;
                     width: fit-content;
+                    margin-top: 10px;
                 }
-                .about-cta:hover {
-                    color: var(--primary-cyan);
-                    border-color: var(--primary-cyan);
+                :global(.about-cta:hover) {
+                    background-color: var(--primary-cyan, #00CCFF) !important;
+                    border-color: var(--primary-cyan, #00CCFF) !important;
+                    transform: translateY(-2px) !important;
+                    box-shadow: 0 6px 15px rgba(0, 204, 255, 0.3) !important;
+                    color: #0a162b !important;
                 }
-                .about-cta i {
-                    font-size: 0.75rem;
-                    transition: transform 0.2s;
+                :global(.about-cta i) {
+                    font-size: 0.8rem;
+                    transition: transform 0.3s;
                 }
-                .about-cta:hover i {
+                :global(.about-cta:hover i) {
                     transform: translateX(4px);
                 }
 
@@ -299,29 +308,22 @@ export default function AboutPink() {
                     }
                     .about-trust-list {
                         margin-bottom: 32px !important;
-                        gap: 8px !important;
+                        gap: 12px !important;
                     }
                     .about-trust-item {
                         color: rgba(255,255,255,0.55) !important;
                         font-size: 0.82rem !important;
                     }
-                    .about-trust-item::before {
-                        color: var(--primary-cyan) !important;
+                    .about-trust-item img {
+                        width: 28px !important;
+                        height: 28px !important;
                     }
-                    .about-cta {
-                        color: #0a162b !important;
-                        background: var(--primary-cyan) !important;
-                        border: none !important;
-                        border-bottom: none !important;
-                        padding: 14px 28px !important;
-                        border-radius: 6px !important;
+                    :global(.about-cta) {
+                        padding: 12px 28px !important;
                         width: 100% !important;
                         justify-content: center !important;
-                        font-size: 0.82rem !important;
-                        letter-spacing: 1.5px !important;
-                    }
-                    .about-cta:hover {
-                        color: #0a162b !important;
+                        font-size: 0.95rem !important;
+                        margin-top: 10px !important;
                     }
                 }
             `}</style>
@@ -339,9 +341,6 @@ export default function AboutPink() {
                 {/* Right — editorial content */}
                 <div className="about-content-zone wow fadeInRight" data-wow-delay=".3s">
 
-                    <div className="about-eyebrow">
-                        Est. 2010 &middot; Sydney, Australia
-                    </div>
 
                     <h2 className="about-headline">
                         Complete Facility<br />
@@ -353,29 +352,21 @@ export default function AboutPink() {
                         Icon Facility Services is your trusted partner in maintaining high-performance environments. From clinical sanitation to industrial maintenance — we protect your assets and keep your operations seamless.
                     </p>
 
-                    {/* Stats — pure floating typography, zero boxes */}
-                    <div className="about-stat-band">
-                        <div className="about-stat-item">
-                            <span className="about-stat-num">500+</span>
-                            <span className="about-stat-label">Clients Served</span>
-                        </div>
-                        <div className="about-stat-item">
-                            <span className="about-stat-num">98%</span>
-                            <span className="about-stat-label">Retention Rate</span>
-                        </div>
-                        <div className="about-stat-item">
-                            <span className="about-stat-num">12+</span>
-                            <span className="about-stat-label">Industries</span>
-                        </div>
-                    </div>
-
-                    <div className="about-rule"></div>
 
                     {/* Trust marks */}
                     <div className="about-trust-list">
-                        <div className="about-trust-item">ISO 9001 Certified Quality Management</div>
-                        <div className="about-trust-item">Fully insured, police-checked staff on every job</div>
-                        <div className="about-trust-item">24/7 emergency response &amp; dedicated account managers</div>
+                        <div className="about-trust-item">
+                            <img src="/assets/img/icons/iso_quality_icon.png" alt="ISO 9001" style={{ transform: 'scale(1.4)' }} />
+                            <span>ISO 9001 Certified<br/>Quality Management</span>
+                        </div>
+                        <div className="about-trust-item">
+                            <img src="/assets/img/icons/insured_staff_icon.png" alt="Insured Staff" style={{ transform: 'scale(1.25)' }} />
+                            <span>Fully insured, police-checked<br/>staff on every job</span>
+                        </div>
+                        <div className="about-trust-item">
+                            <img src="/assets/img/icons/support_24_7_icon.png" alt="24/7 Support" style={{ transform: 'scale(0.9)' }} />
+                            <span>24/7 emergency response &amp;<br/>dedicated account managers</span>
+                        </div>
                     </div>
 
                     <Link href="/about" className="about-cta">

@@ -6,6 +6,10 @@ export default function Sidebar() {
         status: false,
         key: "",
     })
+    const [isSubActive, setIsSubActive] = useState({
+        status: false,
+        key: "",
+    })
 
     const handleToggle = (key) => {
         if (isActive.key === key) {
@@ -14,6 +18,19 @@ export default function Sidebar() {
             })
         } else {
             setIsActive({
+                status: true,
+                key,
+            })
+        }
+    }
+
+    const handleSubToggle = (key) => {
+        if (isSubActive.key === key) {
+            setIsSubActive({
+                status: false,
+            })
+        } else {
+            setIsSubActive({
                 status: true,
                 key,
             })
@@ -34,25 +51,73 @@ export default function Sidebar() {
                         padding: '10px 0',
                         background: 'rgba(255, 255, 255, 0.03)'
                     }}>
-                        <li className="mobile-category" style={{ padding: '15px 25px 8px', fontSize: '0.75rem', fontWeight: '900', color: 'var(--primary-cyan)', textTransform: 'uppercase', letterSpacing: '2px', opacity: 0.9 }}>Commercial Solutions</li>
-                        <li><Link href="/services/workplace-cleaning" style={{ padding: '14px 20px 14px 25px', display: 'flex', alignItems: 'center', gap: '15px', whiteSpace: 'normal', overflowWrap: 'break-word', lineHeight: '1.4', width: '100%' }}><i className="fas fa-briefcase" style={{ fontSize: '1rem', width: '20px', color: 'var(--primary-cyan)', flexShrink: '0' }}></i> <span style={{ flex: '1' }}>Workplace Cleaning</span></Link></li>
-                        <li><Link href="/services/retail-care" style={{ padding: '14px 20px 14px 25px', display: 'flex', alignItems: 'center', gap: '15px', whiteSpace: 'normal', overflowWrap: 'break-word', lineHeight: '1.4', width: '100%' }}><i className="fas fa-shopping-basket" style={{ fontSize: '1rem', width: '20px', color: 'var(--primary-cyan)', flexShrink: '0' }}></i> <span style={{ flex: '1' }}>Retail Environment Care</span></Link></li>
-                        <li><Link href="/services/industrial-cleaning" style={{ padding: '14px 20px 14px 25px', display: 'flex', alignItems: 'center', gap: '15px', whiteSpace: 'normal', overflowWrap: 'break-word', lineHeight: '1.4', width: '100%' }}><i className="fas fa-industry" style={{ fontSize: '1rem', width: '20px', color: 'var(--primary-cyan)', flexShrink: '0' }}></i> <span style={{ flex: '1' }}>Industrial Facility Cleaning</span></Link></li>
-                        
-                        <li className="mobile-category" style={{ padding: '20px 25px 8px', borderTop: '1px solid rgba(255,255,255,0.08)', marginTop: '10px', fontSize: '0.75rem', fontWeight: '900', color: 'var(--primary-cyan)', textTransform: 'uppercase', letterSpacing: '2px', opacity: 0.9 }}>Specialized Hygiene</li>
-                        <li><Link href="/services/healthcare-hygiene" style={{ padding: '14px 20px 14px 25px', display: 'flex', alignItems: 'center', gap: '15px', whiteSpace: 'normal', overflowWrap: 'break-word', lineHeight: '1.4', width: '100%' }}><i className="fas fa-hospital" style={{ fontSize: '1rem', width: '20px', color: 'var(--primary-cyan)', flexShrink: '0' }}></i> <span style={{ flex: '1' }}>Healthcare Hygiene</span></Link></li>
-                        <li><Link href="/services/educational-cleaning" style={{ padding: '14px 20px 14px 25px', display: 'flex', alignItems: 'center', gap: '15px', whiteSpace: 'normal', overflowWrap: 'break-word', lineHeight: '1.4', width: '100%' }}><i className="fas fa-graduation-cap" style={{ fontSize: '1rem', width: '20px', color: 'var(--primary-cyan)', flexShrink: '0' }}></i> <span style={{ flex: '1' }}>Educational Facility Cleaning</span></Link></li>
-                        <li><Link href="/services/hospitality-cleaning" style={{ padding: '14px 20px 14px 25px', display: 'flex', alignItems: 'center', gap: '15px', whiteSpace: 'normal', overflowWrap: 'break-word', lineHeight: '1.4', width: '100%' }}><i className="fas fa-utensils" style={{ fontSize: '1rem', width: '20px', color: 'var(--primary-cyan)', flexShrink: '0' }}></i> <span style={{ flex: '1' }}>Hospitality Cleaning</span></Link></li>
-                        
-                        <li className="mobile-category" style={{ padding: '20px 25px 8px', borderTop: '1px solid rgba(255,255,255,0.08)', marginTop: '10px', fontSize: '0.75rem', fontWeight: '900', color: 'var(--primary-cyan)', textTransform: 'uppercase', letterSpacing: '2px', opacity: 0.9 }}>Property & Venue Care</li>
-                        <li><Link href="/services/fitness-maintenance" style={{ padding: '14px 20px 14px 25px', display: 'flex', alignItems: 'center', gap: '15px', whiteSpace: 'normal', overflowWrap: 'break-word', lineHeight: '1.4', width: '100%' }}><i className="fas fa-dumbbell" style={{ fontSize: '1rem', width: '20px', color: 'var(--primary-cyan)', flexShrink: '0' }}></i> <span style={{ flex: '1' }}>Fitness Maintenance</span></Link></li>
-                        <li><Link href="/services/residential-cleaning" style={{ padding: '14px 20px 14px 25px', display: 'flex', alignItems: 'center', gap: '15px', whiteSpace: 'normal', overflowWrap: 'break-word', lineHeight: '1.4', width: '100%' }}><i className="fas fa-building" style={{ fontSize: '1rem', width: '20px', color: 'var(--primary-cyan)', flexShrink: '0' }}></i> <span style={{ flex: '1' }}>Residential & Tower</span></Link></li>
-                        <li><Link href="/services/event-preparation" style={{ padding: '14px 20px 14px 25px', display: 'flex', alignItems: 'center', gap: '15px', whiteSpace: 'normal', overflowWrap: 'break-word', lineHeight: '1.4', width: '100%' }}><i className="fas fa-calendar-alt" style={{ fontSize: '1rem', width: '20px', color: 'var(--primary-cyan)', flexShrink: '0' }}></i> <span style={{ flex: '1' }}>Event Preparation</span></Link></li>
+                        {/* Commercial Solutions */}
+                        <li className={`menu-item-has-children ${isSubActive?.key === "commercial" ? "active" : ""}`}>
+                            <a href="#" onClick={(e) => { e.preventDefault(); handleSubToggle("commercial"); }} style={{ padding: '12px 20px', position: 'relative', background: isSubActive?.key === "commercial" ? 'rgba(255, 255, 255, 0.03)' : 'transparent', borderBottom: '1px solid rgba(255,255,255,0.02)', display: 'block' }}>
+                                <span style={{ fontSize: '0.95rem', fontWeight: isSubActive?.key === "commercial" ? '700' : '500', color: isSubActive?.key === "commercial" ? 'var(--primary-cyan)' : '#ffffff', display: 'block', paddingRight: '40px' }}>
+                                    Commercial Solutions
+                                </span>
+                                <span style={{ position: 'absolute', right: '15px', top: '50%', marginTop: '-14px', width: '28px', height: '28px', borderRadius: '50%', background: isSubActive?.key === "commercial" ? 'var(--primary-cyan)' : 'rgba(255,255,255,0.05)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: isSubActive?.key === "commercial" ? '#0a162b' : '#fff', transition: 'all 0.3s ease' }}>
+                                    <i className={isSubActive?.key === "commercial" ? "fas fa-minus" : "fas fa-plus"} style={{ fontSize: '10px' }}></i>
+                                </span>
+                            </a>
+                            <ul className="sub-menu" style={{ display: isSubActive?.key === "commercial" ? "block" : "none", background: 'rgba(0,0,0,0.5)', padding: '10px 0', borderLeft: '2px solid rgba(255,255,255,0.05)', marginLeft: '10px' }}>
+                                <li><Link href="/services/workplace-cleaning" style={{ padding: '8px 20px 8px 30px', display: 'block', borderBottom: 'none' }}><span style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.6)', fontWeight: '400' }}>Workplace Cleaning</span></Link></li>
+                                <li><Link href="/services/retail-care" style={{ padding: '8px 20px 8px 30px', display: 'block', borderBottom: 'none' }}><span style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.6)', fontWeight: '400' }}>Retail Environment Care</span></Link></li>
+                                <li><Link href="/services/industrial-cleaning" style={{ padding: '8px 20px 8px 30px', display: 'block', borderBottom: 'none' }}><span style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.6)', fontWeight: '400' }}>Industrial Facility Cleaning</span></Link></li>
+                            </ul>
+                        </li>
 
-                        <li className="mobile-category" style={{ padding: '20px 25px 8px', borderTop: '1px solid rgba(255,255,255,0.08)', marginTop: '10px', fontSize: '0.75rem', fontWeight: '900', color: 'var(--primary-cyan)', textTransform: 'uppercase', letterSpacing: '2px', opacity: 0.9 }}>Exterior & Specialty</li>
-                        <li><Link href="/services/driveway-concrete-cleaning" style={{ padding: '14px 20px 14px 25px', display: 'flex', alignItems: 'center', gap: '15px', whiteSpace: 'normal', overflowWrap: 'break-word', lineHeight: '1.4', width: '100%' }}><i className="fas fa-car" style={{ fontSize: '1rem', width: '20px', color: 'var(--primary-cyan)', flexShrink: '0' }}></i> <span style={{ flex: '1' }}>Driveway & Concrete</span></Link></li>
-                        <li><Link href="/services/exterior-house-washing" style={{ padding: '14px 20px 14px 25px', display: 'flex', alignItems: 'center', gap: '15px', whiteSpace: 'normal', overflowWrap: 'break-word', lineHeight: '1.4', width: '100%' }}><i className="fas fa-home" style={{ fontSize: '1rem', width: '20px', color: 'var(--primary-cyan)', flexShrink: '0' }}></i> <span style={{ flex: '1' }}>Exterior House Washing</span></Link></li>
-                        <li><Link href="/services/gutter-maintenance-cleaning" style={{ padding: '14px 20px 14px 25px', display: 'flex', alignItems: 'center', gap: '15px', whiteSpace: 'normal', overflowWrap: 'break-word', lineHeight: '1.4', width: '100%' }}><i className="fas fa-water" style={{ fontSize: '1rem', width: '20px', color: 'var(--primary-cyan)', flexShrink: '0' }}></i> <span style={{ flex: '1' }}>Gutter Maintenance</span></Link></li>
+                        {/* Specialized Hygiene */}
+                        <li className={`menu-item-has-children ${isSubActive?.key === "hygiene" ? "active" : ""}`}>
+                            <a href="#" onClick={(e) => { e.preventDefault(); handleSubToggle("hygiene"); }} style={{ padding: '12px 20px', position: 'relative', background: isSubActive?.key === "hygiene" ? 'rgba(255, 255, 255, 0.03)' : 'transparent', borderBottom: '1px solid rgba(255,255,255,0.02)', display: 'block' }}>
+                                <span style={{ fontSize: '0.95rem', fontWeight: isSubActive?.key === "hygiene" ? '700' : '500', color: isSubActive?.key === "hygiene" ? 'var(--primary-cyan)' : '#ffffff', display: 'block', paddingRight: '40px' }}>
+                                    Specialized Hygiene
+                                </span>
+                                <span style={{ position: 'absolute', right: '15px', top: '50%', marginTop: '-14px', width: '28px', height: '28px', borderRadius: '50%', background: isSubActive?.key === "hygiene" ? 'var(--primary-cyan)' : 'rgba(255,255,255,0.05)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: isSubActive?.key === "hygiene" ? '#0a162b' : '#fff', transition: 'all 0.3s ease' }}>
+                                    <i className={isSubActive?.key === "hygiene" ? "fas fa-minus" : "fas fa-plus"} style={{ fontSize: '10px' }}></i>
+                                </span>
+                            </a>
+                            <ul className="sub-menu" style={{ display: isSubActive?.key === "hygiene" ? "block" : "none", background: 'rgba(0,0,0,0.5)', padding: '10px 0', borderLeft: '2px solid rgba(255,255,255,0.05)', marginLeft: '10px' }}>
+                                <li><Link href="/services/healthcare-hygiene" style={{ padding: '8px 20px 8px 30px', display: 'block', borderBottom: 'none' }}><span style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.6)', fontWeight: '400' }}>Healthcare Hygiene</span></Link></li>
+                                <li><Link href="/services/educational-cleaning" style={{ padding: '8px 20px 8px 30px', display: 'block', borderBottom: 'none' }}><span style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.6)', fontWeight: '400' }}>Educational Facility</span></Link></li>
+                                <li><Link href="/services/hospitality-cleaning" style={{ padding: '8px 20px 8px 30px', display: 'block', borderBottom: 'none' }}><span style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.6)', fontWeight: '400' }}>Hospitality Cleaning</span></Link></li>
+                            </ul>
+                        </li>
+
+                        {/* Property & Venue Care */}
+                        <li className={`menu-item-has-children ${isSubActive?.key === "property" ? "active" : ""}`}>
+                            <a href="#" onClick={(e) => { e.preventDefault(); handleSubToggle("property"); }} style={{ padding: '12px 20px', position: 'relative', background: isSubActive?.key === "property" ? 'rgba(255, 255, 255, 0.03)' : 'transparent', borderBottom: '1px solid rgba(255,255,255,0.02)', display: 'block' }}>
+                                <span style={{ fontSize: '0.95rem', fontWeight: isSubActive?.key === "property" ? '700' : '500', color: isSubActive?.key === "property" ? 'var(--primary-cyan)' : '#ffffff', display: 'block', paddingRight: '40px' }}>
+                                    Property & Venue Care
+                                </span>
+                                <span style={{ position: 'absolute', right: '15px', top: '50%', marginTop: '-14px', width: '28px', height: '28px', borderRadius: '50%', background: isSubActive?.key === "property" ? 'var(--primary-cyan)' : 'rgba(255,255,255,0.05)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: isSubActive?.key === "property" ? '#0a162b' : '#fff', transition: 'all 0.3s ease' }}>
+                                    <i className={isSubActive?.key === "property" ? "fas fa-minus" : "fas fa-plus"} style={{ fontSize: '10px' }}></i>
+                                </span>
+                            </a>
+                            <ul className="sub-menu" style={{ display: isSubActive?.key === "property" ? "block" : "none", background: 'rgba(0,0,0,0.5)', padding: '10px 0', borderLeft: '2px solid rgba(255,255,255,0.05)', marginLeft: '10px' }}>
+                                <li><Link href="/services/fitness-maintenance" style={{ padding: '8px 20px 8px 30px', display: 'block', borderBottom: 'none' }}><span style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.6)', fontWeight: '400' }}>Fitness Maintenance</span></Link></li>
+                                <li><Link href="/services/residential-cleaning" style={{ padding: '8px 20px 8px 30px', display: 'block', borderBottom: 'none' }}><span style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.6)', fontWeight: '400' }}>Residential & Tower</span></Link></li>
+                                <li><Link href="/services/event-preparation" style={{ padding: '8px 20px 8px 30px', display: 'block', borderBottom: 'none' }}><span style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.6)', fontWeight: '400' }}>Event Preparation</span></Link></li>
+                            </ul>
+                        </li>
+
+                        {/* Exterior & Specialty */}
+                        <li className={`menu-item-has-children ${isSubActive?.key === "exterior" ? "active" : ""}`}>
+                            <a href="#" onClick={(e) => { e.preventDefault(); handleSubToggle("exterior"); }} style={{ padding: '12px 20px', position: 'relative', background: isSubActive?.key === "exterior" ? 'rgba(255, 255, 255, 0.03)' : 'transparent', borderBottom: '1px solid rgba(255,255,255,0.02)', display: 'block' }}>
+                                <span style={{ fontSize: '0.95rem', fontWeight: isSubActive?.key === "exterior" ? '700' : '500', color: isSubActive?.key === "exterior" ? 'var(--primary-cyan)' : '#ffffff', display: 'block', paddingRight: '40px' }}>
+                                    Exterior & Specialty
+                                </span>
+                                <span style={{ position: 'absolute', right: '15px', top: '50%', marginTop: '-14px', width: '28px', height: '28px', borderRadius: '50%', background: isSubActive?.key === "exterior" ? 'var(--primary-cyan)' : 'rgba(255,255,255,0.05)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: isSubActive?.key === "exterior" ? '#0a162b' : '#fff', transition: 'all 0.3s ease' }}>
+                                    <i className={isSubActive?.key === "exterior" ? "fas fa-minus" : "fas fa-plus"} style={{ fontSize: '10px' }}></i>
+                                </span>
+                            </a>
+                            <ul className="sub-menu" style={{ display: isSubActive?.key === "exterior" ? "block" : "none", background: 'rgba(0,0,0,0.5)', padding: '10px 0', borderLeft: '2px solid rgba(255,255,255,0.05)', marginLeft: '10px' }}>
+                                <li><Link href="/services/driveway-concrete-cleaning" style={{ padding: '8px 20px 8px 30px', display: 'block', borderBottom: 'none' }}><span style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.6)', fontWeight: '400' }}>Driveway & Concrete</span></Link></li>
+                                <li><Link href="/services/exterior-house-washing" style={{ padding: '8px 20px 8px 30px', display: 'block', borderBottom: 'none' }}><span style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.6)', fontWeight: '400' }}>Exterior House Washing</span></Link></li>
+                                <li><Link href="/services/gutter-maintenance-cleaning" style={{ padding: '8px 20px 8px 30px', display: 'block', borderBottom: 'none' }}><span style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.6)', fontWeight: '400' }}>Gutter Maintenance</span></Link></li>
+                            </ul>
+                        </li>
                     </ul>
                 </li>
                 <li><Link href="/pressure-washing">Pressure Washing</Link></li>

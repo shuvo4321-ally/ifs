@@ -25,6 +25,7 @@ export default function Layout({ headerCls, headerTop, headTitle, breadcrumbTitl
                 {breadcrumbTitle && <Breadcrumb breadcrumbTitle={breadcrumbTitle} breadcrumbBg={breadcrumbBg} />}
                 {children}
             </main>
+            <Footer />
         </>
     )
 }
