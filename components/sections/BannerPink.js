@@ -12,9 +12,9 @@ export default function BannerPink() {
 
     const settings = {
         autoplay: true,
-        autoplaySpeed: 1500, // Very fast 1.5s auto-scroll as requested
+        autoplaySpeed: 3500, // Balanced 3.5s auto-scroll as requested
         infinite: true,
-        speed: 600, // Adjust transition speed so it completes well within the 1.5s window
+        speed: 800, // Smooth transition back to 800 for 3.5s window
         fade: true,
         arrows: false,
         dots: true,
@@ -138,7 +138,7 @@ export default function BannerPink() {
                     background: var(--primary-cyan, #00CCFF);
                 }
                 .hero-paging-dot.active .dot-progress-fill {
-                    animation: fillProgress 1.5s linear forwards;
+                    animation: fillProgress 3.5s linear forwards;
                 }
                 @keyframes fillProgress {
                     from { width: 0%; }
