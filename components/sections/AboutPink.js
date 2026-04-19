@@ -256,7 +256,7 @@ export default function AboutPink() {
                         background: linear-gradient(to top, #0a162b, transparent) !important;
                     }
                     .about-content-zone {
-                        padding: 32px 24px 56px !important;
+                        padding: 24px 24px 0 !important;
                         background: #0a162b !important;
                     }
                     .about-eyebrow {
@@ -307,7 +307,7 @@ export default function AboutPink() {
                         margin-bottom: 24px !important;
                     }
                     .about-trust-list {
-                        margin-bottom: 32px !important;
+                        margin-bottom: 8px !important;
                         gap: 12px !important;
                     }
                     .about-trust-item {
@@ -323,7 +323,7 @@ export default function AboutPink() {
                         width: 100% !important;
                         justify-content: center !important;
                         font-size: 0.95rem !important;
-                        margin-top: 10px !important;
+                        margin-top: 4px !important;
                     }
                 }
             `}</style>

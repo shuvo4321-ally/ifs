@@ -125,105 +125,196 @@ export default function Header({ headerCls, headerTop }) {
         display: none !important;
     }
     .mobile-menu .menu-box {
-        background-color: rgba(10, 22, 43, 0.85) !important;
-        backdrop-filter: blur(30px) saturate(200%);
-        -webkit-backdrop-filter: blur(30px) saturate(200%);
-        border-left: 1px solid rgba(255, 255, 255, 0.06) !important;
+        background: linear-gradient(180deg, #0a162b 0%, #0d1f3d 100%) !important;
+        border-left: 1px solid rgba(255, 255, 255, 0.04) !important;
+        box-shadow: -20px 0 60px rgba(0,0,0,0.4) !important;
         z-index: 1001 !important;
         overflow-y: auto !important;
         overflow-x: hidden !important;
-        padding-bottom: 180px !important;
+        padding-bottom: 40px !important;
         width: 100% !important;
         height: 100vh !important;
     }
     .mobile-menu {
         z-index: 1002 !important;
         padding-right: 0px !important;
+        width: min(340px, 86vw) !important;
+        max-width: 86vw !important;
+    }
+    @media (max-width: 420px) {
+        .mobile-menu {
+            width: 88vw !important;
+            max-width: 88vw !important;
+        }
+    }
+    .mobile-nav-toggler {
+        font-size: 22px !important;
+        padding: 10px !important;
+        line-height: 1 !important;
     }
     /* Close button — refined */
     .mobile-menu .close-btn {
         position: absolute !important;
-        top: 20px !important;
-        right: 24px !important;
-        font-size: 20px !important;
-        width: 44px !important;
-        height: 44px !important;
+        top: 18px !important;
+        right: 18px !important;
+        font-size: 16px !important;
+        width: 38px !important;
+        height: 38px !important;
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
-        background: rgba(255,255,255,0.05) !important;
-        border: 1px solid rgba(255,255,255,0.08) !important;
+        background: rgba(255,255,255,0.06) !important;
+        border: 1px solid rgba(255,255,255,0.1) !important;
         border-radius: 50% !important;
         transition: all 0.3s ease !important;
+        color: rgba(255,255,255,0.9) !important;
         z-index: 10 !important;
+    }
+    .mobile-menu .close-btn:hover {
+        background: rgba(0,204,255,0.15) !important;
+        border-color: rgba(0,204,255,0.4) !important;
+        color: var(--primary-cyan) !important;
     }
     .mobile-menu .navigation {
         width: 100% !important;
-        padding: 0 0px !important;
+        padding: 8px 0 0 !important;
+        list-style: none !important;
     }
-    .mobile-menu .navigation li a {
-        color: white !important;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.04) !important;
+    .mobile-menu .navigation > li {
+        position: relative !important;
+    }
+    .mobile-menu .navigation > li > a {
+        color: rgba(255,255,255,0.92) !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
         white-space: normal !important;
         overflow-wrap: break-word !important;
-        word-break: break-all !important;
-        line-height: 1.4 !important;
+        word-break: normal !important;
+        line-height: 1.3 !important;
         display: block !important;
-        padding: 16px 24px 16px 24px !important;
-        font-size: 1rem !important;
+        padding: 18px 22px !important;
+        font-size: 0.98rem !important;
         font-weight: 600 !important;
-        letter-spacing: 0.2px !important;
-        transition: all 0.2s ease !important;
+        letter-spacing: 0.15px !important;
+        transition: all 0.25s ease !important;
+        position: relative !important;
     }
-    .mobile-menu .navigation li.active > a,
-    .mobile-menu .navigation li a:hover {
+    .mobile-menu .navigation > li > a::before {
+        content: '' !important;
+        position: absolute !important;
+        left: 0 !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        width: 3px !important;
+        height: 0 !important;
+        background: var(--primary-cyan) !important;
+        transition: height 0.3s ease !important;
+    }
+    .mobile-menu .navigation > li.active > a::before,
+    .mobile-menu .navigation > li > a:hover::before {
+        height: 22px !important;
+    }
+    .mobile-menu .navigation > li.active > a,
+    .mobile-menu .navigation > li > a:hover {
         color: var(--primary-cyan) !important;
-        background: rgba(255,255,255,0.02) !important;
+        background: rgba(0,204,255,0.04) !important;
+        padding-left: 26px !important;
     }
-    /* Sub-menu categories */
-    .mobile-menu .navigation .mobile-category {
-        font-size: 0.7rem !important;
-        padding: 16px 24px 6px !important;
+    .mobile-menu .navigation .sub-menu {
+        list-style: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
     }
     .mobile-menu .navigation .sub-menu li a {
-        padding: 14px 24px 14px 28px !important;
+        padding: 14px 22px !important;
         font-size: 0.92rem !important;
         font-weight: 500 !important;
     }
     /* Social links */
     .mobile-menu .social-links {
-        padding: 24px !important;
+        padding: 28px 22px !important;
         border-top: 1px solid rgba(255,255,255,0.06) !important;
+        margin-top: 14px !important;
+    }
+    .mobile-menu .social-links .list-wrap {
+        display: flex !important;
+        gap: 12px !important;
+        list-style: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
     }
     .mobile-menu .social-links li a {
         background: rgba(255, 255, 255, 0.04) !important;
         border: 1px solid rgba(255, 255, 255, 0.08) !important;
         color: white !important;
-        width: 44px !important;
-        height: 44px !important;
+        width: 40px !important;
+        height: 40px !important;
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
         border-radius: 50% !important;
+        font-size: 0.85rem !important;
         transition: all 0.25s ease !important;
     }
     .mobile-menu .social-links li a:hover {
         background: var(--primary-cyan) !important;
         color: #0a162b !important;
         border-color: var(--primary-cyan) !important;
+        transform: translateY(-2px) !important;
     }
     /* Mobile nav logo */
     .mobile-menu .nav-logo {
-        padding: 28px 24px 20px !important;
-        border-bottom: 1px solid rgba(255,255,255,0.05) !important;
-        margin-bottom: 8px !important;
+        padding: 24px 22px 22px !important;
+        border-bottom: 1px solid rgba(255,255,255,0.06) !important;
+        margin-bottom: 0 !important;
+        text-align: left !important;
     }
     .mobile-menu .nav-logo img {
         width: auto !important;
         height: auto !important;
-        max-height: 45px !important;
-        max-width: 200px !important;
+        max-height: 40px !important;
+        max-width: 160px !important;
         object-fit: contain !important;
+        display: block !important;
+    }
+    /* Mobile menu quote CTA */
+    .mobile-menu-cta {
+        padding: 20px 22px 6px !important;
+    }
+    .mobile-menu-cta a {
+        display: block !important;
+        background: var(--primary-cyan) !important;
+        color: #0a162b !important;
+        font-family: 'DM Sans', sans-serif !important;
+        font-weight: 700 !important;
+        font-size: 0.9rem !important;
+        text-align: center !important;
+        padding: 13px 20px !important;
+        border-radius: 4px !important;
+        text-decoration: none !important;
+        letter-spacing: 0.3px !important;
+        transition: all 0.25s ease !important;
+        box-shadow: 0 4px 14px rgba(0, 204, 255, 0.25) !important;
+    }
+    .mobile-menu-cta a:hover {
+        background: #ffffff !important;
+        transform: translateY(-1px) !important;
+    }
+    .mobile-menu-phone {
+        padding: 14px 22px 6px !important;
+    }
+    .mobile-menu-phone a {
+        display: flex !important;
+        align-items: center !important;
+        gap: 10px !important;
+        color: rgba(255,255,255,0.8) !important;
+        font-family: 'DM Sans', sans-serif !important;
+        font-size: 0.88rem !important;
+        font-weight: 500 !important;
+        text-decoration: none !important;
+    }
+    .mobile-menu-phone a i {
+        color: var(--primary-cyan) !important;
+        font-size: 0.8rem !important;
     }
     .header-action {
         display: flex;
@@ -339,6 +430,12 @@ export default function Header({ headerCls, headerTop }) {
                                         </div>
                                         <div className="menu-outer">
                                             <Sidebar />
+                                        </div>
+                                        <div className="mobile-menu-cta">
+                                            <Link href="/contact">Get Free Quote</Link>
+                                        </div>
+                                        <div className="mobile-menu-phone">
+                                            <a href="tel:1800418411"><i className="fas fa-phone-alt" /> 1800 418 411</a>
                                         </div>
                                         <div className="social-links">
                                             <ul className="clearfix list-wrap">

@@ -89,6 +89,15 @@ export default function BannerPink() {
                     background-color: var(--primary-navy, #0a162b);
                     overflow: hidden;
                 }
+                .premium-slide-inner {
+                    position: relative;
+                    height: 100vh;
+                    min-height: 700px;
+                    width: 100%;
+                    overflow: hidden;
+                    display: flex;
+                    align-items: center;
+                }
                 
                 /* Custom Paging & Dots Layout */
                 .hero-dots-wrapper {
@@ -110,6 +119,11 @@ export default function BannerPink() {
                     width: auto;
                     height: auto;
                     margin: 0;
+                }
+                .premium-hero-wrapper .container {
+                    display: flex;
+                    align-items: center;
+                    height: 100%;
                 }
                 .hero-paging-dot {
                     display: flex;
@@ -156,6 +170,44 @@ export default function BannerPink() {
                     .hero-dots-list { gap: 15px; }
                     .dot-progress-bg { width: 25px; }
                     .dot-number { display: none; }
+                }
+                @media (max-width: 768px) {
+                    .premium-hero-wrapper, .premium-slide-inner {
+                        min-height: 600px !important;
+                        height: auto !important;
+                    }
+                    .premium-hero-wrapper .container {
+                        padding-top: 0 !important;
+                        padding-bottom: 0 !important;
+                        padding-left: 22px !important;
+                        padding-right: 22px !important;
+                        text-align: left !important;
+                    }
+                    .premium-hero-wrapper .container > div {
+                        margin: 0 !important;
+                        width: 100%;
+                    }
+                    .premium-hero-wrapper .anim-fade-up.title {
+                        font-size: 2.7rem !important;
+                        line-height: 1.05 !important;
+                        margin-bottom: 18px !important;
+                    }
+                    .premium-hero-wrapper .slide-desc {
+                        font-size: 0.95rem !important;
+                        line-height: 1.6 !important;
+                        -webkit-mask-image: none !important;
+                        mask-image: none !important;
+                        color: rgba(255,255,255,0.82) !important;
+                        max-width: 100% !important;
+                    }
+                    .hero-dots-wrapper {
+                        padding-bottom: 4vh;
+                    }
+                }
+                @media (max-width: 420px) {
+                    .premium-hero-wrapper .anim-fade-up.title {
+                        font-size: 2.35rem !important;
+                    }
                 }
 
                 /* Slick Slider Overrides */
@@ -258,7 +310,7 @@ export default function BannerPink() {
             <Slider {...settings} className="premium-hero-slider">
                 {slides.map((slide, index) => (
                     <div key={slide.id} className="premium-slide">
-                        <div style={{ position: 'relative', height: '100vh', width: '100%', overflow: 'hidden' }}>
+                        <div className="premium-slide-inner">
 
                             {/* Background Image with Ken Burns */}
                             <div className="slide-bg" style={{
@@ -289,8 +341,8 @@ export default function BannerPink() {
                             }}></div>
 
                             {/* Content Alignment */}
-                            <div className="container" style={{ position: 'relative', zIndex: 10, height: '100%', display: 'flex', alignItems: 'center' }}>
-                                <div style={{ maxWidth: '800px', paddingTop: '5vh' }}>
+                            <div className="container" style={{ position: 'relative', zIndex: 10 }}>
+                                <div style={{ maxWidth: '800px' }}>
 
                                     {/* Massive Ultra-Premium Typography */}
                                     <h1 className="anim-fade-up title" style={{
@@ -308,7 +360,7 @@ export default function BannerPink() {
                                     </h1>
 
                                     {/* Sub-description paragraph with Gradient Mask fade */}
-                                    <p className="anim-fade-up" style={{
+                                    <p className="anim-fade-up slide-desc" style={{
                                         animationDelay: '0.5s', opacity: 0,
                                         color: 'rgba(255,255,255,0.85)',
                                         fontSize: 'clamp(1.05rem, 1.2vw, 1.2rem)',

@@ -297,20 +297,32 @@ export default function ServicesPink() {
                 }
 
                 @media (max-width: 768px) {
+                    .Services-area {
+                        padding: 56px 0 64px !important;
+                        overflow-x: hidden !important;
+                    }
                     .svc-grid {
                         display: none !important;
                     }
                     .svc-editorial-list {
                         display: block;
+                        width: 100%;
+                        max-width: 100%;
+                        padding: 0 18px;
+                        box-sizing: border-box;
                     }
                     .svc-header {
-                        padding-left: 24px !important;
-                        padding-right: 24px !important;
-                        margin-bottom: 40px !important;
+                        padding-left: 22px !important;
+                        padding-right: 22px !important;
+                        margin-bottom: 34px !important;
+                        max-width: 100% !important;
+                        box-sizing: border-box !important;
                     }
                     .svc-headline {
-                        letter-spacing: -0.5px !important;
-                        line-height: 1.05 !important;
+                        font-size: 2.1rem !important;
+                        letter-spacing: -0.8px !important;
+                        line-height: 1.08 !important;
+                        margin-bottom: 14px !important;
                     }
                     .svc-eyebrow {
                         letter-spacing: 2px !important;
@@ -318,68 +330,102 @@ export default function ServicesPink() {
                         margin-bottom: 12px !important;
                     }
                     .svc-tagline {
-                        font-size: 0.9rem !important;
+                        font-size: 0.95rem !important;
+                        line-height: 1.6 !important;
+                        max-width: 100% !important;
                     }
 
-                    /* Editorial item */
+                    /* Editorial card — refined */
                     .svc-ed-item {
                         display: block;
+                        position: relative;
                         text-decoration: none;
-                        border-bottom: 1px solid #e8edf2;
+                        background: #ffffff;
+                        border-radius: 12px;
                         overflow: hidden;
+                        margin-bottom: 18px;
+                        box-shadow: 0 1px 2px rgba(10, 22, 43, 0.04), 0 8px 24px rgba(10, 22, 43, 0.06);
+                        transition: transform 0.3s ease, box-shadow 0.3s ease;
                     }
                     .svc-ed-item:first-child {
-                        border-top: 1px solid #e8edf2;
+                        border-top: none;
+                    }
+                    .svc-ed-item:active {
+                        transform: translateY(1px);
+                    }
+                    .svc-ed-img-wrap {
+                        position: relative;
+                        width: 100%;
+                        height: 200px;
+                        overflow: hidden;
                     }
                     .svc-ed-img {
                         width: 100%;
-                        height: 240px;
+                        height: 100%;
                         object-fit: cover;
                         display: block;
                         transition: transform 0.6s ease;
                     }
-                    .svc-ed-item:active .svc-ed-img {
-                        transform: scale(1.03);
+                    .svc-ed-img-wrap::after {
+                        content: '';
+                        position: absolute;
+                        inset: 0;
+                        background: linear-gradient(180deg, transparent 45%, rgba(10,22,43,0.45) 100%);
+                        pointer-events: none;
                     }
-                    .svc-ed-body {
-                        padding: 22px 24px 26px;
-                        background: #fff;
+                    .svc-ed-item:active .svc-ed-img {
+                        transform: scale(1.04);
                     }
                     .svc-ed-num {
-                        font-size: 0.65rem;
-                        font-weight: 900;
-                        letter-spacing: 2px;
+                        position: absolute;
+                        top: 14px;
+                        left: 14px;
+                        background: rgba(10, 22, 43, 0.82);
+                        backdrop-filter: blur(6px);
                         color: var(--primary-cyan);
-                        text-transform: uppercase;
-                        margin-bottom: 8px;
-                        display: block;
+                        font-size: 0.68rem;
+                        font-weight: 800;
+                        letter-spacing: 1.5px;
+                        padding: 5px 10px;
+                        border-radius: 4px;
+                        z-index: 2;
+                    }
+                    .svc-ed-body {
+                        padding: 18px 20px 20px;
+                        background: #fff;
+                        max-width: 100%;
+                        box-sizing: border-box;
                     }
                     .svc-ed-title {
-                        font-size: 1.45rem;
-                        font-weight: 900;
+                        font-size: 1.15rem;
+                        font-weight: 800;
                         color: #0d1b33;
-                        letter-spacing: -0.5px;
-                        line-height: 1.15;
-                        margin-bottom: 10px;
+                        letter-spacing: -0.3px;
+                        line-height: 1.2;
+                        margin: 0 0 8px;
+                        word-wrap: break-word;
+                        overflow-wrap: break-word;
                     }
                     .svc-ed-desc {
-                        font-size: 0.85rem;
+                        font-size: 0.86rem;
                         color: #64748b;
-                        line-height: 1.7;
-                        margin-bottom: 16px;
+                        line-height: 1.6;
+                        margin: 0 0 14px;
+                        word-wrap: break-word;
+                        overflow-wrap: break-word;
                     }
                     .svc-ed-link {
                         display: inline-flex;
                         align-items: center;
-                        gap: 6px;
-                        font-size: 0.78rem;
+                        gap: 8px;
+                        font-size: 0.74rem;
                         font-weight: 800;
                         color: var(--primary-cyan);
                         text-transform: uppercase;
-                        letter-spacing: 1px;
+                        letter-spacing: 1.2px;
                     }
                     .svc-ed-link i {
-                        font-size: 0.7rem;
+                        font-size: 0.65rem;
                         transition: transform 0.2s;
                     }
                     .svc-ed-item:active .svc-ed-link i {
@@ -446,13 +492,15 @@ export default function ServicesPink() {
                     const num = String(index + 1).padStart(2, '0');
                     return (
                         <Link href={`/services/${slug}`} key={service.id} className="svc-ed-item">
-                            <img
-                                src={service.bgImage}
-                                alt={service.title}
-                                className="svc-ed-img"
-                            />
-                            <div className="svc-ed-body">
+                            <div className="svc-ed-img-wrap">
                                 <span className="svc-ed-num">{num}</span>
+                                <img
+                                    src={service.bgImage}
+                                    alt={service.title}
+                                    className="svc-ed-img"
+                                />
+                            </div>
+                            <div className="svc-ed-body">
                                 <h3 className="svc-ed-title">{service.title}</h3>
                                 <p className="svc-ed-desc">{service.description}</p>
                                 <span className="svc-ed-link">
