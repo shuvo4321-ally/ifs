@@ -145,6 +145,11 @@ export default function Header({ headerCls, headerTop }) {
         padding-right: 0px !important;
         width: min(340px, 86vw) !important;
         max-width: 86vw !important;
+        visibility: hidden;
+        transition: visibility 0.3s ease, transform 0.3s ease !important;
+    }
+    body.mobile-menu-visible .mobile-menu {
+        visibility: visible;
     }
     @media (max-width: 420px) {
         .mobile-menu {
