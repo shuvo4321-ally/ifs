@@ -130,9 +130,6 @@ export default function Breadcrumb({ breadcrumbTitle, breadcrumbSubtitle, breadc
                     <div className="row">
                         <div className="col-lg-12">
                             <div className="pf-breadcrumb-content">
-                                <div className="pf-hero-eyebrow wow fadeInUp" data-wow-delay=".2s">
-                                    Service Excellence
-                                </div>
                                 <h1 className="pf-hero-title wow fadeInUp" data-wow-delay=".4s">
                                     {breadcrumbTitle}
                                 </h1>

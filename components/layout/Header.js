@@ -341,7 +341,8 @@ export default function Header({ headerCls, headerTop }) {
         font-weight: 600;
         font-size: 0.95rem;
         text-decoration: none;
-        transition: color 0.3s ease;
+        transition: all 0.3s ease;
+        text-shadow: 0px 2px 4px rgba(0,0,0,0.5);
     }
     .header-phone i {
         color: var(--primary-cyan, #00CCFF);
