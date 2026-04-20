@@ -988,6 +988,7 @@ const ServiceDetail = () => {
                 }
                 @media (max-width: 768px) {
                     .sd-benefits { display: none !important; }
+                    .sd-panel[data-panel="scope"] { display: none !important; }
                 }
                 @media (max-width: 575px) {
                     .sd-main { padding: 60px 0 0; }
