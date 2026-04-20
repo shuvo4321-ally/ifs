@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 
-export default function Faq1() {
+export default function Faq1({ customFaqs }) {
     const [isActive, setIsActive] = useState({
         status: true,
         key: 1,
@@ -15,7 +15,7 @@ export default function Faq1() {
         }
     }
 
-    const faqs = [
+    const defaultFaqs = [
         {
             key: 1,
             question: "Are your cleaning protocols ISO compliant?",
@@ -37,6 +37,12 @@ export default function Faq1() {
             answer: "We prioritize GECA-certified, eco-friendly cleaning agents that provide maximum sanitation while minimizing the environmental footprint of your facility."
         }
     ];
+
+    const faqs = customFaqs ? customFaqs.map((f, i) => ({
+        key: i + 1,
+        question: f.q || f.question,
+        answer: f.a || f.answer
+    })) : defaultFaqs;
 
     return (
         <section className="faq-editorial" style={{ padding: '100px 0', background: '#ffffff' }}>
@@ -214,8 +220,7 @@ export default function Faq1() {
                         gap: 48px;
                     }
                     .faq-aside {
-                        flex: none;
-                        width: 100%;
+                        display: none !important;
                     }
                     .faq-headline {
                         font-size: 2rem !important;

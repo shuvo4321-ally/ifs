@@ -42,8 +42,8 @@ export default function About() {
     return (
         <>
             <Layout headerCls="transparent-header">
-                <Breadcrumb 
-                    breadcrumbTitle="Company Profile" 
+                <Breadcrumb
+                    breadcrumbTitle="Company Profile"
                     breadcrumbSubtitle="Icon Facility Services is a premier Australian maintenance firm, delivering clinical precision and industrial-grade reliability to the nation's most critical infrastructures."
                     breadcrumbBg="/assets/img/services/about_story_main.jpg"
                 />
@@ -509,12 +509,12 @@ export default function About() {
                 <section className="ifs-numbers" ref={counterRef}>
                     <div className="ifs-numbers-track">
                         <div className="ifs-num-cell">
-                            <span className="ifs-num-value" data-count="500">500+</span>
+                            <span className="ifs-num-value" data-count="500">Experienced Team</span>
                             <span className="ifs-num-label">Trained Professionals</span>
                         </div>
                         <div className="ifs-num-cell">
-                            <span className="ifs-num-value">National</span>
-                            <span className="ifs-num-label">Coverage Across Australia</span>
+                            <span className="ifs-num-value">Local Expertise</span>
+                            <span className="ifs-num-label">Coverage Across Sydney</span>
                         </div>
                         <div className="ifs-num-cell">
                             <span className="ifs-num-value">24 / 7</span>
@@ -529,9 +529,9 @@ export default function About() {
 
                 {/* ===== 3. FULL-BLEED PHOTOGRAPHY ===== */}
                 <section className="ifs-fullbleed">
-                    <img 
-                        src="/assets/img/services/about_specialized_main_v2.jpg" 
-                        alt="Icon Facility Services team in action — commercial maintenance at scale" 
+                    <img
+                        src="/assets/img/services/about_specialized_main_v2.jpg"
+                        alt="Icon Facility Services team in action — commercial maintenance at scale"
                     />
                     <div className="ifs-fullbleed-caption wow fadeInUp" data-wow-delay=".2s">
                         <p>Our teams operate across commercial, healthcare, industrial, and residential sectors nationwide.</p>
@@ -613,28 +613,7 @@ export default function About() {
                     </div>
                 </section>
 
-                {/* ===== 6. IMAGE + QUOTE ===== */}
-                <section className="ifs-quote-section">
-                    <div className="container">
-                        <div className="ifs-quote-grid">
-                            <div className="ifs-quote-image-wrap wow fadeInUp" data-wow-delay=".2s">
-                                <img 
-                                    src="/assets/img/services/office_team.jpg" 
-                                    alt="Icon Facility Services leadership" 
-                                />
-                            </div>
-                            <div className="ifs-quote-content wow fadeInUp" data-wow-delay=".3s">
-                                <blockquote>
-                                    The standard you walk past is the standard you accept. At Icon, we never walk past anything.
-                                </blockquote>
-                                <div className="ifs-quote-attribution">
-                                    <span className="ifs-quote-name">Icon Facility Services</span>
-                                    <span className="ifs-quote-role">Leadership Philosophy</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+
 
                 {/* ===== 7. PRINCIPLES ===== */}
                 <section className="ifs-principles">
@@ -693,9 +672,9 @@ export default function About() {
                             Let's discuss how Icon can protect your most valuable assets.
                         </p>
                         <div className="wow fadeInUp" data-wow-delay=".4s">
-                            <Link href="/contact" className="ifs-cta-btn">
+                            <Link href="/contact" className="ifs-cta-btn" style={{ gap: '14px', display: 'inline-flex', alignItems: 'center' }}>
                                 Arrange a Consultation
-                                <i className="fas fa-arrow-right"></i>
+                                <i className="fas fa-arrow-right" style={{ marginLeft: '10px' }}></i>
                             </Link>
                         </div>
                     </div>

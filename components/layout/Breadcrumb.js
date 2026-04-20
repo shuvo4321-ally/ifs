@@ -1,158 +1,166 @@
 import Link from "next/link"
 
-export default function Breadcrumb({ breadcrumbTitle, breadcrumbSubtitle, breadcrumbBg }) {
-    // Fallback to default if no specific image is provided
+export default function Breadcrumb({ breadcrumbTitle, breadcrumbSubtitle, breadcrumbBg, breadcrumbHighlight }) {
     const bgImage = breadcrumbBg || "/assets/img/services/office_cleaning_premium.jpg";
 
     return (
-        <>
-            <section className="pf-breadcrumb-area pf-luxury-hero">
-                <style jsx>{`
+        <section className="pf-breadcrumb-area pf-luxury-hero">
+            <style jsx>{`
+                .pf-luxury-hero {
+                    position: relative;
+                    width: 100%;
+                    height: 100vh;
+                    min-height: 700px;
+                    display: flex;
+                    align-items: center;
+                    background-color: var(--primary-navy, #0a162b);
+                    overflow: hidden;
+                }
+                .pf-hero-bg-wrap {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background-image: url('${bgImage}');
+                    background-size: cover;
+                    background-position: center;
+                    z-index: 0;
+                    transform: scale(1.05);
+                    animation: pfKenBurns 10s ease-out forwards;
+                }
+                .pf-hero-overlay {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: linear-gradient(90deg, rgba(10,22,43,0.95) 0%, rgba(10,22,43,0.7) 35%, rgba(10,22,43,0.1) 75%, transparent 100%);
+                    z-index: 1;
+                }
+                .pf-hero-vignette {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: linear-gradient(0deg, rgba(10,22,43,0.4) 0%, transparent 25%, transparent 75%, rgba(10,22,43,0.3) 100%);
+                    z-index: 1;
+                }
+                .pf-hero-content-wrap {
+                    position: relative;
+                    z-index: 2;
+                    display: flex;
+                    align-items: center;
+                    height: 100%;
+                }
+                .pf-hero-inner {
+                    max-width: 800px;
+                }
+                .pf-hero-title {
+                    font-size: clamp(3rem, 6vw, 5.5rem);
+                    font-weight: 700;
+                    color: #fff;
+                    line-height: 1.05;
+                    margin: 0 0 25px;
+                    text-transform: none;
+                    opacity: 0;
+                    animation: pfFadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+                }
+                .pf-hero-title .pf-hero-title-accent {
+                    color: var(--primary-cyan, #00CCFF);
+                    font-style: italic;
+                }
+                .pf-hero-desc {
+                    font-size: clamp(1.05rem, 1.2vw, 1.2rem);
+                    color: rgba(255, 255, 255, 0.85);
+                    line-height: 1.7;
+                    max-width: 650px;
+                    margin: 0;
+                    font-weight: 400;
+                    opacity: 0;
+                    animation: pfFadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
+                    -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 40%, rgba(0,0,0,0.05) 100%);
+                    mask-image: linear-gradient(to right, rgba(0,0,0,1) 40%, rgba(0,0,0,0.05) 100%);
+                }
+
+                @keyframes pfKenBurns {
+                    from { transform: scale(1.05); }
+                    to { transform: scale(1); }
+                }
+                @keyframes pfFadeUp {
+                    from { opacity: 0; transform: translateY(30px); }
+                    to { opacity: 1; transform: translateY(0); }
+                }
+
+                @media (max-width: 900px) {
+                    .pf-luxury-hero, .pf-hero-content-wrap {
+                        min-height: 600px;
+                    }
+                }
+                @media (max-width: 768px) {
                     .pf-luxury-hero {
-                        position: relative;
-                        height: 85vh;
-                        min-height: 700px;
-                        display: flex;
-                        align-items: center;
-                        background: #000;
-                        overflow: hidden;
-                        padding-top: 100px;
+                        height: auto;
+                        min-height: 600px;
                     }
-                    .pf-hero-bg-wrap {
-                        position: absolute;
-                        top: 0;
-                        left: 0;
-                        width: 100%;
-                        height: 120%; /* Extra height for parallax */
-                        background-image: url('${bgImage}');
-                        background-size: cover;
-                        background-position: center;
-                        z-index: 1;
-                        transition: transform 0.1s linear;
-                    }
-                    /* Cinematic Gradient Overlay — heavy left fade to black/navy */
                     .pf-hero-overlay {
-                        position: absolute;
-                        top: 0;
-                        left: 0;
-                        width: 100%;
-                        height: 100%;
-                        background: linear-gradient(to right, rgba(13, 27, 51, 0.95) 0%, rgba(13, 27, 51, 0.6) 40%, transparent 100%);
-                        z-index: 2;
+                        background: linear-gradient(95deg, rgba(10,22,43,0.95) 0%, rgba(10,22,43,0.85) 60%, rgba(10,22,43,0.1) 90%, transparent 100%);
                     }
-
+                    .pf-hero-vignette {
+                        display: none;
+                    }
                     .pf-hero-content-wrap {
-                        position: relative;
-                        z-index: 5;
-                        width: 100%;
+                        padding-top: 90px;
+                        padding-bottom: 60px;
                     }
-
-                    .pf-hero-eyebrow {
-                        font-size: 0.7rem;
-                        font-weight: 700;
-                        text-transform: uppercase;
-                        letter-spacing: 4px;
-                        color: #94a3b8; /* Muted Slate */
-                        margin-bottom: 24px;
-                        display: flex;
-                        align-items: center;
-                        gap: 15px;
+                    .pf-hero-inner {
+                        max-width: 100%;
                     }
-                    .pf-hero-eyebrow::before {
-                        content: '';
-                        width: 30px;
-                        height: 1px;
-                        background: rgba(0, 204, 255, 0.5); /* Muted Cyan */
-                    }
-
                     .pf-hero-title {
-                        font-size: clamp(3rem, 6vw, 5rem);
-                        font-weight: 900;
-                        color: #fff;
+                        font-size: 2.7rem;
                         line-height: 1.05;
-                        letter-spacing: -2.5px;
-                        margin: 0 0 28px;
-                        max-width: 900px;
+                        margin-bottom: 18px;
                     }
                     .pf-hero-desc {
-                        font-size: 1.1rem;
-                        color: rgba(255, 255, 255, 0.75);
-                        line-height: 1.8;
-                        max-width: 520px;
-                        margin: 0;
-                        font-weight: 400;
+                        font-size: 0.95rem;
+                        line-height: 1.6;
+                        color: rgba(255,255,255,0.82);
+                        max-width: 100%;
+                        display: -webkit-box;
+                        -webkit-line-clamp: 3;
+                        -webkit-box-orient: vertical;
+                        overflow: hidden;
+                        -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 100%);
+                        mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 100%);
                     }
+                }
+                @media (max-width: 420px) {
+                    .pf-hero-title {
+                        font-size: 2.35rem;
+                    }
+                }
+            `}</style>
 
-                    @media (max-width: 991px) {
-                        .pf-luxury-hero {
-                            height: auto;
-                            min-height: auto !important;
-                            padding: 140px 0 70px;
-                        }
-                        .pf-hero-overlay {
-                            background: linear-gradient(to bottom, rgba(13, 27, 51, 0.9) 0%, rgba(13, 27, 51, 0.85) 100%);
-                        }
-                        .pf-hero-title {
-                            font-size: 2.8rem;
-                        }
-                        .pf-hero-desc {
-                            font-size: 1rem;
-                        }
-                    }
-                    @media (max-width: 767px) {
-                        .pf-luxury-hero {
-                            padding: 110px 0 50px !important;
-                            min-height: auto !important;
-                        }
-                        .pf-hero-eyebrow {
-                            font-size: 0.6rem !important;
-                            letter-spacing: 3px !important;
-                            margin-bottom: 16px !important;
-                        }
-                        .pf-hero-title {
-                            font-size: 2rem !important;
-                            letter-spacing: -1px !important;
-                            margin-bottom: 18px !important;
-                            line-height: 1.1 !important;
-                        }
-                        .pf-hero-desc {
-                            font-size: 0.88rem !important;
-                            line-height: 1.65 !important;
-                            max-width: 100% !important;
-                        }
-                    }
-                `}</style>
+            <div className="pf-hero-bg-wrap" />
+            <div className="pf-hero-overlay" />
+            <div className="pf-hero-vignette" />
 
-                <div className="pf-hero-bg-wrap" id="hero-parallax-bg" />
-                <div className="pf-hero-overlay" />
-                
-                <div className="container pf-hero-content-wrap">
-                    <div className="row">
-                        <div className="col-lg-12">
-                            <div className="pf-breadcrumb-content">
-                                <h1 className="pf-hero-title wow fadeInUp" data-wow-delay=".4s">
-                                    {breadcrumbTitle}
-                                </h1>
-                                {breadcrumbSubtitle && (
-                                    <p className="pf-hero-desc wow fadeInUp" data-wow-delay=".6s">
-                                        {breadcrumbSubtitle}
-                                    </p>
-                                )}
-                            </div>
-                        </div>
-                    </div>
+            <div className="container pf-hero-content-wrap">
+                <div className="pf-hero-inner">
+                    <h1 className="pf-hero-title">
+                        {breadcrumbTitle}
+                        {breadcrumbHighlight && (
+                            <>
+                                {' '}
+                                <span className="pf-hero-title-accent">{breadcrumbHighlight}</span>
+                            </>
+                        )}
+                    </h1>
+                    {breadcrumbSubtitle && (
+                        <p className="pf-hero-desc">{breadcrumbSubtitle}</p>
+                    )}
                 </div>
-
-                <script dangerouslySetInnerHTML={{ __html: `
-                    window.addEventListener('scroll', function() {
-                        const bg = document.getElementById('hero-parallax-bg');
-                        if (bg) {
-                            const scroll = window.pageYOffset;
-                            bg.style.transform = 'translateY(' + (scroll * 0.4) + 'px)';
-                        }
-                    });
-                `}} />
-            </section>
-        </>
+            </div>
+        </section>
     )
 }

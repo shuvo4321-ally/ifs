@@ -3,6 +3,7 @@ import Layout from "@/components/layout/Layout";
 import Breadcrumb from "@/components/layout/Breadcrumb";
 import Link from 'next/link';
 import React, { useState } from 'react';
+import Faq1 from '@/components/sections/Faq1';
 
 const serviceData = {
     'window-cleaning': {
@@ -813,6 +814,8 @@ const ServiceDetail = () => {
     const [showDelivery, setShowDelivery] = useState(false);
     const [inquiryData, setInquiryData] = useState(null);
     const [activeFaq, setActiveFaq] = useState(0);
+    const [activeTab, setActiveTab] = useState('scope');
+    const [openFaqMobile, setOpenFaqMobile] = useState(0);
 
     if (!service) {
         return (
@@ -869,22 +872,29 @@ const ServiceDetail = () => {
                 /* --- Opening Statement --- */
                 .sd-lede { font-size: 1.2rem; color: #1e293b; line-height: 1.85; margin: 0 0 60px; max-width: 680px; }
 
-                /* --- Sector Tags --- */
-                .sd-sectors { display: flex; flex-wrap: wrap; gap: 0; margin-bottom: 60px; border-top: 2px solid #0ea5e9; border-bottom: 1px solid #d1d5db; background: #ffffff; }
-                .sd-sector-tag { padding: 12px 20px; font-size: 0.78rem; font-weight: 600; color: #334155; letter-spacing: 0.3px; border-right: 1px solid #e2e8f0; transition: color 0.2s ease, background 0.2s ease; }
-                .sd-sector-tag:last-child { border-right: none; }
-                .sd-sector-tag:hover { color: #0a0f1a; background: #e0f2fe; }
+                /* --- Sector Chips --- */
+                .sd-sectors-wrap { margin-bottom: 60px; }
+                .sd-sectors-wrap .sd-overline { margin-bottom: 18px; }
+                .sd-sectors { display: flex; flex-wrap: wrap; gap: 10px; }
+                .sd-sector-chip { display: inline-flex; align-items: center; padding: 10px 18px 10px 14px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 999px; font-size: 0.82rem; font-weight: 600; color: #1e293b; letter-spacing: 0.2px; transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease; }
+                .sd-sector-dot { width: 6px; height: 6px; border-radius: 50%; background: #0ea5e9; margin-right: 10px; transition: transform 0.2s ease; }
+                .sd-sector-chip:hover { border-color: #0ea5e9; background: #f0f9ff; transform: translateY(-1px); }
+                .sd-sector-chip:hover .sd-sector-dot { transform: scale(1.15); }
 
                 /* --- Section Headers --- */
                 .sd-overline { font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 4px; color: #94a3b8; margin-bottom: 16px; display: block; }
                 .sd-heading { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; color: #0a0f1a; letter-spacing: -1px; line-height: 1.2; margin: 0 0 40px; }
 
-                /* --- Service List (no icons, no circles) --- */
-                .sd-service-list { margin: 0 0 80px; padding: 0; list-style: none; background: #ffffff; border: 1px solid #e2e8f0; }
-                .sd-service-item { display: flex; align-items: baseline; gap: 20px; padding: 18px 24px; border-bottom: 1px solid #e2e8f0; transition: padding-left 0.2s ease, background 0.2s ease; }
-                .sd-service-item:last-child { border-bottom: none; }
-                .sd-service-item:hover { padding-left: 32px; background: #f0f9ff; }
-                .sd-service-idx { font-size: 0.7rem; font-weight: 800; color: #0ea5e9; min-width: 24px; font-variant-numeric: tabular-nums; }
+                /* --- Mobile Tab Bar (hidden on desktop) --- */
+                .sd-mobile-tabs { display: none; }
+
+                /* --- Service Cards (icon grid) --- */
+                .sd-service-grid { margin: 0 0 80px; padding: 0; list-style: none; background: #ffffff; border: 1px solid #e2e8f0; }
+                .sd-service-card { display: flex; align-items: center; gap: 18px; padding: 18px 24px; border-bottom: 1px solid #e2e8f0; transition: padding-left 0.2s ease, background 0.2s ease; }
+                .sd-service-card:last-child { border-bottom: none; }
+                .sd-service-card:hover { padding-left: 32px; background: #f0f9ff; }
+                .sd-service-icon { width: 40px; height: 40px; flex-shrink: 0; display: inline-flex; align-items: center; justify-content: center; background: #f0f9ff; color: #0ea5e9; border-radius: 10px; font-size: 1.05rem; transition: background 0.2s ease, color 0.2s ease; }
+                .sd-service-card:hover .sd-service-icon { background: #0ea5e9; color: #ffffff; }
                 .sd-service-name { font-size: 1rem; font-weight: 700; color: #0a0f1a; }
 
                 /* --- Narrative Block --- */
@@ -971,20 +981,19 @@ const ServiceDetail = () => {
                 @media (max-width: 991px) {
                     .sd-grid { grid-template-columns: 1fr; gap: 60px; }
                     .sd-sidebar { position: static; }
-                    .sd-sectors { flex-wrap: wrap; }
-                    .sd-sector-tag { border-bottom: 1px solid #e2e8f0; }
                     .sd-benefits-grid { grid-template-columns: 1fr; gap: 40px; }
                     .sd-faq-grid { grid-template-columns: 1fr; gap: 30px; }
                     .sd-benefits { padding: 80px 0; }
                     .sd-faq { padding: 80px 0; }
+                }
+                @media (max-width: 768px) {
+                    .sd-benefits { display: none !important; }
                 }
                 @media (max-width: 575px) {
                     .sd-main { padding: 60px 0 0; }
                     .sd-stats { flex-direction: column; }
                     .sd-stat { border-right: none; border-bottom: 1px solid #e2e8f0; padding: 24px 0; }
                     .sd-stat:last-child { border-bottom: none; }
-                    .sd-sectors { flex-direction: column; }
-                    .sd-sector-tag { border-right: none; }
                     .sd-sidebar-cta { padding: 32px 24px; }
                     .sd-sidebar-block { padding: 24px; }
                     .sd-faq-answer { padding: 28px; }
@@ -1006,22 +1015,46 @@ const ServiceDetail = () => {
 
                             {/* Sectors */}
                             {service.specializedAreas && service.specializedAreas.length > 0 && (
-                                <div className="sd-sectors wow fadeInUp" data-wow-delay=".15s">
-                                    {service.specializedAreas.map((area, idx) => (
-                                        <span key={idx} className="sd-sector-tag">{area}</span>
-                                    ))}
+                                <div className="sd-sectors-wrap wow fadeInUp" data-wow-delay=".15s">
+                                    <span className="sd-overline"></span>
+                                    <div className="sd-sectors">
+                                        {service.specializedAreas.map((area, idx) => (
+                                            <span key={idx} className="sd-sector-chip">
+                                                <span className="sd-sector-dot" aria-hidden="true"></span>
+                                                {area}
+                                            </span>
+                                        ))}
+                                    </div>
                                 </div>
                             )}
 
+                            {/* Mobile Tab Navigation */}
+                            <div className="sd-mobile-tabs">
+                                <button type="button" className={`sd-mobile-tab${activeTab === 'scope' ? ' active' : ''}`} onClick={() => setActiveTab('scope')}>
+                                    <i className="fas fa-list-check"></i>
+                                    <span>Scope</span>
+                                </button>
+                                <button type="button" className={`sd-mobile-tab${activeTab === 'packages' ? ' active' : ''}`} onClick={() => setActiveTab('packages')}>
+                                    <i className="fas fa-box-open"></i>
+                                    <span>Packages</span>
+                                </button>
+                                <button type="button" className={`sd-mobile-tab${activeTab === 'faq' ? ' active' : ''}`} onClick={() => setActiveTab('faq')}>
+                                    <i className="fas fa-circle-question"></i>
+                                    <span>FAQ</span>
+                                </button>
+                            </div>
+
                             {/* What We Cover */}
                             {service.detailedServices && service.detailedServices.length > 0 && (
-                                <div className="wow fadeInUp" data-wow-delay=".2s">
-                                    <span className="sd-overline">Scope of Work</span>
+                                <div className={`sd-panel wow fadeInUp${activeTab === 'scope' ? ' sd-panel-active' : ''}`} data-panel="scope" data-wow-delay=".2s">
+                                    <span className="sd-overline"></span>
                                     <h2 className="sd-heading">What we cover.</h2>
-                                    <ul className="sd-service-list">
+                                    <ul className="sd-service-grid">
                                         {service.detailedServices.map((item, idx) => (
-                                            <li key={idx} className="sd-service-item">
-                                                <span className="sd-service-idx">{String(idx + 1).padStart(2, '0')}</span>
+                                            <li key={idx} className="sd-service-card">
+                                                <span className="sd-service-icon">
+                                                    <i className={item.icon || 'fas fa-check'}></i>
+                                                </span>
                                                 <span className="sd-service-name">{item.title}</span>
                                             </li>
                                         ))}
@@ -1031,26 +1064,16 @@ const ServiceDetail = () => {
 
                             {/* Narrative */}
                             {service.whySections && service.whySections.map((section, index) => (
-                                <div key={index} className="sd-narrative wow fadeInUp" data-wow-delay=".2s">
+                                <div key={index} className="sd-narrative sd-always-visible wow fadeInUp" data-wow-delay=".2s">
                                     <h3 className="sd-narrative-title">{section.title}</h3>
                                     <p className="sd-narrative-body">{section.desc}</p>
                                 </div>
                             ))}
 
-                            {/* Stats */}
-                            <div className="sd-stats wow fadeInUp" data-wow-delay=".2s">
-                                {[{ num: "500+", label: "Clients Served" }, { num: "98%", label: "Retention Rate" }, { num: "24/7", label: "Support" }].map((stat, si) => (
-                                    <div className="sd-stat" key={si}>
-                                        <span className="sd-stat-val">{stat.num}</span>
-                                        <span className="sd-stat-lbl">{stat.label}</span>
-                                    </div>
-                                ))}
-                            </div>
-
                             {/* Packages */}
                             {service.packages && service.packages.length > 0 && (
-                                <div className="sd-packages wow fadeInUp" data-wow-delay=".2s">
-                                    <span className="sd-overline">Service Options</span>
+                                <div className={`sd-panel sd-packages wow fadeInUp${activeTab === 'packages' ? ' sd-panel-active' : ''}`} data-panel="packages" data-wow-delay=".2s">
+                                    <span className="sd-overline"></span>
                                     <h2 className="sd-heading">Available packages.</h2>
                                     <ul className="sd-pkg-list">
                                         {service.packages.map((pkg, idx) => (
@@ -1075,7 +1098,7 @@ const ServiceDetail = () => {
                                 <div className="sd-sidebar-cta">
                                     <h3>Get a quote for {service.title.toLowerCase()}.</h3>
                                     <p>Priority scheduling. Transparent pricing. No obligation.</p>
-                                    
+
                                     <form onSubmit={handleFormSubmit} className="sd-sidebar-form">
                                         <input type="text" name="Name" placeholder="Your name" required className="sd-sidebar-input" />
                                         <input type="email" name="Email" placeholder="Email address" required className="sd-sidebar-input" />
@@ -1099,32 +1122,7 @@ const ServiceDetail = () => {
                                     </div>
                                 </div>
 
-                                {/* Commitment */}
-                                <div className="sd-sidebar-block">
-                                    <h4>Our Commitment</h4>
-                                    {["Fully Insured & Bonded", "Police Checked Staff", "ISO 9001 Standards", "Eco-Friendly Products"].map((text, i) => (
-                                        <div key={i} className="sd-commit-item">
-                                            <span className="sd-commit-dash"></span>
-                                            <span className="sd-commit-text">{text}</span>
-                                        </div>
-                                    ))}
-                                </div>
 
-                                {/* Process */}
-                                {service.process && service.process.length > 0 && (
-                                    <div className="sd-sidebar-block">
-                                        <h4>How We Work</h4>
-                                        {service.process.map((step, index) => (
-                                            <div key={index} className="sd-process-item">
-                                                <span className="sd-process-num">{String(index + 1).padStart(2, '0')}</span>
-                                                <div className="sd-process-info">
-                                                    <h5>{step.title}</h5>
-                                                    <p>{step.desc}</p>
-                                                </div>
-                                            </div>
-                                        ))}
-                                    </div>
-                                )}
 
                             </div>
                         </div>
@@ -1135,7 +1133,7 @@ const ServiceDetail = () => {
 
             {/* ===== BENEFITS (Dark) ===== */}
             {service.benefits && service.benefits.length > 0 && (
-                <section className="sd-benefits">
+                <section className="sd-benefits sd-always-visible">
                     <div className="container">
                         <div className="sd-benefits-grid">
                             <div>
@@ -1151,7 +1149,6 @@ const ServiceDetail = () => {
                                     const rest = words.slice(3).join(' ');
                                     return (
                                         <div key={idx} className="sd-benefit-row wow fadeInUp" data-wow-delay={`${idx * 0.05}s`}>
-                                            <span className="sd-benefit-idx">{String(idx + 1).padStart(2, '0')}</span>
                                             <p className="sd-benefit-text">
                                                 <strong>{lead}</strong>{rest ? ` ${rest}` : ''}
                                             </p>
@@ -1166,34 +1163,9 @@ const ServiceDetail = () => {
 
             {/* ===== FAQ ===== */}
             {service.faqs && service.faqs.length > 0 && (
-                <section className="sd-faq">
-                    <div className="container">
-                        <div style={{ marginBottom: '60px' }}>
-                            <span className="sd-overline wow fadeInUp" data-wow-delay=".1s">Questions</span>
-                            <h2 className="sd-heading wow fadeInUp" data-wow-delay=".15s">Frequently asked.</h2>
-                        </div>
-                        <div className="sd-faq-grid wow fadeInUp" data-wow-delay=".2s">
-                            <div>
-                                {service.faqs.map((faq, index) => (
-                                    <button key={index} className={`sd-faq-q${activeFaq === index ? ' active' : ''}`} onClick={() => setActiveFaq(index)} type="button">
-                                        {faq.q}
-                                    </button>
-                                ))}
-                            </div>
-                            <div>
-                                <div className="sd-faq-answer">
-                                    <p>{service.faqs[activeFaq].a}</p>
-                                </div>
-                                <div className="sd-faq-footer">
-                                    <span>Still need help?</span>
-                                    <Link href="/contact">
-                                        Talk to a specialist <i className="fas fa-arrow-right" style={{ fontSize: '0.7rem' }}></i>
-                                    </Link>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                <div className={`sd-faq sd-panel${activeTab === 'faq' ? ' sd-panel-active' : ''}`} data-panel="faq">
+                    <Faq1 customFaqs={service.faqs} />
+                </div>
             )}
 
         </Layout>
