@@ -3,48 +3,22 @@ import { useState } from "react"
 
 export default function Sidebar() {
     const [servicesOpen, setServicesOpen] = useState(false)
-    const [openGroup, setOpenGroup] = useState(null)
 
     const toggleServices = () => setServicesOpen((v) => !v)
-    const toggleGroup = (key) => setOpenGroup((g) => (g === key ? null : key))
 
-    const groups = [
-        {
-            key: "commercial",
-            label: "Commercial",
-            items: [
-                ["/services/workplace-cleaning", "Workplace Cleaning"],
-                ["/services/retail-care", "Retail Environment"],
-                ["/services/industrial-cleaning", "Industrial Facility"],
-            ],
-        },
-        {
-            key: "hygiene",
-            label: "Specialized Hygiene",
-            items: [
-                ["/services/healthcare-hygiene", "Healthcare"],
-                ["/services/educational-cleaning", "Educational"],
-                ["/services/hospitality-cleaning", "Hospitality"],
-            ],
-        },
-        {
-            key: "property",
-            label: "Property & Venue",
-            items: [
-                ["/services/fitness-maintenance", "Fitness Facility"],
-                ["/services/residential-cleaning", "Residential & Tower"],
-                ["/services/event-preparation", "Event Preparation"],
-            ],
-        },
-        {
-            key: "exterior",
-            label: "Exterior & Specialty",
-            items: [
-                ["/services/driveway-concrete-cleaning", "Driveway & Concrete"],
-                ["/services/exterior-house-washing", "Exterior House"],
-                ["/services/gutter-maintenance-cleaning", "Gutter Maintenance"],
-            ],
-        },
+    const services = [
+        ["/services/workplace-cleaning", "Workplace Cleaning"],
+        ["/services/retail-care", "Retail Environment"],
+        ["/services/industrial-cleaning", "Industrial Facility"],
+        ["/services/healthcare-hygiene", "Healthcare"],
+        ["/services/educational-cleaning", "Educational"],
+        ["/services/hospitality-cleaning", "Hospitality"],
+        ["/services/fitness-maintenance", "Fitness Facility"],
+        ["/services/residential-cleaning", "Residential & Tower"],
+        ["/services/event-preparation", "Event Preparation"],
+        ["/services/driveway-concrete-cleaning", "Driveway & Concrete"],
+        ["/services/exterior-house-washing", "Exterior House"],
+        ["/services/gutter-maintenance-cleaning", "Gutter Maintenance"],
     ]
 
     return (
@@ -54,57 +28,37 @@ export default function Sidebar() {
                     background: rgba(0, 0, 0, 0.18);
                     border-top: 1px solid rgba(255, 255, 255, 0.04);
                     border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+                    padding: 10px 0 6px;
                 }
-                :global(.mobile-menu .m-group) {
-                    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+                :global(.mobile-menu .m-svc-grid) {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    gap: 8px;
+                    padding: 4px 16px 10px;
                 }
-                :global(.mobile-menu .m-group:last-child) {
-                    border-bottom: none;
-                }
-                :global(.mobile-menu .m-group-head) {
+                :global(.mobile-menu .m-svc-card) {
                     display: flex !important;
                     align-items: center;
-                    justify-content: space-between;
-                    padding: 14px 24px 14px 28px;
-                    color: rgba(255, 255, 255, 0.82);
-                    font-size: 0.86rem;
-                    font-weight: 600;
-                    letter-spacing: 0.2px;
-                    cursor: pointer;
-                    user-select: none;
-                    transition: color 0.2s ease, background 0.2s ease;
+                    padding: 12px 12px !important;
+                    background: linear-gradient(135deg, rgba(0, 204, 255, 0.10) 0%, rgba(255, 255, 255, 0.06) 100%);
+                    border: 1px solid rgba(0, 204, 255, 0.22);
+                    border-radius: 10px;
+                    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+                    color: rgba(255, 255, 255, 0.92) !important;
+                    font-size: 0.78rem !important;
+                    font-weight: 500 !important;
+                    line-height: 1.25 !important;
+                    min-height: 56px;
+                    border-bottom: 1px solid rgba(0, 204, 255, 0.22) !important;
+                    transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
                 }
-                :global(.mobile-menu .m-group-head.open) {
-                    color: var(--primary-cyan);
-                    background: rgba(0, 204, 255, 0.05);
-                }
-                :global(.mobile-menu .m-group-head .m-chev) {
-                    font-size: 10px;
-                    transition: transform 0.25s ease;
-                    opacity: 0.7;
-                }
-                :global(.mobile-menu .m-group-head.open .m-chev) {
-                    transform: rotate(180deg);
-                    opacity: 1;
-                }
-                :global(.mobile-menu .m-group-items) {
-                    list-style: none;
-                    padding: 4px 0 10px 28px;
-                    margin: 0;
-                }
-                :global(.mobile-menu .m-group-items li a) {
-                    display: block !important;
-                    padding: 9px 18px !important;
-                    font-size: 0.85rem !important;
-                    font-weight: 400 !important;
-                    color: rgba(255, 255, 255, 0.6) !important;
-                    border-bottom: none !important;
-                    letter-spacing: 0.1px !important;
-                }
-                :global(.mobile-menu .m-group-items li a:hover) {
-                    color: var(--primary-cyan) !important;
-                    background: transparent !important;
-                    padding-left: 22px !important;
+                :global(.mobile-menu .m-svc-card:hover) {
+                    background: linear-gradient(135deg, rgba(0, 204, 255, 0.22) 0%, rgba(0, 204, 255, 0.10) 100%);
+                    border-color: var(--primary-cyan) !important;
+                    color: #ffffff !important;
+                    transform: translateY(-1px);
+                    box-shadow: 0 6px 16px rgba(0, 204, 255, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+                    padding-left: 12px !important;
                 }
                 :global(.mobile-menu .navigation > li.m-services-root > a) {
                     border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
@@ -134,24 +88,13 @@ export default function Sidebar() {
                     </a>
                     {servicesOpen && (
                         <div className="m-services-panel">
-                            {groups.map((g) => (
-                                <div key={g.key} className="m-group">
-                                    <div
-                                        className={`m-group-head ${openGroup === g.key ? "open" : ""}`}
-                                        onClick={() => toggleGroup(g.key)}
-                                    >
-                                        <span>{g.label}</span>
-                                        <i className="fas fa-chevron-down m-chev" />
-                                    </div>
-                                    {openGroup === g.key && (
-                                        <ul className="m-group-items">
-                                            {g.items.map(([href, label]) => (
-                                                <li key={href}><Link href={href}>{label}</Link></li>
-                                            ))}
-                                        </ul>
-                                    )}
-                                </div>
-                            ))}
+                            <div className="m-svc-grid">
+                                {services.map(([href, label]) => (
+                                    <Link key={href} href={href} className="m-svc-card">
+                                        <span>{label}</span>
+                                    </Link>
+                                ))}
+                            </div>
                         </div>
                     )}
                 </li>
