@@ -197,10 +197,12 @@ export default function BannerPink() {
                     .premium-hero-wrapper .slide-desc {
                         font-size: 0.95rem !important;
                         line-height: 1.6 !important;
-                        -webkit-mask-image: none !important;
-                        mask-image: none !important;
                         color: rgba(255,255,255,0.82) !important;
                         max-width: 100% !important;
+                        display: -webkit-box !important;
+                        -webkit-line-clamp: 3 !important;
+                        -webkit-box-orient: vertical !important;
+                        overflow: hidden !important;
                     }
                     .hero-dots-wrapper {
                         padding-bottom: 4vh;
