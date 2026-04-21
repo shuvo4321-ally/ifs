@@ -50,11 +50,13 @@ export default function Contact() {
     ]
 
     // ── Context-aware list ─────────────────────────────────────────
+    const othersOption = { value: "Others", label: "Other Services", icon: "fas fa-ellipsis-h" }
+
     const services = from === "pressure-washing"
-        ? pressureWashingServices
+        ? [...pressureWashingServices, othersOption]
         : from === "services"
-            ? cleaningServices
-            : [...cleaningServices, ...pressureWashingServices]  // all 21
+            ? [...cleaningServices, othersOption]
+            : [...cleaningServices, ...pressureWashingServices, othersOption]
 
     // ── Section label shown above dropdown ─────────────────────────
     const serviceContext = from === "pressure-washing"
