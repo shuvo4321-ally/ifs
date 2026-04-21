@@ -3,8 +3,8 @@ import Link from 'next/link'
 
 export default function Faq1({ customFaqs }) {
     const [isActive, setIsActive] = useState({
-        status: true,
-        key: 1,
+        status: false,
+        key: null,
     })
 
     const handleToggle = (key) => {
