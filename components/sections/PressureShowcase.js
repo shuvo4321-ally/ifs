@@ -345,7 +345,6 @@ export default function PressureShowcase() {
                 {/* Header */}
                 <div className="pw-showcase-header wow fadeInUp">
                     <div>
-                        <div className="pw-showcase-eyebrow">Project Portfolio</div>
                         <h2 className="pw-showcase-title">
                             Our Recent<br /><span>Conversions.</span>
                         </h2>

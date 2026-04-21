@@ -354,7 +354,7 @@ export default function PressureHero() {
                     We restore driveways, facades, and commercial surfaces to pristine condition — damage-free, every time.
                 </p>
                 <div className="pw-hero-actions">
-                    <Link href="/contact" className="pw-btn-primary">
+                    <Link href="/contact?from=pressure-washing" className="pw-btn-primary">
                         Get Free Quote <i className="fas fa-arrow-right"></i>
                     </Link>
                     <a href="tel:1800418411" className="pw-btn-ghost">

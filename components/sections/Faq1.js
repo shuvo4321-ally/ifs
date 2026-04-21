@@ -321,7 +321,7 @@ export default function Faq1({ customFaqs }) {
                         <p className="faq-aside-desc">
                             Our team is ready to discuss your facility's specific requirements and provide a tailored solution.
                         </p>
-                        <Link href="/contact" className="faq-aside-cta">
+                        <Link href="/contact?from=services" className="faq-aside-cta">
                             Contact Us <i className="fas fa-arrow-right" />
                         </Link>
                     </div>

@@ -228,7 +228,7 @@ export default function PressureCTA() {
                 </div>
 
                 <div className="pw-cta-actions">
-                    <Link href="/contact" className="pw-cta-btn-main">
+                    <Link href="/contact?from=pressure-washing" className="pw-cta-btn-main">
                         Get Free Quote <i className="fas fa-arrow-right"></i>
                     </Link>
                     <a href="tel:1800418411" className="pw-cta-btn-phone">

@@ -377,6 +377,9 @@ export default function PressureServices() {
                         gap: 20px;
                         margin-bottom: 40px;
                     }
+                    .pw-svc-nav {
+                        display: none;
+                    }
                     .pw-svc-title {
                         font-size: 2rem !important;
                         letter-spacing: -1px;
@@ -413,7 +416,6 @@ export default function PressureServices() {
                 {/* Header */}
                 <div className="pw-svc-header wow fadeInUp">
                     <div>
-                        <div className="pw-svc-eyebrow">What We Do</div>
                         <h2 className="pw-svc-title">
                             Our Cleaning<br /><span>Services.</span>
                         </h2>
