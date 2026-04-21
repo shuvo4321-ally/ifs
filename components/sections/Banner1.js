@@ -17,6 +17,7 @@ export default function Banner1() {
                     min-height: 700px;
                     background-color: var(--primary-navy, #0a162b);
                     overflow: hidden;
+                    z-index: 1;
                 }
                 .premium-slide-inner {
                     position: relative;
