@@ -16,9 +16,9 @@ export default function Sidebar() {
         ["/services/fitness-maintenance", "Fitness Facility"],
         ["/services/residential-cleaning", "Residential & Tower"],
         ["/services/event-preparation", "Event Preparation"],
-        ["/services/driveway-concrete-cleaning", "Driveway & Concrete"],
-        ["/services/exterior-house-washing", "Exterior House"],
-        ["/services/gutter-maintenance-cleaning", "Gutter Maintenance"],
+        ["/services/exterior-parking", "Exterior & Parking"],
+        ["/services/post-construction", "Post-Construction"],
+        ["/services/luxury-display", "Luxury Display Space"],
     ]
 
     return (
