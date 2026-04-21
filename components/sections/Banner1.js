@@ -1,93 +1,103 @@
-import Link from "next/link"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 export default function Banner1() {
-    const [isActive, setIsActive] = useState({
-        status: false,
-        key: "",
-    })
+    const [mounted, setMounted] = useState(false);
 
-    const handleToggle = (key) => {
-        if (isActive.key === key) {
-            setIsActive({
-                status: false,
-            })
-        } else {
-            setIsActive({
-                status: true,
-                key,
-            })
-        }
-    }
+    useEffect(() => {
+        setMounted(true);
+    }, []);
 
     return (
-        <>
-            <style jsx>{`
-                @media (max-width: 991px) {
-                    .banner-area {
-                        padding: 0 !important;
-                        min-height: 75vh !important;
-                        display: flex !important;
-                        align-items: center !important;
+        <section className={`premium-hero-wrapper ${mounted ? 'is-mounted' : ''}`}>
+            <style jsx global>{`
+                .premium-hero-wrapper {
+                    position: relative;
+                    width: 100%;
+                    height: 100vh;
+                    min-height: 700px;
+                    background-color: var(--primary-navy, #0a162b);
+                    overflow: hidden;
+                }
+                .premium-slide-inner {
+                    position: relative;
+                    height: 100vh;
+                    min-height: 700px;
+                    width: 100%;
+                    overflow: hidden;
+                    display: flex;
+                    align-items: center;
+                }
+                
+                .premium-hero-wrapper .container {
+                    display: flex;
+                    align-items: center;
+                    height: 100%;
+                }
+
+                @media (max-width: 768px) {
+                    .premium-hero-wrapper, .premium-slide-inner {
+                        min-height: 600px !important;
+                        height: auto !important;
                     }
-                    .banner-content {
-                        padding-top: 20px !important;
-                        padding-bottom: 20px !important;
-                        text-align: center;
+                    .premium-hero-wrapper .container {
+                        padding-top: 0 !important;
+                        padding-bottom: 0 !important;
+                        padding-left: 18px !important;
+                        padding-right: 18px !important;
+                        text-align: left !important;
+                        max-width: 100vw !important;
+                        overflow-x: hidden !important;
                     }
-                    .banner-content .title {
-                        font-size: 38px !important;
-                        margin-bottom: 20px !important;
-                        line-height: 1.2 !important;
+                    .premium-hero-wrapper .container > div {
+                        margin: 0 !important;
+                        width: 100%;
                     }
-                    .banner-content p {
-                        font-size: 16px !important;
-                        margin: 0 auto 30px !important;
+                    .premium-hero-wrapper .anim-fade-up.title {
+                        font-size: 2.7rem !important;
+                        line-height: 1.05 !important;
+                        margin-bottom: 18px !important;
+                    }
+                    .premium-hero-wrapper .slide-desc {
+                        font-size: 0.95rem !important;
+                        line-height: 1.6 !important;
+                        color: rgba(255,255,255,0.82) !important;
                         max-width: 100% !important;
-                        line-height: 1.5 !important;
-                    }
-                    .banner-features {
-                        justify-content: center;
-                        flex-wrap: wrap;
-                        gap: 20px !important;
-                        margin: 0 auto !important;
-                    }
-                    .banner-content p, 
-                    .banner-btn-wrap {
-                        display: none !important;
-                    }
-                    .banner-features {
-                        display: flex !important;
-                        justify-content: center !important;
-                        flex-wrap: wrap !important;
-                        gap: 20px !important;
-                        border: none !important;
-                        padding-top: 20px !important;
-                    }
-                    .banner-features > div {
-                        flex: 0 0 auto !important;
-                    }
-                    .banner-features span {
-                        font-size: 11px !important;
+                        display: -webkit-box !important;
+                        -webkit-line-clamp: 3 !important;
+                        -webkit-box-orient: vertical !important;
+                        overflow: hidden !important;
                     }
                 }
-                @media (max-width: 767px) {
-                    .banner-area .container-fluid {
-                        padding-left: 20px !important;
-                        padding-right: 20px !important;
+                @media (max-width: 420px) {
+                    .premium-hero-wrapper .anim-fade-up.title {
+                        font-size: 2.35rem !important;
                     }
-                    .banner-content .title {
-                        font-size: 32px !important;
+                }
+                
+                /* Animations for Text */
+                .anim-fade-up {
+                    animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+                }
+                
+                @keyframes fadeUp {
+                    from {
+                        opacity: 0;
+                        transform: translateY(30px);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateY(0);
                     }
                 }
             `}</style>
-            <section className="banner-area dark-section" style={{ padding: '120px 0', position: 'relative', zIndex: 1, overflow: 'hidden' }}>
+            
+            <div className="premium-slide-inner">
                 {/* Background Video */}
-                <video 
-                    autoPlay 
-                    muted 
-                    loop 
-                    playsInline 
+                <video
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
                     style={{
                         position: 'absolute',
                         top: 0,
@@ -95,61 +105,64 @@ export default function Banner1() {
                         width: '100%',
                         height: '100%',
                         objectFit: 'cover',
-                        zIndex: -2
+                        zIndex: 1,
+                        transform: 'scale(1.05)',
+                        animation: 'kenBurns 10s ease-out forwards'
                     }}
                 >
                     <source src="/assets/videos/banner_video.mp4" type="video/mp4" />
                 </video>
 
-                <div style={{ 
-                    position: 'absolute', 
-                    top: 0, 
-                    left: 0, 
-                    width: '100%', 
-                    height: '100%', 
-                    background: 'linear-gradient(to right, rgba(10, 22, 43, 0.95) 0%, rgba(10, 22, 43, 0.8) 40%, rgba(10, 22, 43, 0.2) 100%)', 
-                    zIndex: -1 
+                {/* Sophisticated Dark Gradient Overlay (Cinematic Shadow) */}
+                <div className="hero-overlay-shadow" style={{
+                    position: 'absolute',
+                    top: 0, left: 0,
+                    width: '100%', height: '100%',
+                    background: 'linear-gradient(90deg, rgba(10,22,43,0.95) 0%, rgba(10,22,43,0.7) 35%, rgba(10,22,43,0.1) 75%, transparent 100%)',
+                    zIndex: 2
                 }}></div>
-                
-                <div className="container-fluid" style={{ paddingLeft: 'max(5vw, 140px)', paddingRight: 'max(5vw, 40px)' }}>
-                    <div className="row align-items-center">
-                        {/* Text Content */}
-                        <div className="col-xl-7 col-lg-9">
-                            <div className="banner-content" style={{ paddingTop: '80px', paddingBottom: '40px' }}>
-                                <span className="pf-subtitle wow fadeInUp" data-wow-delay=".2s" style={{ color: 'var(--primary-cyan)', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '4px', fontSize: '14px', display: 'block', marginBottom: '20px' }}>Premium Exterior Care</span>
-                                <h1 className="title wow fadeInUp" data-wow-delay=".4s" style={{ fontSize: '72px', fontWeight: '900', lineHeight: '1.1', marginBottom: '30px', color: '#ffffff', letterSpacing: '-2px' }}>
-                                    Professional Pressure <br /><span style={{ color: 'var(--primary-cyan)' }}>Washing Services</span>
-                                </h1>
-                                <p className="wow fadeInUp" data-wow-delay=".6s" style={{ fontSize: '20px', color: 'rgba(255,255,255,0.85)', marginBottom: '45px', maxWidth: '600px', lineHeight: '1.6', fontWeight: '400' }}>
-                                    Transform your property instantly with our high-impact restoration. We specialize in precision cleaning for driveways, facades, and commercial assets.
-                                </p>
+                <div className="hero-overlay-vignette" style={{
+                    position: 'absolute',
+                    top: 0, left: 0,
+                    width: '100%', height: '100%',
+                    background: 'linear-gradient(0deg, rgba(10,22,43,0.4) 0%, transparent 25%, transparent 75%, rgba(10,22,43,0.3) 100%)',
+                    zIndex: 2
+                }}></div>
 
-                                <div className="banner-btn-wrap" style={{ marginBottom: '50px' }}>
-                                    <Link href="/contact" className="pf-btn pf-btn-lg">
-                                        Request instant quote <i className="fas fa-arrow-right"></i>
-                                    </Link>
-                                </div>
+                <div className="container" style={{ position: 'relative', zIndex: 10 }}>
+                    <div style={{ maxWidth: '800px' }}>
+                        {/* Massive Ultra-Premium Typography */}
+                        <h1 className="anim-fade-up title" style={{
+                            animationDelay: '0.3s', opacity: 0,
+                            color: '#ffffff',
+                            fontSize: 'clamp(3rem, 6vw, 5.5rem)',
+                            lineHeight: '1.05',
+                            marginBottom: '25px',
+                            textTransform: 'none'
+                        }}>
+                            Professional Pressure <br />
+                            <span style={{ color: 'var(--primary-cyan, #00CCFF)', fontStyle: 'italic' }}>
+                                Washing Services.
+                            </span>
+                        </h1>
 
-                                <div className="banner-features wow fadeInUp" data-wow-delay=".8s" style={{ display: 'flex', gap: '35px', borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '30px', maxWidth: 'fit-content' }}>
-                                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                                        <i className="fas fa-shield-alt" style={{ color: 'var(--primary-cyan)', fontSize: '18px' }}></i>
-                                        <span style={{ fontWeight: '600', color: '#fff', fontSize: '14px', textTransform: 'uppercase', letterSpacing: '1px' }}>Fully Insured</span>
-                                    </div>
-                                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                                        <i className="fas fa-star" style={{ color: 'var(--primary-cyan)', fontSize: '18px' }}></i>
-                                        <span style={{ fontWeight: '600', color: '#fff', fontSize: '14px', textTransform: 'uppercase', letterSpacing: '1px' }}>5-Star Rated</span>
-                                    </div>
-                                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                                        <i className="fas fa-leaf" style={{ color: 'var(--primary-cyan)', fontSize: '18px' }}></i>
-                                        <span style={{ fontWeight: '600', color: '#fff', fontSize: '14px', textTransform: 'uppercase', letterSpacing: '1px' }}>Eco-Friendly</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        {/* Sub-description paragraph with Gradient Mask fade */}
+                        <p className="anim-fade-up slide-desc" style={{
+                            animationDelay: '0.5s', opacity: 0,
+                            color: 'rgba(255,255,255,0.85)',
+                            fontSize: 'clamp(1.05rem, 1.2vw, 1.2rem)',
+                            lineHeight: '1.7',
+                            maxWidth: '650px',
+                            margin: '0',
+                            fontWeight: '400',
+                            WebkitMaskImage: 'linear-gradient(to right, rgba(0,0,0,1) 40%, rgba(0,0,0,0.05) 100%)',
+                            maskImage: 'linear-gradient(to right, rgba(0,0,0,1) 40%, rgba(0,0,0,0.05) 100%)'
+                        }}>
+                            Transform your property instantly with our high-impact restoration. We specialize in precision cleaning for driveways, facades, and commercial assets.
+                        </p>
                     </div>
                 </div>
-            </section>
-
-        </>
+            </div>
+        </section>
     )
 }

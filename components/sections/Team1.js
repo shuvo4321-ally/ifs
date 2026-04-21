@@ -8,10 +8,10 @@ export default function Team1() {
             position: "Cleaning Specialist",
             image: "/assets/img/team/team_img01.jpg",
             socialLinks: [
-                { icon: "fab fa-facebook-f", url: "#" },
+                { icon: "fab fa-facebook-f", url: "https://www.facebook.com/share/1G6kQXhC9v/" },
                 { icon: "fab fa-linkedin-in", url: "#" },
                 { icon: "fab fa-twitter", url: "#" },
-                { icon: "fab fa-instagram", url: "#" }
+                { icon: "fab fa-instagram", url: "https://www.instagram.com/ifs_au?igsh=MXZtZnkza2J4cnBkOQ==" }
             ]
         },
         {
@@ -20,10 +20,10 @@ export default function Team1() {
             position: "Pressure Washing Expert",
             image: "/assets/img/team/team_img02.jpg",
             socialLinks: [
-                { icon: "fab fa-facebook-f", url: "#" },
+                { icon: "fab fa-facebook-f", url: "https://www.facebook.com/share/1G6kQXhC9v/" },
                 { icon: "fab fa-linkedin-in", url: "#" },
                 { icon: "fab fa-twitter", url: "#" },
-                { icon: "fab fa-instagram", url: "#" }
+                { icon: "fab fa-instagram", url: "https://www.instagram.com/ifs_au?igsh=MXZtZnkza2J4cnBkOQ==" }
             ]
         },
         {
@@ -32,10 +32,10 @@ export default function Team1() {
             position: "Solar Panel Cleaning Specialist",
             image: "/assets/img/team/team_img03.jpg",
             socialLinks: [
-                { icon: "fab fa-facebook-f", url: "#" },
+                { icon: "fab fa-facebook-f", url: "https://www.facebook.com/share/1G6kQXhC9v/" },
                 { icon: "fab fa-linkedin-in", url: "#" },
                 { icon: "fab fa-twitter", url: "#" },
-                { icon: "fab fa-instagram", url: "#" }
+                { icon: "fab fa-instagram", url: "https://www.instagram.com/ifs_au?igsh=MXZtZnkza2J4cnBkOQ==" }
             ]
         }
     ];

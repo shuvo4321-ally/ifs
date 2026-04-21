@@ -5,39 +5,7 @@ import React, { useEffect, useRef } from "react"
 import Breadcrumb from "@/components/layout/Breadcrumb"
 
 export default function About() {
-    const counterRef = useRef(null);
 
-    useEffect(() => {
-        // Animate counters on scroll
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const counters = entry.target.querySelectorAll('[data-count]');
-                    counters.forEach(counter => {
-                        const target = counter.getAttribute('data-count');
-                        const isNumber = !isNaN(target);
-                        if (isNumber) {
-                            let current = 0;
-                            const increment = Math.ceil(parseInt(target) / 60);
-                            const timer = setInterval(() => {
-                                current += increment;
-                                if (current >= parseInt(target)) {
-                                    counter.textContent = target + '+';
-                                    clearInterval(timer);
-                                } else {
-                                    counter.textContent = current + '+';
-                                }
-                            }, 30);
-                        }
-                    });
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.3 });
-
-        if (counterRef.current) observer.observe(counterRef.current);
-        return () => observer.disconnect();
-    }, []);
 
     return (
         <>
@@ -91,70 +59,6 @@ export default function About() {
                         margin: 0;
                     }
 
-                    /* --- Section 2: Numbers Band --- */
-                    .ifs-numbers {
-                        padding: 0 0 0;
-                    }
-                    .ifs-numbers-track {
-                        display: flex;
-                        border-top: 1px solid #e2e8f0;
-                        border-bottom: 1px solid #e2e8f0;
-                    }
-                    .ifs-num-cell {
-                        flex: 1;
-                        padding: 60px 40px;
-                        border-right: 1px solid #e2e8f0;
-                        transition: background 0.4s ease;
-                    }
-                    .ifs-num-cell:last-child { border-right: none; }
-                    .ifs-num-cell:hover { background: #f8fafc; }
-                    .ifs-num-value {
-                        font-size: clamp(2.5rem, 4vw, 3.5rem);
-                        font-weight: 900;
-                        color: #0a0f1a;
-                        letter-spacing: -2px;
-                        line-height: 1;
-                        margin-bottom: 12px;
-                        display: block;
-                    }
-                    .ifs-num-label {
-                        font-size: 0.8rem;
-                        font-weight: 600;
-                        color: #94a3b8;
-                        text-transform: uppercase;
-                        letter-spacing: 1.5px;
-                        display: block;
-                    }
-
-                    /* --- Section 3: Full-Bleed Image --- */
-                    .ifs-fullbleed {
-                        position: relative;
-                        height: 70vh;
-                        min-height: 500px;
-                        overflow: hidden;
-                    }
-                    .ifs-fullbleed img {
-                        width: 100%;
-                        height: 100%;
-                        object-fit: cover;
-                        display: block;
-                    }
-                    .ifs-fullbleed-caption {
-                        position: absolute;
-                        bottom: 40px;
-                        left: 40px;
-                        background: rgba(10, 15, 26, 0.85);
-                        backdrop-filter: blur(20px);
-                        padding: 24px 36px;
-                        border-radius: 8px;
-                    }
-                    .ifs-fullbleed-caption p {
-                        margin: 0;
-                        font-size: 0.85rem;
-                        color: rgba(255,255,255,0.9);
-                        font-weight: 500;
-                        letter-spacing: 0.3px;
-                    }
 
                     /* --- Section 4: Two-Column Narrative --- */
                     .ifs-narrative {
@@ -425,17 +329,7 @@ export default function About() {
                     /* --- RESPONSIVE --- */
                     @media (max-width: 991px) {
                         .ifs-thesis { padding: 100px 0 80px; }
-                        .ifs-numbers-track {
-                            flex-wrap: wrap;
-                        }
-                        .ifs-num-cell {
-                            flex: 1 1 50%;
-                            border-bottom: 1px solid #e2e8f0;
-                        }
-                        .ifs-num-cell:nth-child(2) { border-right: none; }
-                        .ifs-num-cell:nth-child(3),
-                        .ifs-num-cell:nth-child(4) { border-bottom: none; }
-                        .ifs-fullbleed { height: 50vh; min-height: 350px; }
+
                         .ifs-narrative { padding: 100px 0; }
                         .ifs-narrative-grid {
                             grid-template-columns: 1fr;
@@ -469,19 +363,7 @@ export default function About() {
                         .ifs-cta-final { padding: 100px 0; }
                     }
                     @media (max-width: 575px) {
-                        .ifs-numbers-track {
-                            flex-direction: column;
-                        }
-                        .ifs-num-cell {
-                            flex: 1 1 100%;
-                            border-right: none;
-                            padding: 40px 30px;
-                        }
-                        .ifs-fullbleed-caption {
-                            left: 20px;
-                            bottom: 20px;
-                            right: 20px;
-                        }
+
                         .ifs-cap-item { padding-left: 0 !important; }
                         .ifs-quote-image-wrap img { height: 350px; }
                     }
@@ -505,38 +387,6 @@ export default function About() {
                     </div>
                 </section>
 
-                {/* ===== 2. NUMBERS BAND ===== */}
-                <section className="ifs-numbers" ref={counterRef}>
-                    <div className="ifs-numbers-track">
-                        <div className="ifs-num-cell">
-                            <span className="ifs-num-value" data-count="500">Experienced Team</span>
-                            <span className="ifs-num-label">Trained Professionals</span>
-                        </div>
-                        <div className="ifs-num-cell">
-                            <span className="ifs-num-value">Local Expertise</span>
-                            <span className="ifs-num-label">Coverage Across Sydney</span>
-                        </div>
-                        <div className="ifs-num-cell">
-                            <span className="ifs-num-value">24 / 7</span>
-                            <span className="ifs-num-label">Facility Support</span>
-                        </div>
-                        <div className="ifs-num-cell">
-                            <span className="ifs-num-value">100%</span>
-                            <span className="ifs-num-label">WHS Compliance</span>
-                        </div>
-                    </div>
-                </section>
-
-                {/* ===== 3. FULL-BLEED PHOTOGRAPHY ===== */}
-                <section className="ifs-fullbleed">
-                    <img
-                        src="/assets/img/services/about_specialized_main_v2.jpg"
-                        alt="Icon Facility Services team in action — commercial maintenance at scale"
-                    />
-                    <div className="ifs-fullbleed-caption wow fadeInUp" data-wow-delay=".2s">
-                        <p>Our teams operate across commercial, healthcare, industrial, and residential sectors nationwide.</p>
-                    </div>
-                </section>
 
                 {/* ===== 4. TWO-COLUMN NARRATIVE ===== */}
                 <section className="ifs-narrative">

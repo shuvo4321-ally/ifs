@@ -21,10 +21,10 @@ export default function Team3() {
                                     <Link href="/team-details"><img src="/assets/img/team/h4_team_img01.jpg" alt="" /></Link>
                                     <div className="team-social-three">
                                         <ul className="list-wrap">
-                                            <li><Link href="#"><i className="fab fa-facebook-f" /></Link></li>
+                                            <li><a href="https://www.facebook.com/share/1G6kQXhC9v/" target="_blank" rel="noopener noreferrer"><i className="fab fa-facebook-f" /></a></li>
                                             <li><Link href="#"><i className="fab fa-linkedin-in" /></Link></li>
                                             <li><Link href="#"><i className="fab fa-twitter" /></Link></li>
-                                            <li><Link href="#"><i className="fab fa-instagram" /></Link></li>
+                                            <li><a href="https://www.instagram.com/ifs_au?igsh=MXZtZnkza2J4cnBkOQ==" target="_blank" rel="noopener noreferrer"><i className="fab fa-instagram" /></a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -40,10 +40,10 @@ export default function Team3() {
                                     <Link href="/team-details"><img src="/assets/img/team/h4_team_img02.jpg" alt="" /></Link>
                                     <div className="team-social-three">
                                         <ul className="list-wrap">
-                                            <li><Link href="#"><i className="fab fa-facebook-f" /></Link></li>
+                                            <li><a href="https://www.facebook.com/share/1G6kQXhC9v/" target="_blank" rel="noopener noreferrer"><i className="fab fa-facebook-f" /></a></li>
                                             <li><Link href="#"><i className="fab fa-linkedin-in" /></Link></li>
                                             <li><Link href="#"><i className="fab fa-twitter" /></Link></li>
-                                            <li><Link href="#"><i className="fab fa-instagram" /></Link></li>
+                                            <li><a href="https://www.instagram.com/ifs_au?igsh=MXZtZnkza2J4cnBkOQ==" target="_blank" rel="noopener noreferrer"><i className="fab fa-instagram" /></a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -59,10 +59,10 @@ export default function Team3() {
                                     <Link href="/team-details"><img src="/assets/img/team/h4_team_img03.jpg" alt="" /></Link>
                                     <div className="team-social-three">
                                         <ul className="list-wrap">
-                                            <li><Link href="#"><i className="fab fa-facebook-f" /></Link></li>
+                                            <li><a href="https://www.facebook.com/share/1G6kQXhC9v/" target="_blank" rel="noopener noreferrer"><i className="fab fa-facebook-f" /></a></li>
                                             <li><Link href="#"><i className="fab fa-linkedin-in" /></Link></li>
                                             <li><Link href="#"><i className="fab fa-twitter" /></Link></li>
-                                            <li><Link href="#"><i className="fab fa-instagram" /></Link></li>
+                                            <li><a href="https://www.instagram.com/ifs_au?igsh=MXZtZnkza2J4cnBkOQ==" target="_blank" rel="noopener noreferrer"><i className="fab fa-instagram" /></a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -78,10 +78,10 @@ export default function Team3() {
                                     <Link href="/team-details"><img src="/assets/img/team/h4_team_img04.jpg" alt="" /></Link>
                                     <div className="team-social-three">
                                         <ul className="list-wrap">
-                                            <li><Link href="#"><i className="fab fa-facebook-f" /></Link></li>
+                                            <li><a href="https://www.facebook.com/share/1G6kQXhC9v/" target="_blank" rel="noopener noreferrer"><i className="fab fa-facebook-f" /></a></li>
                                             <li><Link href="#"><i className="fab fa-linkedin-in" /></Link></li>
                                             <li><Link href="#"><i className="fab fa-twitter" /></Link></li>
-                                            <li><Link href="#"><i className="fab fa-instagram" /></Link></li>
+                                            <li><a href="https://www.instagram.com/ifs_au?igsh=MXZtZnkza2J4cnBkOQ==" target="_blank" rel="noopener noreferrer"><i className="fab fa-instagram" /></a></li>
                                         </ul>
                                     </div>
                                 </div>

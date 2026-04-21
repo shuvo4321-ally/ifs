@@ -450,8 +450,8 @@ export default function Header({ headerCls, headerTop }) {
                                         </div>
                                         <div className="social-links">
                                             <ul className="clearfix list-wrap">
-                                                <li><Link href="/#"><i className="fab fa-facebook-f" /></Link></li>
-                                                <li><Link href="/#"><i className="fab fa-instagram" /></Link></li>
+                                                <li><a href="https://www.facebook.com/share/1G6kQXhC9v/" target="_blank" rel="noopener noreferrer"><i className="fab fa-facebook-f" /></a></li>
+                                                <li><a href="https://www.instagram.com/ifs_au?igsh=MXZtZnkza2J4cnBkOQ==" target="_blank" rel="noopener noreferrer"><i className="fab fa-instagram" /></a></li>
                                                 <li><a href="https://wa.me/61483798622" target="_blank" rel="noopener noreferrer"><i className="fab fa-whatsapp" /></a></li>
                                             </ul>
                                         </div>
